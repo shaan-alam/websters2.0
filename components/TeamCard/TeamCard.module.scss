@@ -1,0 +1,59 @@
+
+.crosshair_card {
+  background-color: transparent;
+  border: 1px solid #DB001E;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  position: relative;
+  @apply my-12 md:my-0;
+  
+  &::before {
+    background-color: #121212;
+    content: '';
+    display: block;
+    height: calc(100% - 20px);
+    left: 0;
+    top: 50%;
+    transform: translate3d(-1px, -50%, 0);
+    position: absolute;
+    width: calc(100% + 3px);
+    z-index: 0;
+  }
+  
+  &::after {
+    background-color: #121212;
+    content: '';
+    display: block;
+    height: calc(100% + 3px);
+    left: 50%;
+    top: 0;
+    transform: translate3d(-50%, -1px, 0);
+    position: absolute;
+    width: calc(100% - 20px);
+    z-index: 0;
+  }
+}
+
+.crosshair_card {
+  @apply h-auto w-auto;
+  .card_body {
+    @apply relative z-10;
+
+    img {
+      @apply w-full;
+    }
+
+
+    .card_content {
+      @apply p-4;
+
+      .event_name {
+        @apply text-primary font-bold uppercase text-3xl mb-4 tracking-wide relative overflow-hidden;
+      }
+
+      h1 {
+        @apply text-gray-400;
+      }
+    }
+  }
+}
