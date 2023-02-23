@@ -48,6 +48,7 @@ const TeamCard = () => {
   const areSocialsInView = useInView(socialRef);
   const socialsControls = useAnimationControls();
 
+  // Card controls
   useEffect(() => {
     if (isCardInView) {
       cardControls.start({ y: 0, opacity: 1 });
@@ -56,6 +57,7 @@ const TeamCard = () => {
     }
   }, [isCardInView, cardControls]);
 
+  // event name controls
   useEffect(() => {
     if (isEventNameInView) {
       eventNameControls.start({ y: 0, opacity: 1 });
@@ -64,6 +66,7 @@ const TeamCard = () => {
     }
   }, [isEventNameInView, eventNameControls]);
 
+  // event description controls
   useEffect(() => {
     if (isEventDescriptionInView) {
       eventDescriptionControls.start({ y: 0, opacity: 1 });
@@ -71,7 +74,8 @@ const TeamCard = () => {
       eventDescriptionControls.start({ y: "24%", opacity: 0 });
     }
   }, [isEventDescriptionInView, eventDescriptionControls]);
-
+      
+  // event image controls
   useEffect(() => {
     if (isEventImageInView) {
       eventImageControls.start({ opacity: 1 });
@@ -80,6 +84,7 @@ const TeamCard = () => {
     }
   }, [isEventImageInView, eventImageControls]);
 
+  // socials controls
   useEffect(() => {
     if (areSocialsInView) {
       socialsControls.start({ opacity: 1 });

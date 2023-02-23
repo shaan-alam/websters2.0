@@ -63,13 +63,13 @@ const EventCard = () => {
         <div className="img_container">
           <motion.img
             ref={eventImageRef}
-            src="https://cdn.sanity.io/images/axxb6ocs/production/3e4bccecb6052f242c7db78b8288b1f8403048bd-1080x1080.png"
+            src="/event.jpeg"            
             initial={{ opacity: 0 }}
             animate={eventImageControls}
             transition={{ ease: "easeInOut", duration: 1.2 }}
           />
         </div>
-        <div className={styles.card_content}>
+        {/* <div className={styles.card_content}>
           <h1 ref={eventNameRef} className={styles.event_name}>
             <motion.div
               initial={{ y: "44%", opacity: 0 }}
@@ -91,8 +91,8 @@ const EventCard = () => {
               odio fuga veritatis quam minima eligendi sint asperiores
               architecto nobis vel!
             </motion.p>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </motion.div>
   );

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#DB001E"
+        primary: "#DB0035"
       },
       fontFamily: {
         'primary': ['StratumNo1', 'sans-serif']

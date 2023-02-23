@@ -1,5 +1,5 @@
 .nav {
-  @apply sticky top-0 p-8 w-full backdrop-filter bg-opacity-20 backdrop-blur-xl z-10;
+  @apply sticky top-0 p-8 w-full bg-white backdrop-filter bg-opacity-20 backdrop-blur-xl z-10;
 }
 
 .nav__container {
@@ -30,7 +30,7 @@
       transition: transform 0.4s;
       height: 2px;
       width: 100%;
-      background: #fff;
+      background: #000;
       display: block;
       transform-origin: center;
       position: relative;
@@ -102,7 +102,7 @@
     }
 
     li a {
-      @apply font-primary uppercase font-bold text-sm transition-colors relative hover:text-primary;
+      @apply font-primary uppercase font-bold text-sm transition-colors relative text-black hover:text-primary;
     }
   }
 }

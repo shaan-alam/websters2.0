@@ -5,14 +5,14 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     <>
       {children}
       <motion.div
-        className="absolute inset-0 bg-[#111] z-10 origin-left"
+        className="absolute inset-0 bg-[#fff] z-10 origin-left"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       ></motion.div>
       <motion.div
-        className="absolute inset-0 bg-[#111] z-10 origin-right"
+        className="absolute inset-0 bg-[#fff] z-10 origin-right"
         initial={{ scaleX: 1 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 0 }}
@@ -29,7 +29,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
         <g clip-path="url(#clip0_14_104)">
           <motion.path
             d="M35.0323 104.561H0L80.2107 242L97.6311 212.371L35.0323 104.561Z"
-            stroke="#fff"
+            stroke="#121212"
             initial={{ pathLength: 0 }}
             exit={{ pathLength: 1 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -41,7 +41,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M45.5615 79.1374L89.3997 0L150.084 104.561H178.416L158.89 138.204H114.286L138.981 181.596L184.351 104.561H219L138.981 241.427L45.5615 79.1374ZM79.2538 78.9463L96.6742 108.766H117.54L90.1655 60.9779L79.2538 78.9463Z"
-            stroke="#fff"
+            stroke="#121212"
           />
         </g>
         <defs>
@@ -61,7 +61,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
         <g clip-path="url(#clip0_14_104)">
           <motion.path
             d="M35.0323 104.561H0L80.2107 242L97.6311 212.371L35.0323 104.561Z"
-            stroke="#fff"
+            stroke="#121212"
             initial={{ pathLength: 1 }}
             animate={{ pathLength: 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -73,7 +73,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M45.5615 79.1374L89.3997 0L150.084 104.561H178.416L158.89 138.204H114.286L138.981 181.596L184.351 104.561H219L138.981 241.427L45.5615 79.1374ZM79.2538 78.9463L96.6742 108.766H117.54L90.1655 60.9779L79.2538 78.9463Z"
-            stroke="#fff"
+            stroke="#121212"
           />
         </g>
         <defs>

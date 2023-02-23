@@ -4,7 +4,38 @@ import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar";
 import TeamCard from "@/components/TeamCard";
+import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+
+const containerVariants = {
+  initial: {
+    opacity: 0,
+    y: "10%",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.5,
+      ease: "easeInOut",
+      duration: 0.8,
+    },
+  },
+};
+const itemVariant = {
+  initial: {
+    opacity: 0,
+    y: "10%",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.8,
+    },
+  },
+};
 
 const App = () => {
   return (
@@ -55,21 +86,39 @@ const App = () => {
               </motion.div>
             </motion.div>
           </div>
-          <div className="my-12 md:my-0 hero-right md:w-3/4 relative overflow-hidden">
-            <motion.div
-              className="image-container absolute inset-0 bg-[#121212] origin-left z-10"
-              initial={{ scaleX: 1 }}
-              animate={{ scaleX: 0 }}
-              transition={{ duration: 0.8, ease: "easeIn" }}
-            ></motion.div>
-            <motion.img
-              src="./hero-image.png"
-              className="w-full relative z-[5]"
-              alt="Hero Image"
-              initial={{ scale: 1.2 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeIn" }}
-            />
+          <div className="my-12 md:my-0 hero-right md:w-3/4 relative">
+            <div className="relative overflow-hidden">
+              <motion.div
+                className="image-container absolute inset-0 bg-[#121212] origin-left z-10"
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: 1, ease: "easeIn" }}
+              ></motion.div>
+              <motion.img
+                src="./hero-image.png"
+                className="w-full relative z-[5] shadow-2xl shadow-[#121212]"
+                alt="Hero Image"
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1, delay: 0.4, ease: "easeIn" }}
+              />
+            </div>
+            <div className="hidden lg:block">
+              <motion.div
+                className="image-container absolute top-0 left-[-10rem] bg-[#121212] origin-left z-10"
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 1.3, ease: "easeInOut" }}
+              ></motion.div>
+              <motion.img
+                src="./hero-image2.jpg"
+                className="absolute top-[4rem] -left-[10rem] w-3/4 z-[5] shadow-2xl shadow-[#121212]"
+                alt="Hero Image"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.3, duration: 1, ease: "easeInOut" }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -77,12 +126,27 @@ const App = () => {
       <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
           <Header text="Events" />
-          <div className="lg:grid grid-cols-2 gap-12 my-8">
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-          </div>
+        </div>
+        <div className="w-[100%] mx-auto">
+          <motion.div
+            className="lg:grid justify-items-center grid-cols-4 my-8"
+            variants={containerVariants}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div variants={itemVariant}>
+              <EventCard />
+            </motion.div>
+            <motion.div variants={itemVariant}>
+              <EventCard />
+            </motion.div>
+            <motion.div variants={itemVariant}>
+              <EventCard />
+            </motion.div>
+            <motion.div variants={itemVariant}>
+              <EventCard />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -99,6 +163,8 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </Layout>
   );
 };

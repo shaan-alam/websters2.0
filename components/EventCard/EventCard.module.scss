@@ -1,47 +1,19 @@
 
-.crosshair_card {
-  background-color: transparent;
-  border: 1px solid #DB001E;
-  box-sizing: border-box;
-  padding: 10px 15px;
-  position: relative;
-  @apply my-8 lg:my-0;
-
-  &::before {
-    background-color: #121212;
-    content: '';
-    display: block;
-    height: calc(100% - 20px);
-    left: 0;
-    top: 50%;
-    transform: translate3d(-1px, -50%, 0);
-    position: absolute;
-    width: calc(100% + 3px);
-    z-index: 0;
-  }
-  
-  &::after {
-    background-color: #121212;
-    content: '';
-    display: block;
-    height: calc(100% + 3px);
-    left: 50%;
-    top: 0;
-    transform: translate3d(-50%, -1px, 0);
-    position: absolute;
-    width: calc(100% - 20px);
-    z-index: 0;
-  }
-}
 
 .crosshair_card {
-  @apply h-auto w-auto;
+  @apply h-auto w-auto mx-auto;
   
   .card_body {
     @apply relative z-10;
 
     img {
       @apply w-full;
+      filter: grayscale(100%);
+      cursor: pointer;
+      transition: all 0.4s;
+      &:hover {
+        filter: grayscale(0%);
+      }
     }
 
 
@@ -53,7 +25,7 @@
       }
 
       p {
-        @apply text-gray-400;
+        @apply text-gray-400 w-1/2;
       }
     }
   }

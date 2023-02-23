@@ -8,8 +8,8 @@
   @apply my-12 md:my-0;
   
   &::before {
-    background-color: #121212;
     content: '';
+    background-color: #fff;
     display: block;
     height: calc(100% - 20px);
     left: 0;
@@ -21,8 +21,8 @@
   }
   
   &::after {
-    background-color: #121212;
     content: '';
+    background-color: #fff;
     display: block;
     height: calc(100% + 3px);
     left: 50%;
