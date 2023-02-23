@@ -138,13 +138,13 @@ const TeamCard = () => {
             animate={socialsControls}
             className="socials flex items-center justify-between w-1/3 mt-4"
           >
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-white transition-colors">
+            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
               <IoLogoFacebook size={25} />
             </a>
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-white transition-colors">
+            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
               <IoLogoInstagram size={25} />
             </a>
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-white transition-colors">
+            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
               <IoLogoLinkedin size={25} />
             </a>
           </motion.div>

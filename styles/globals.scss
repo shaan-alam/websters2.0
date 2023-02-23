@@ -21,3 +21,12 @@ html, body {
   font-family: "stratumno1";
   src: url("../public/stratumno1-regular.ttf");
 }
+
+.masonry-tile {
+  filter: grayscale(100%);
+  transition: all 0.4s;
+
+  &:hover {
+    filter: grayscale(0);
+  }
+}

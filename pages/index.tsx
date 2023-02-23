@@ -5,7 +5,8 @@ import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar";
 import TeamCard from "@/components/TeamCard";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const containerVariants = {
   initial: {
@@ -123,13 +124,72 @@ const App = () => {
         </div>
       </section>
 
+      <section id="about-websters" className="my-20 md:my-48">
+        <div className="w-[80%] mx-auto md:grid grid-cols-2 gap-12">
+          <div className="left-col my-4 md:my-0">
+            <img src="/logo.svg" alt="Websters" className="w-[70%]" />
+          </div>
+          <div className="right-col">
+            <Header text="About Websters" />
+            <div className="about-container text-gray-500">
+              <p className="my-4">                
+                The Department of Computer Science was established in 1984. The
+                Department aims at upholding the cognitive aspect of education
+                by ensuring academic excellence and intellectual growth of its
+                students.
+              </p>
+              <p className="my-4">
+                The department lays prime focus on academics interspersed with
+                co-curricular and extra-curricular activities that bring the
+                versatility of its students to the fore and gives them a sound
+                sense of perspective. The faculty comprises of experienced and
+                dedicated teachers who with their expert inputs encourage
+                students to explore new avenues.
+              </p>
+              <p className="my-4">
+                The computer society “Websters” was started with the aim to
+                foster interest in the world of computers and technology. It
+                provides a platform for likeminded brains to communicate with
+                each other and expand their horizons.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-techelons" className="my-20 md:my-48">
+        <div className="w-[80%] mx-auto block md:grid grid-cols-2 gap-12">
+          <div className="left-col my-4 md:my-0">
+            <Header text="About Techelons" />
+            <div className="text-gray-500">
+              <p className="my-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
+                reiciendis libero cupiditate perferendis quos ipsam vel?
+                Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
+              </p>
+              <p className="my-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus quod iusto eligendi ab repellat aut vel officiis!
+                Itaque vel neque possimus, molestias consectetur cum in ratione
+                sequi error natus molestiae distinctio facere accusamus, minima
+                facilis autem sint unde! Delectus, quam!
+              </p>
+            </div>
+          </div>
+          <div className="right-col">
+            <img src="/techelons.png" alt="Techelons" />
+          </div>
+        </div>
+      </section>
+
       <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
-          <Header text="Events" />
+          <Header text="Our Events" />
         </div>
-        <div className="w-[100%] mx-auto">
+        <div className="w-[80%] mx-auto">
           <motion.div
-            className="lg:grid justify-items-center grid-cols-4 my-8"
+            className="lg:grid gap-12 justify-items-center grid-cols-4 my-8"
             variants={containerVariants}
             initial="initial"
             animate="animate"
