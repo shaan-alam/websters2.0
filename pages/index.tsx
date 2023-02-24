@@ -38,6 +38,34 @@ const itemVariant = {
   },
 };
 
+const colVariants = {
+  initial: {
+    opacity: 0,
+    y: "10%",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 1.5,
+      staggerChildren: 0.5,
+      ease: "easeInOut",
+      duration: 0.8,
+    },
+  },
+};
+
+const colImageVariants = {
+  initial: {
+    opacity: 0,
+    y: "10%",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 const App = () => {
   return (
     <Layout>
@@ -87,38 +115,79 @@ const App = () => {
               </motion.div>
             </motion.div>
           </div>
-          <div className="my-12 md:my-0 hero-right md:w-3/4 relative">
-            <div className="relative overflow-hidden">
+          <div className="my-12 md:my-0 hero-right md:w-full relative">
+            <div className="masonry-layout flex flex-row justify-center items-stretch mt-20 md:mt-0">
               <motion.div
-                className="image-container absolute inset-0 bg-[#121212] origin-left z-10"
-                initial={{ scaleX: 1 }}
-                animate={{ scaleX: 0 }}
-                transition={{ duration: 1, ease: "easeIn" }}
-              ></motion.div>
-              <motion.img
-                src="./hero-image.png"
-                className="w-full relative z-[5] shadow-2xl shadow-[#121212]"
-                alt="Hero Image"
-                initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 1, delay: 0.4, ease: "easeIn" }}
-              />
-            </div>
-            <div className="hidden lg:block">
+                className="flex flex-col flex-start stretch"
+                variants={colVariants}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image.png"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image8.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image6.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+              </motion.div>
               <motion.div
-                className="image-container absolute top-0 left-[-10rem] bg-[#121212] origin-left z-10"
-                initial={{ scaleX: 1 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 1.3, ease: "easeInOut" }}
-              ></motion.div>
-              <motion.img
-                src="./hero-image2.jpg"
-                className="absolute top-[4rem] -left-[10rem] w-3/4 z-[5] shadow-2xl shadow-[#121212]"
-                alt="Hero Image"
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.3, duration: 1, ease: "easeInOut" }}
-              />
+                className="-my-16 md:-my-32 mx-2"
+                variants={colVariants}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image2.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image3.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image4.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image7.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+              </motion.div>
+              <motion.div
+                className="-my-12"
+                variants={colVariants}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image5.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image9.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <motion.img
+                  variants={colImageVariants}
+                  src="/hero-image10.jpg"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+              </motion.div>
             </div>
           </div>
         </div>
@@ -132,7 +201,7 @@ const App = () => {
           <div className="right-col">
             <Header text="About Websters" />
             <div className="about-container text-gray-500">
-              <p className="my-4">                
+              <p className="my-4">
                 The Department of Computer Science was established in 1984. The
                 Department aims at upholding the cognitive aspect of education
                 by ensuring academic excellence and intellectual growth of its
