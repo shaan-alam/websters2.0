@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply font-primary;
+  // @apply font-primary;
 }
 
 html, body {
@@ -20,6 +20,11 @@ html, body {
 @font-face {
   font-family: "stratumno1";
   src: url("../public/stratumno1-regular.ttf");
+}
+
+@font-face {
+  font-family: "horizon";
+  src: url("../public/horizon.otf");
 }
 
 .masonry-tile {

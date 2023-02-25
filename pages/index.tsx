@@ -76,8 +76,8 @@ const App = () => {
             <div className="relative overflow-hidden">
               <motion.h1
                 className="text-center md:text-left text-gray-500 font-primary text-3xl"
-                initial={{ y: "20%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
                 transition={{ delay: 0.7, ease: "easeInOut", duration: "0.5" }}
               >
                 Hey, we are
@@ -86,8 +86,8 @@ const App = () => {
             <div className="relative overflow-hidden">
               <motion.h1
                 className="text-center md:text-left text-5xl my-2 font-primary text-primary font-bold uppercase md:text-8xl"
-                initial={{ y: "20%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
                 transition={{ ease: "easeOut", duration: "1", delay: 1 }}
               >
                 Websters

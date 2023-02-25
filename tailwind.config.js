@@ -14,7 +14,8 @@ module.exports = {
         primary: "#DB0035"
       },
       fontFamily: {
-        'primary': ['StratumNo1', 'sans-serif']
+        'primary': ['StratumNo1', 'sans-serif'],
+        'horizon': ['horizon', 'sans-serif']
       }
     },
   },

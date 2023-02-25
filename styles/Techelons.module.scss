@@ -1,0 +1,8 @@
+.wrapper {
+  height: 80vh;
+  width: 100%;
+
+  .container {
+    @apply w-[80%] mx-auto;
+  }
+}

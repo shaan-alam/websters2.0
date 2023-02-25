@@ -102,7 +102,7 @@ const Navbar = () => {
               <Link href="/events">Events</Link>
             </li>
             <li>
-              <Link href="/about">Techelons</Link>
+              <Link href="/techelons">Techelons</Link>
             </li>
             <li>
               <Link href="/about">Contact Us</Link>
