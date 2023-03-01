@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import styles from "../styles/Techelons.module.scss";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
-import AnimatedText from "@/components/AnimatedText";
+import AnimatedText from "@/components/AnimatedLine";
 
 const subtitleContainerVariants = {
   initial: {
@@ -46,17 +46,17 @@ const Techelons = () => {
         <div className={styles.container}>
           <AnimatedText
             text="TECHELONS"
-            className="text-[2rem] md:text-[8rem] text-black"
+            className="text-[2rem] md:text-[8rem] text-white"
           />
           <AnimatedText
             text="The Annual Tech Fest of Shivaji College"
-            className="text-[1rem] md:text-[2rem] text-black"
+            className="text-[1rem] md:text-[2rem] text-white"
           />
           <div className="block md:grid grid-cols-2 gap-12 my-24">
             <div className="left-col my-4 md:my-0">
               <AnimatedText
                 text="ABOUT TECHELONS"
-                className="text-[1rem] text-black"
+                className="text-[1rem] text-white"
               />
               <div className="text-gray-500">
                 <p className="my-4">

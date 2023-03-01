@@ -5,8 +5,15 @@ import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar";
 import TeamCard from "@/components/TeamCard";
 import Footer from "@/components/Footer";
-import { motion, useAnimationControls, useInView } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useAnimationControls,
+  useInView,
+} from "framer-motion";
 import { useEffect, useRef } from "react";
+import AnimatedLine from "@/components/AnimatedLine";
+import AnimatedParagraph from "@/components/AnimatedParagraph";
 
 const containerVariants = {
   initial: {
@@ -70,31 +77,27 @@ const App = () => {
   return (
     <Layout>
       <Navbar />
-      <section className="hero">
+      <section className="hero relative">
+        <span className="absolute h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
+        <span className="absolute right-10 top-[30rem] h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
+        <span className="absolute left-10 top-[100rem] h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
+        <span className="absolute left-10 top-[150rem] h-[200px] w-[90%] bg-blue-700 blur-[400px] bg-opacity-80"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
             <div className="relative overflow-hidden">
-              <motion.h1
-                className="text-center md:text-left text-gray-500 font-primary text-3xl"
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.7, ease: "easeInOut", duration: "0.5" }}
-              >
-                Hey, we are
-              </motion.h1>
+              <AnimatedLine
+                text="Hey, we are"
+                className="text-center md:text-left text-gray-500 text-2xl my-0"
+              />
             </div>
             <div className="relative overflow-hidden">
-              <motion.h1
-                className="text-center md:text-left text-5xl my-2 font-primary text-primary font-bold uppercase md:text-8xl"
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ ease: "easeOut", duration: "1", delay: 1 }}
-              >
-                Websters
-              </motion.h1>
+              <AnimatedLine
+                text="Websters"
+                className="text-center md:text-left text-[3rem] mb-4 font-primary text-white font-bold uppercase md:text-[7rem] md:mb-0"
+              />
             </div>
             <motion.p
-              className="text-center md:text-left text-gray-500 md:w-3/4 w-full"
+              className="text-center md:text-left text-gray-500 md:w-3/4 w-full -mt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, ease: "easeInOut" }}
@@ -111,7 +114,7 @@ const App = () => {
                 transition={{ delay: 2.3, ease: "easeInOut" }}
                 className="relative block"
               >
-                <Button className="my-4">Get Started</Button>
+                <Button className="mt-8">Get Started</Button>
               </motion.div>
             </motion.div>
           </div>
@@ -199,7 +202,10 @@ const App = () => {
             <img src="/logo.svg" alt="Websters" className="w-[70%]" />
           </div>
           <div className="right-col">
-            <Header text="About Websters" />
+            <AnimatedLine
+              text="About Websters"
+              className="text-4xl font-bold text-primary uppercase"
+            />
             <div className="about-container text-gray-500">
               <p className="my-4">
                 The Department of Computer Science was established in 1984. The
@@ -229,7 +235,10 @@ const App = () => {
       <section id="about-techelons" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto block md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <Header text="About Techelons" />
+            <AnimatedLine
+              text="About Techelons"
+              className="text-4xl font-bold text-primary uppercase"
+            />
             <div className="text-gray-500">
               <p className="my-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -254,7 +263,10 @@ const App = () => {
 
       <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
-          <Header text="Our Events" />
+          <AnimatedLine
+            text="Our Events"
+            className="text-3xl md:text-6xl font-bold text-primary uppercase"
+          />
         </div>
         <div className="w-[80%] mx-auto">
           <motion.div
@@ -281,7 +293,10 @@ const App = () => {
 
       <section id="teams" className="my-24">
         <div className="w-[80%] mx-auto">
-          <Header text="Teams" />
+        <AnimatedLine
+            text="Meet The Team"
+            className="text-5xl md:text-6xl font-bold text-primary uppercase"
+          />
           <div className="md:grid grid-cols-3 gap-8 my-8">
             <TeamCard />
             <TeamCard />

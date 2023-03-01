@@ -17,7 +17,7 @@ const Header = ({ text }: { text: string }) => {
   return (
     <h1
       ref={headingRef}
-      className="heading__container uppercase text-5xl md:text-7xl font-bold text-primary relative inline-block"
+      className="heading__container uppercase  relative inline-block"
     >
       <motion.div
         className="heading__slide absolute inset-0 bg-primary origin-right"

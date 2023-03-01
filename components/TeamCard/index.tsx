@@ -6,6 +6,7 @@ import {
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io";
+import AnimatedLine from "../AnimatedLine";
 
 const boxVariants = {
   initial: {
@@ -74,7 +75,7 @@ const TeamCard = () => {
       eventDescriptionControls.start({ y: "24%", opacity: 0 });
     }
   }, [isEventDescriptionInView, eventDescriptionControls]);
-      
+
   // event image controls
   useEffect(() => {
     if (isEventImageInView) {
@@ -123,14 +124,14 @@ const TeamCard = () => {
             </motion.div>
           </h1>
           <div className="relative overflow-hidden">
-            <motion.h1
+            <motion.h2
               ref={eventDescriptionRef}
               initial={{ y: "24%", opacity: 0 }}
               animate={eventDescriptionControls}
               transition={{ duration: "1" }}
             >
               Technical Head
-            </motion.h1>
+            </motion.h2>
           </div>
           <motion.div
             ref={socialRef}
@@ -138,13 +139,28 @@ const TeamCard = () => {
             animate={socialsControls}
             className="socials flex items-center justify-between w-1/3 mt-4"
           >
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
+            <a
+              href="#!"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#a1a1a1] hover:text-primary transition-colors"
+            >
               <IoLogoFacebook size={25} />
             </a>
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
+            <a
+              href="#!"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#a1a1a1] hover:text-primary transition-colors"
+            >
               <IoLogoInstagram size={25} />
             </a>
-            <a href="#!" target="_blank" rel="noreferrer" className="text-[#a1a1a1] hover:text-primary transition-colors">
+            <a
+              href="#!"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#a1a1a1] hover:text-primary transition-colors"
+            >
               <IoLogoLinkedin size={25} />
             </a>
           </motion.div>

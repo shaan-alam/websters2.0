@@ -11,12 +11,8 @@ interface ButtonProps
 
 const Button = ({ className, children }: ButtonProps) => {
   return (
-    <button className={classnames(styles.crosshair, className)}>
-      <span className={styles.button__inner}>
-        <span className={styles.button__text}>{children}</span>
-        <span className={styles.button__slide_left}></span>
-        <span className={styles.button__slide_right}></span>
-      </span>
+    <button className={classnames(styles.btn, className)}>
+      {children}
     </button>
   );
 };

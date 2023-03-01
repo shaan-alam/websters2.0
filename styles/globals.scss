@@ -2,13 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  // @apply font-primary;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+h1, h2, h3, h4, h5, h6, button, a {
+  @apply font-primary;
+}
+
+p, a {
+  @apply font-secondary;
 }
 
 html, body {
   background-size: 10%;
-  background: #fff;
+  background: #000;
   background-image: url('../public/bg-white.svg');
 }
 
@@ -20,6 +26,11 @@ html, body {
 @font-face {
   font-family: "stratumno1";
   src: url("../public/stratumno1-regular.ttf");
+}
+
+@font-face {
+  font-family: "aquire";
+  src: url("../public/aquire.otf");
 }
 
 @font-face {

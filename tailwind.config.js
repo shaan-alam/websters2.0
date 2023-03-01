@@ -11,11 +11,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#DB0035"
+        primary: "#fff"
       },
       fontFamily: {
-        'primary': ['StratumNo1', 'sans-serif'],
-        'horizon': ['horizon', 'sans-serif']
+        'primary': ['aquire', 'sans-serif'],
+        'secondary': ['montserrat', 'sans-serif']
       }
     },
   },

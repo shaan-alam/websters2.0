@@ -1,76 +1,53 @@
-.crosshair {
-  background-color: transparent;
-  border: 1px solid #DB001E;
-  box-sizing: border-box;
+.btn {
+  width: 230px;
+  height: 60px; 
+  border: none;
+  outline: none;
   cursor: pointer;
-  padding: 10px 15px;
   position: relative;
-  
+  font-size: .85rem;
+  text-transform: uppercase;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+  @apply bg-primary text-blue-700 font-bold;
+
   &::before {
-    background-color: #fff;
     content: '';
-    display: block;
-    height: calc(100% - 20px);
-    left: 0;
-    top: 50%;
-    transform: translate3d(-1px, -50%, 0);
-    position: absolute;
-    width: calc(100% + 6px);
-    z-index: 0;
-  }
-  
-  &::after {
-    background-color: #fff;
-    content: '';
-    display: block;
-    height: calc(100% + 6px);
-    left: 50%;
-    top: 0;
-    transform: translate3d(-50%, -1px, 0);
-    position: absolute;
-    width: calc(100% - 20px);
-    z-index: 0;
-  }
-}
-
-.button__inner {
-  @apply py-[12px] px-[20px] text-primary block relative uppercase font-bold;
-
-  .button__text {
-    @apply relative z-[8] font-bold tracking-wide;
-  }
-}
-
-.crosshair {
-  .button__slide_left, .button__slide_right {
     position: absolute;
     inset: 0;
+    left: -1rem;
     height: 100%;
-    width: 50%;
-    background: #DB001E;
-    transform: scaleX(0);
-    z-index: 4;
+    width: 120%;
+    @apply bg-blue-900;
+    transform: skew(-15deg) scaleX(0);
+    z-index: -1;
+    transform-origin: left;
     transition: all 0.4s;
   }
-  
-  .button__slide_left {
-    left: 0;
-    transform-origin: left;
-  }
-  
-  .button__slide_right {
-    left: 50%;
-    transform-origin: right;
+
+
+  &:hover::before {
+    transform: skew(-15deg) scaleX(1);
   }
 
-  &:hover .button__slide_left {
-    transform: scaleX(1);
+  &:hover {
+    color: #fff;
   }
-  &:hover .button__slide_right {
-    transform: scaleX(1);
-  }
+}
 
-  &:hover .button__text {
+.btn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: red;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+  z-index: 2;
+
+  &:hover {
     color: #fff;
   }
 }
