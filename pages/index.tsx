@@ -78,10 +78,15 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
-        <span className="absolute right-10 top-[30rem] h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
-        <span className="absolute left-10 top-[100rem] h-[200px] w-[600px] bg-blue-700 blur-[400px]"></span>
-        <span className="absolute left-10 top-[150rem] h-[200px] w-[90%] bg-blue-700 blur-[400px] bg-opacity-80"></span>
+        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute top-[50rem] h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[200rem] right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[250rem] block md:hidden w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[300rem] block md:hidden right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[350rem] block md:hidden w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] top-[400rem] block md:hidden right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
             <div className="relative overflow-hidden">
