@@ -3,9 +3,9 @@ import styles from "./EventCard.module.scss";
 import { motion, useInView, useAnimationControls } from "framer-motion";
 
 const EventCard = () => {
-  const cardRef = useRef(null);
-  const isCardInView = useInView(cardRef);
-  const cardControls = useAnimationControls();
+  // const cardRef = useRef(null);
+  // const isCardInView = useInView(cardRef);
+  // const cardControls = useAnimationControls();
 
   const eventNameRef = useRef(null);
   const isEventNameInView = useInView(eventNameRef);
@@ -19,13 +19,13 @@ const EventCard = () => {
   const isEventImageInView = useInView(eventImageRef);
   const eventImageControls = useAnimationControls();
 
-  useEffect(() => {
-    if (isCardInView) {
-      cardControls.start({ y: 0, opacity: 1 });
-    } else {
-      cardControls.start({ y: "10%", opacity: 0 });
-    }
-  }, [isCardInView, cardControls]);
+  // useEffect(() => {
+  //   // if (isCardInView) {
+  //   //   cardControls.start({ y: 0, opacity: 1 });
+  //   // } else {
+  //   //   cardControls.start({ y: "10%", opacity: 0 });
+  //   // }
+  // }, [isCardInView, cardControls]);
 
   useEffect(() => {
     if (isEventNameInView) {
@@ -52,12 +52,8 @@ const EventCard = () => {
   }, [isEventImageInView, eventImageControls]);
 
   return (
-    <motion.div
-      ref={cardRef}
+    <div
       className={styles.crosshair_card}
-      initial={{ y: "10%", opacity: 0 }}
-      animate={cardControls}
-      transition={{ ease: "easeInOut", duration: 0.8 }}
     >
       <div className={styles.card_body}>
         <div className="img_container">
@@ -92,7 +88,7 @@ const EventCard = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

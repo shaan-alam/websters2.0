@@ -11,9 +11,9 @@ import {
   useAnimationControls,
   useInView,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
 import AnimatedLine from "@/components/AnimatedLine";
 import AnimatedParagraph from "@/components/AnimatedParagraph";
+import { Parallax } from "react-scroll-parallax";
 
 const containerVariants = {
   initial: {
@@ -79,22 +79,19 @@ const App = () => {
       <Navbar />
       <section className="hero relative">
         <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute top-[50rem] h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[200rem] right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[250rem] block md:hidden w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[300rem] block md:hidden right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[350rem] block md:hidden w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[500px] top-[400rem] block md:hidden right-10 w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
-            <div className="relative overflow-hidden">
-              <AnimatedLine
-                text="Hey, we are"
-                className="text-center md:text-left text-gray-500 text-2xl my-0"
-              />
-            </div>
+            <Parallax speed={-4}>
+              <div className="relative overflow-hidden">
+                <AnimatedLine
+                  text="Hey, we are"
+                  className="text-center md:text-left text-gray-500 text-2xl my-0"
+                />
+              </div>
+            </Parallax>
             <div className="relative overflow-hidden">
               <AnimatedLine
                 text="Websters"
@@ -204,34 +201,45 @@ const App = () => {
       <section id="about-websters" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <img src="/logo.svg" alt="Websters" className="w-[70%]" />
+            <Parallax speed={-10}>
+              <img src="/logo.svg" alt="Websters" className="w-[70%]" />
+            </Parallax>
           </div>
           <div className="right-col">
-            <AnimatedLine
-              text="About Websters"
-              className="text-4xl font-bold text-primary uppercase"
-            />
+            <Parallax speed={10}>
+              <AnimatedLine
+                text="About Websters"
+                className="text-4xl font-bold text-primary uppercase"
+              />
+            </Parallax>
+
             <div className="about-container text-gray-500">
-              <p className="my-4">
-                The Department of Computer Science was established in 1984. The
-                Department aims at upholding the cognitive aspect of education
-                by ensuring academic excellence and intellectual growth of its
-                students.
-              </p>
-              <p className="my-4">
-                The department lays prime focus on academics interspersed with
-                co-curricular and extra-curricular activities that bring the
-                versatility of its students to the fore and gives them a sound
-                sense of perspective. The faculty comprises of experienced and
-                dedicated teachers who with their expert inputs encourage
-                students to explore new avenues.
-              </p>
-              <p className="my-4">
-                The computer society “Websters” was started with the aim to
-                foster interest in the world of computers and technology. It
-                provides a platform for likeminded brains to communicate with
-                each other and expand their horizons.
-              </p>
+              <Parallax speed={7}>
+                <p className="my-4">
+                  The Department of Computer Science was established in 1984.
+                  The Department aims at upholding the cognitive aspect of
+                  education by ensuring academic excellence and intellectual
+                  growth of its students.
+                </p>
+              </Parallax>
+              <Parallax speed={5}>
+                <p className="my-4">
+                  The department lays prime focus on academics interspersed with
+                  co-curricular and extra-curricular activities that bring the
+                  versatility of its students to the fore and gives them a sound
+                  sense of perspective. The faculty comprises of experienced and
+                  dedicated teachers who with their expert inputs encourage
+                  students to explore new avenues.
+                </p>
+              </Parallax>
+              <Parallax speed={3}>
+                <p className="my-4">
+                  The computer society “Websters” was started with the aim to
+                  foster interest in the world of computers and technology. It
+                  provides a platform for likeminded brains to communicate with
+                  each other and expand their horizons.
+                </p>
+              </Parallax>
             </div>
           </div>
         </div>
@@ -240,38 +248,48 @@ const App = () => {
       <section id="about-techelons" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto block md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <AnimatedLine
-              text="About Techelons"
-              className="text-4xl font-bold text-primary uppercase"
-            />
+            <Parallax speed={10}>
+              <AnimatedLine
+                text="About Techelons"
+                className="text-4xl font-bold text-primary uppercase"
+              />
+            </Parallax>
             <div className="text-gray-500">
-              <p className="my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
-                reiciendis libero cupiditate perferendis quos ipsam vel?
-                Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
-              </p>
-              <p className="my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus quod iusto eligendi ab repellat aut vel officiis!
-                Itaque vel neque possimus, molestias consectetur cum in ratione
-                sequi error natus molestiae distinctio facere accusamus, minima
-                facilis autem sint unde! Delectus, quam!
-              </p>
+              <Parallax speed={8}>
+                <p className="my-4">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
+                  reiciendis libero cupiditate perferendis quos ipsam vel?
+                  Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
+                </p>
+              </Parallax>
+              <Parallax speed={6}>
+                <p className="my-4">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Accusamus quod iusto eligendi ab repellat aut vel officiis!
+                  Itaque vel neque possimus, molestias consectetur cum in
+                  ratione sequi error natus molestiae distinctio facere
+                  accusamus, minima facilis autem sint unde! Delectus, quam!
+                </p>
+              </Parallax>
             </div>
           </div>
           <div className="right-col">
-            <img src="/techelons.png" alt="Techelons" />
+            <Parallax speed={-10}>
+              <img src="/techelons.png" alt="Techelons" />
+            </Parallax>
           </div>
         </div>
       </section>
 
       <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
-          <AnimatedLine
-            text="Our Events"
-            className="text-3xl md:text-6xl font-bold text-primary uppercase"
-          />
+          <Parallax speed={5}>
+            <AnimatedLine
+              text="Our Events"
+              className="text-3xl md:text-6xl font-bold text-primary uppercase"
+            />
+          </Parallax>
         </div>
         <div className="w-[80%] mx-auto">
           <motion.div
@@ -281,16 +299,24 @@ const App = () => {
             animate="animate"
           >
             <motion.div variants={itemVariant}>
-              <EventCard />
+              <Parallax speed={10}>
+                <EventCard />
+              </Parallax>
             </motion.div>
             <motion.div variants={itemVariant}>
-              <EventCard />
+              <Parallax speed={5}>
+                <EventCard />
+              </Parallax>
             </motion.div>
             <motion.div variants={itemVariant}>
-              <EventCard />
+              <Parallax speed={10}>
+                <EventCard />
+              </Parallax>
             </motion.div>
             <motion.div variants={itemVariant}>
-              <EventCard />
+              <Parallax speed={5}>
+                <EventCard />
+              </Parallax>
             </motion.div>
           </motion.div>
         </div>
@@ -298,17 +324,27 @@ const App = () => {
 
       <section id="teams" className="my-24">
         <div className="w-[80%] mx-auto">
-        <AnimatedLine
-            text="Meet The Team"
-            className="text-5xl md:text-6xl font-bold text-primary uppercase"
-          />
+          <Parallax speed={5}>
+            <AnimatedLine
+              text="Meet The Team"
+              className="text-5xl md:text-6xl font-bold text-primary uppercase"
+            />
+          </Parallax>
           <div className="md:grid grid-cols-3 gap-8 my-8">
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
+            <Parallax speed={5}>
+              <TeamCard />
+            </Parallax>
+            <Parallax>
+              <TeamCard />
+            </Parallax>
+            <Parallax speed={5}>
+              <TeamCard />
+            </Parallax>
           </div>
           <div className="w-full flex justify-center">
-            <Button>See All</Button>
+            <Parallax speed={8}>
+              <Button>See All</Button>
+            </Parallax>
           </div>
         </div>
       </section>

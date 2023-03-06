@@ -51,11 +51,11 @@ const TeamCard = () => {
 
   // Card controls
   useEffect(() => {
-    if (isCardInView) {
-      cardControls.start({ y: 0, opacity: 1 });
-    } else {
-      cardControls.start({ y: "10%", opacity: 0 });
-    }
+    // if (isCardInView) {
+    //   cardControls.start({ y: 0, opacity: 1 });
+    // } else {
+    //   cardControls.start({ y: "10%", opacity: 0 });
+    // }
   }, [isCardInView, cardControls]);
 
   // event name controls
@@ -95,22 +95,15 @@ const TeamCard = () => {
   }, [areSocialsInView, socialsControls]);
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       className={styles.crosshair_card}
-      initial={{ y: "10%", opacity: 0 }}
-      animate={cardControls}
-      transition={{ ease: "easeInOut", duration: 0.8 }}
     >
       <div className={styles.card_body}>
         <div className="img_container">
-          <motion.img
-            ref={eventImageRef}
+          <img
             src="/shaan.png"
             className="object-cover"
-            initial={{ opacity: 0 }}
-            animate={eventImageControls}
-            transition={{ ease: "easeInOut", duration: 1.2 }}
           />
         </div>
         <div className={styles.card_content}>
@@ -166,7 +159,7 @@ const TeamCard = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

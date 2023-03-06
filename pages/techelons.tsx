@@ -3,6 +3,7 @@ import styles from "../styles/Techelons.module.scss";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import AnimatedText from "@/components/AnimatedLine";
+import Layout from "@/components/Layout";
 
 const subtitleContainerVariants = {
   initial: {
@@ -40,17 +41,18 @@ const Techelons = () => {
   console.log(arraySub);
 
   return (
-    <>
+    <Layout>
       <Navbar />
       <section className={styles.wrapper}>
         <div className={styles.container}>
+          <span className="absolute h-[500px] w-[500px] top-[100%] rounded-full md:w-[90%] bg-gradient-to-r from-pink-600 to-blue-600 blur-[300px] md:blur-[400px]"></span>
           <AnimatedText
             text="TECHELONS"
-            className="text-[2rem] md:text-[8rem] text-white"
+            className="text-[2rem] md:text-[8rem] text-white text-center"
           />
           <AnimatedText
             text="The Annual Tech Fest of Shivaji College"
-            className="text-[1rem] md:text-[2rem] text-white"
+            className="text-[1rem] md:text-[2rem] text-white text-center"
           />
           <div className="block md:grid grid-cols-2 gap-12 my-24">
             <div className="left-col my-4 md:my-0">
@@ -80,7 +82,7 @@ const Techelons = () => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   );
 };
 
