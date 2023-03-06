@@ -3,4 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+
+const withTM = require('next-transpile-modules')(['@react-three/drei', '@react-three/fiber']); // pass the modules you would like to see transpiled
+
+module.exports = withTM({});
+

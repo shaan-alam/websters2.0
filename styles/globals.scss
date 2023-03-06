@@ -46,3 +46,11 @@ html, body {
     filter: grayscale(0);
   }
 }
+
+
+.globe {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  cursor: grabbing;
+}

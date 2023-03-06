@@ -78,20 +78,18 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[350px] md:blur-[500px]"></span>
         <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
-            <Parallax speed={-4}>
-              <div className="relative overflow-hidden">
-                <AnimatedLine
-                  text="Hey, we are"
-                  className="text-center md:text-left text-gray-500 text-2xl my-0"
-                />
-              </div>
-            </Parallax>
+            <div className="relative overflow-hidden">
+              <AnimatedLine
+                text="Hey, we are"
+                className="text-center md:text-left text-gray-500 text-2xl my-0"
+              />
+            </div>
             <div className="relative overflow-hidden">
               <AnimatedLine
                 text="Websters"
@@ -201,7 +199,7 @@ const App = () => {
       <section id="about-websters" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <Parallax speed={-10}>
+            <Parallax speed={8}>
               <img src="/logo.svg" alt="Websters" className="w-[70%]" />
             </Parallax>
           </div>
@@ -275,7 +273,7 @@ const App = () => {
             </div>
           </div>
           <div className="right-col">
-            <Parallax speed={-10}>
+            <Parallax speed={4}>
               <img src="/techelons.png" alt="Techelons" />
             </Parallax>
           </div>
