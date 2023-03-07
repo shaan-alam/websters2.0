@@ -43,18 +43,18 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
         <div className="lg:flex">
           <div className="col-left lg:w-3/4 w-full">
             <div className="ml-8 lg:ml-20">
-                <AnimatedText
-                  text="TECHELONS"
-                  className="text-[2rem] md:text-[5rem] text-white mt-24 lg:text-left"
-                />
-                <p className="text-white leading-7 font-secondary lg:text-left">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
-                  reiciendis libero cupiditate perferendis quos ipsam vel?
-                  Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
-                </p>
+              <AnimatedText
+                text="TECHELONS"
+                className="text-[2rem] md:text-[5rem] text-white mt-24 lg:text-left"
+              />
+              <p className="text-white leading-7 font-secondary lg:text-left">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
+                reiciendis libero cupiditate perferendis quos ipsam vel?
+                Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
+              </p>
               <div className="flex justify-start">
-                  <Button className="mt-8">Check Out Events</Button>
+                <Button className="mt-8">Check Out Events</Button>
               </div>
             </div>
           </div>
@@ -78,28 +78,24 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
         <div className="w-[80%] mx-auto">
           <div className="block md:grid grid-cols-2 gap-12 my-24">
             <div className="left-col my-4 md:my-0">
-              <Parallax speed={12}>
+              <Parallax speed={4}>
                 <AnimatedText
                   text="ABOUT TECHELONS"
                   className="text-white text-2xl lg:text-[3rem] mt-20"
                 />
               </Parallax>
-              <Parallax speed={10}>
-                <div className="text-gray-300">
-                  <p className="my-4 leading-8">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus quod iusto eligendi ab repellat aut vel officiis!
-                    Itaque vel neque possimus, molestias consectetur cum in
-                    ratione sequi error natus molestiae distinctio facere
-                    accusamus, minima facilis autem sint unde! Delectus, quam!
-                  </p>
-                </div>
-              </Parallax>
+              <div className="text-gray-300">
+                <p className="my-4 leading-8">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Accusamus quod iusto eligendi ab repellat aut vel officiis!
+                  Itaque vel neque possimus, molestias consectetur cum in
+                  ratione sequi error natus molestiae distinctio facere
+                  accusamus, minima facilis autem sint unde! Delectus, quam!
+                </p>
+              </div>
             </div>
             <div className="right-col">
-              <Parallax speed={-5}>
-                <img src="/techelons.png" alt="Techelons" />
-              </Parallax>
+              <img src="/techelons.png" alt="Techelons" />
             </div>
           </div>
         </div>

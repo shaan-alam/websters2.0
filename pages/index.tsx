@@ -78,7 +78,7 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[350px] md:blur-[500px]"></span>
+        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[350px] md:blur-[600px]"></span>
         <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
         <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>

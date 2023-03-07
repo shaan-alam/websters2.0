@@ -4,6 +4,7 @@ import sanityClient from "@/sanityClient";
 import { GetStaticProps } from "next";
 import { IEvent } from "../techelons";
 import AnimatedLine from "@/components/AnimatedLine";
+import BlockContent from "@sanity/block-content-to-react";
 
 const Event = ({ event }: { event: IEvent }) => {
   return (
@@ -21,35 +22,11 @@ const Event = ({ event }: { event: IEvent }) => {
           </div>
         </motion.div>
       </div>
-      <div className="w-[80%] mx-auto">
-        <AnimatedLine text={event.name} className="text-4xl mt-28 text-white" />
-        <p className="text-white leading-7 font-secondary my-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          assumenda iure quis facilis, voluptate totam, nisi, sint beatae
-          impedit ullam distinctio veritatis a aspernatur commodi? Quisquam
-          officia maiores neque quas!
-        </p>
-        <p className="text-white leading-7 font-secondary my-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          assumenda iure quis facilis, voluptate totam, nisi, sint beatae
-          impedit ullam distinctio veritatis a aspernatur commodi? Quisquam
-          officia maiores neque quas! Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Quisquam eligendi molestiae, iusto modi quas ea
-          doloremque ullam repudiandae perferendis cumque sapiente aliquam illo
-          beatae mollitia cum necessitatibus deleniti dolorem? Pariatur!
-        </p>
-        <p className="text-white leading-7 font-secondary my-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          assumenda iure quis facilis, voluptate totam, nisi, sint beatae
-          impedit ullam distinctio veritatis a aspernatur commodi? Quisquam
-          officia maiores neque quas!
-        </p>
-        <p className="text-white leading-7 font-secondary my-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          assumenda iure quis facilis, voluptate totam, nisi, sint beatae
-          impedit ullam distinctio veritatis a aspernatur commodi? Quisquam
-          officia maiores neque quas!
-        </p>
+      <div className="w-[80%] mx-auto text-white">
+        <AnimatedLine text={event.name} className="text-6xl mt-28 text-white" />
+        <div className="mt-12">
+          <BlockContent blocks={event.description} />
+        </div>
       </div>
     </>
   );
