@@ -5,10 +5,11 @@ import { GetStaticProps } from "next";
 import { IEvent } from "../techelons";
 import AnimatedLine from "@/components/AnimatedLine";
 import BlockContent from "@sanity/block-content-to-react";
+import Layout from "@/components/Layout";
 
 const Event = ({ event }: { event: IEvent }) => {
   return (
-    <>
+    <Layout>
       <Navbar />
       <div className="image-container-single relative overflow-hidden">
         <motion.div
@@ -28,7 +29,7 @@ const Event = ({ event }: { event: IEvent }) => {
           <BlockContent blocks={event.description} />
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

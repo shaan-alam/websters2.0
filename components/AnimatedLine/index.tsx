@@ -44,14 +44,13 @@ const AnimatedLine = ({
   const headerCharVariant = {
     initial: {
       y: "100%",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.2 },
     },
     animate: {
       y: 0,
       transition: {
         ease: [0.455, 0.03, 0.515, 0.955],
         duration: 0.75,
-        // delay: delay ? delay : 0.5,
       },
     },
   };

@@ -199,45 +199,35 @@ const App = () => {
       <section id="about-websters" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <Parallax speed={8}>
-              <img src="/logo.svg" alt="Websters" className="w-[70%]" />
-            </Parallax>
+            <img src="/logo.svg" alt="Websters" className="w-[70%]" />
           </div>
           <div className="right-col">
-            <Parallax speed={10}>
-              <AnimatedLine
-                text="About Websters"
-                className="text-4xl font-bold text-primary uppercase"
-              />
-            </Parallax>
+            <AnimatedLine
+              text="About Websters"
+              className="text-4xl font-bold text-primary uppercase"
+            />
 
             <div className="about-container text-gray-500">
-              <Parallax speed={7}>
-                <p className="my-4">
-                  The Department of Computer Science was established in 1984.
-                  The Department aims at upholding the cognitive aspect of
-                  education by ensuring academic excellence and intellectual
-                  growth of its students.
-                </p>
-              </Parallax>
-              <Parallax speed={5}>
-                <p className="my-4">
-                  The department lays prime focus on academics interspersed with
-                  co-curricular and extra-curricular activities that bring the
-                  versatility of its students to the fore and gives them a sound
-                  sense of perspective. The faculty comprises of experienced and
-                  dedicated teachers who with their expert inputs encourage
-                  students to explore new avenues.
-                </p>
-              </Parallax>
-              <Parallax speed={3}>
-                <p className="my-4">
-                  The computer society “Websters” was started with the aim to
-                  foster interest in the world of computers and technology. It
-                  provides a platform for likeminded brains to communicate with
-                  each other and expand their horizons.
-                </p>
-              </Parallax>
+              <p className="my-4">
+                The Department of Computer Science was established in 1984. The
+                Department aims at upholding the cognitive aspect of education
+                by ensuring academic excellence and intellectual growth of its
+                students.
+              </p>
+              <p className="my-4">
+                The department lays prime focus on academics interspersed with
+                co-curricular and extra-curricular activities that bring the
+                versatility of its students to the fore and gives them a sound
+                sense of perspective. The faculty comprises of experienced and
+                dedicated teachers who with their expert inputs encourage
+                students to explore new avenues.
+              </p>
+              <p className="my-4">
+                The computer society “Websters” was started with the aim to
+                foster interest in the world of computers and technology. It
+                provides a platform for likeminded brains to communicate with
+                each other and expand their horizons.
+              </p>
             </div>
           </div>
         </div>
@@ -246,48 +236,38 @@ const App = () => {
       <section id="about-techelons" className="my-20 md:my-48">
         <div className="w-[80%] mx-auto block md:grid grid-cols-2 gap-12">
           <div className="left-col my-4 md:my-0">
-            <Parallax speed={10}>
-              <AnimatedLine
-                text="About Techelons"
-                className="text-4xl font-bold text-primary uppercase"
-              />
-            </Parallax>
+            <AnimatedLine
+              text="About Techelons"
+              className="text-4xl font-bold text-primary uppercase"
+            />
             <div className="text-gray-500">
-              <Parallax speed={8}>
-                <p className="my-4">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
-                  reiciendis libero cupiditate perferendis quos ipsam vel?
-                  Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
-                </p>
-              </Parallax>
-              <Parallax speed={6}>
-                <p className="my-4">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusamus quod iusto eligendi ab repellat aut vel officiis!
-                  Itaque vel neque possimus, molestias consectetur cum in
-                  ratione sequi error natus molestiae distinctio facere
-                  accusamus, minima facilis autem sint unde! Delectus, quam!
-                </p>
-              </Parallax>
+              <p className="my-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
+                reiciendis libero cupiditate perferendis quos ipsam vel?
+                Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
+              </p>
+              <p className="my-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus quod iusto eligendi ab repellat aut vel officiis!
+                Itaque vel neque possimus, molestias consectetur cum in ratione
+                sequi error natus molestiae distinctio facere accusamus, minima
+                facilis autem sint unde! Delectus, quam!
+              </p>
             </div>
           </div>
           <div className="right-col">
-            <Parallax speed={4}>
-              <img src="/techelons.png" alt="Techelons" />
-            </Parallax>
+            <img src="/techelons.png" alt="Techelons" />
           </div>
         </div>
       </section>
 
       <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
-          <Parallax speed={5}>
-            <AnimatedLine
-              text="Our Events"
-              className="text-3xl md:text-6xl font-bold text-primary uppercase"
-            />
-          </Parallax>
+          <AnimatedLine
+            text="Our Events"
+            className="text-3xl md:text-6xl font-bold text-primary uppercase"
+          />
         </div>
         <div className="w-[80%] mx-auto">
           <motion.div
@@ -297,24 +277,16 @@ const App = () => {
             animate="animate"
           >
             <motion.div variants={itemVariant}>
-              <Parallax speed={10}>
-                <EventCard />
-              </Parallax>
+              <EventCard />
             </motion.div>
             <motion.div variants={itemVariant}>
-              <Parallax speed={5}>
-                <EventCard />
-              </Parallax>
+              <EventCard />
             </motion.div>
             <motion.div variants={itemVariant}>
-              <Parallax speed={10}>
-                <EventCard />
-              </Parallax>
+              <EventCard />
             </motion.div>
             <motion.div variants={itemVariant}>
-              <Parallax speed={5}>
-                <EventCard />
-              </Parallax>
+              <EventCard />
             </motion.div>
           </motion.div>
         </div>
@@ -322,27 +294,17 @@ const App = () => {
 
       <section id="teams" className="my-24">
         <div className="w-[80%] mx-auto">
-          <Parallax speed={5}>
-            <AnimatedLine
-              text="Meet The Team"
-              className="text-5xl md:text-6xl font-bold text-primary uppercase"
-            />
-          </Parallax>
+          <AnimatedLine
+            text="Meet The Team"
+            className="text-5xl md:text-6xl font-bold text-primary uppercase"
+          />
           <div className="md:grid grid-cols-3 gap-8 my-8">
-            <Parallax speed={5}>
-              <TeamCard />
-            </Parallax>
-            <Parallax>
-              <TeamCard />
-            </Parallax>
-            <Parallax speed={5}>
-              <TeamCard />
-            </Parallax>
+            <TeamCard />
+            <TeamCard />
+            <TeamCard />
           </div>
           <div className="w-full flex justify-center">
-            <Parallax speed={8}>
-              <Button>See All</Button>
-            </Parallax>
+            <Button>See All</Button>
           </div>
         </div>
       </section>

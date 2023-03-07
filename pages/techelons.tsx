@@ -74,18 +74,16 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
           </div>
         </div>
       </section>
-      <section className="my-24 h-[60vh] flex flex-col justify-center">
+      <section className="my-24 h-[80vh] flex flex-col justify-center">
         <div className="w-[80%] mx-auto">
           <div className="block md:grid grid-cols-2 gap-12 my-24">
             <div className="left-col my-4 md:my-0">
-              <Parallax speed={4}>
-                <AnimatedText
-                  text="ABOUT TECHELONS"
-                  className="text-white text-2xl lg:text-[3rem] mt-20"
-                />
-              </Parallax>
+              <AnimatedText
+                text="ABOUT TECHELONS"
+                className="text-white text-2xl lg:text-[3rem]"
+              />
               <div className="text-gray-300">
-                <p className="my-4 leading-8">
+                <p className="my-4 leading-8 relative z-20">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Accusamus quod iusto eligendi ab repellat aut vel officiis!
                   Itaque vel neque possimus, molestias consectetur cum in
@@ -102,12 +100,10 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       </section>
       <section className="events h-screen w-full">
         <div className="container w-[80%] mx-auto">
-          <Parallax speed={6}>
-            <AnimatedLine
-              text="Our Events"
-              className="text-white text-2xl lg:text-[3rem] mt-20"
-            />
-          </Parallax>
+          <AnimatedLine
+            text="Our Events"
+            className="text-white text-2xl lg:text-[3rem]"
+          />
           <motion.div
             className="my-8"
             variants={containerVariants}
