@@ -13,7 +13,7 @@ import Button from "@/components/Button";
 import { Parallax } from "react-scroll-parallax";
 import AnimatedLine from "@/components/AnimatedLine";
 import EventCard from "@/components/EventCard";
-import sanityClient from "@/sanityClient";
+import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
 import {
   containerVariants,

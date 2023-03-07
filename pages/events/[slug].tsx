@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
-import sanityClient from "@/sanityClient";
+import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
 import { IEvent } from "../techelons";
 import AnimatedLine from "@/components/AnimatedLine";
