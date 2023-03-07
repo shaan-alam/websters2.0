@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import styles from "./EventCard.module.scss";
 import { motion, useInView, useAnimationControls } from "framer-motion";
+import Button from "../Button";
 
 const EventCard = () => {
-  // const cardRef = useRef(null);
-  // const isCardInView = useInView(cardRef);
-  // const cardControls = useAnimationControls();
+  const cardRef = useRef(null);
+  const isCardInView = useInView(cardRef);
+  const cardControls = useAnimationControls();
 
   const eventNameRef = useRef(null);
   const isEventNameInView = useInView(eventNameRef);
@@ -19,13 +20,13 @@ const EventCard = () => {
   const isEventImageInView = useInView(eventImageRef);
   const eventImageControls = useAnimationControls();
 
-  // useEffect(() => {
-  //   // if (isCardInView) {
-  //   //   cardControls.start({ y: 0, opacity: 1 });
-  //   // } else {
-  //   //   cardControls.start({ y: "10%", opacity: 0 });
-  //   // }
-  // }, [isCardInView, cardControls]);
+  useEffect(() => {
+    if (isCardInView) {
+      cardControls.start({ y: 0, opacity: 1 });
+    } else {
+      cardControls.start({ y: 10, opacity: 1 });
+    }
+  }, [isCardInView, cardControls]);
 
   useEffect(() => {
     if (isEventNameInView) {
@@ -52,14 +53,17 @@ const EventCard = () => {
   }, [isEventImageInView, eventImageControls]);
 
   return (
-    <div
+    <motion.div
+      ref={cardRef}
+      initial={{ y: "10%", opacity: 0 }}
+      animate={cardControls}
       className={styles.crosshair_card}
     >
       <div className={styles.card_body}>
         <div className="img_container">
           <motion.img
             ref={eventImageRef}
-            src="https://cdn.sanity.io/images/axxb6ocs/production/3e4bccecb6052f242c7db78b8288b1f8403048bd-1080x1080.png"
+            src="/event2.jpeg"
             initial={{ opacity: 0 }}
             animate={eventImageControls}
             transition={{ ease: "easeInOut", duration: 1.2 }}
@@ -83,12 +87,14 @@ const EventCard = () => {
               transition={{ duration: "1" }}
               className="text-sm leading-6"
             >
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, laudantium?  
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
+              laudantium?
             </motion.p>
+            <Button className={styles.register_btn}>Register</Button>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -9,7 +9,7 @@ const Model = () => {
   const { viewport } = useThree();
 
   return (
-    <mesh ref={mesh} scale={(viewport.width / 8) * 1}>
+    <mesh ref={mesh} scale={(viewport.width / 6) * 1}>
       <primitive object={gltf.scene} scale={1.7} />
     </mesh>
   );

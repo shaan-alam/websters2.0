@@ -1,25 +1,27 @@
-
 .crosshair_card {
   padding: 10px 15px;
   position: relative;
   @apply my-8 lg:my-0;
   background: rgba(255, 255, 255, 0.112);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.112), rgb(0, 0, 0, 0.1));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.112),
+    rgb(0, 0, 0, 0.1)
+  );
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba( 255, 255, 255, 0.08 );
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .crosshair_card {
   @apply h-auto w-auto;
-  
+
   .card_body {
     @apply relative z-10;
 
     img {
       @apply w-full;
     }
-
 
     .card_content {
       @apply p-4;
@@ -33,4 +35,20 @@
       }
     }
   }
+}
+
+.register_btn {
+  background: rgba(255, 255, 255, 0.112);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.112),
+    rgb(0, 0, 0, 0.1)
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 4px 20px !important;
+  margin: 1rem 0;
+  @apply font-secondary;
 }

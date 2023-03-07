@@ -11,41 +11,29 @@ import { OrbitControls } from "@react-three/drei/core";
 import Model from "@/components/Model";
 import Button from "@/components/Button";
 import { Parallax } from "react-scroll-parallax";
+import AnimatedLine from "@/components/AnimatedLine";
+import EventCard from "@/components/EventCard";
+import sanityClient from "@/sanityClient";
+import { GetStaticProps } from "next";
+import {
+  containerVariants,
+  itemVariant,
+  subtitleCharVariant,
+  subtitleContainerVariants,
+} from "@/constants";
+import EventBanner from "@/components/EventBanner";
 
-const subtitleContainerVariants = {
-  initial: {
-    y: "100%",
-  },
-  animate: {
-    y: 0,
-    transition: {
-      staggerChildren: 0.025,
-      ease: "easeInOut",
-    },
-  },
-};
+export interface IEvent {
+  name: string;
+  poster: string;
+  slug: string;
+  description: string | null;
+}
 
-const subtitleCharVariant = {
-  initial: {
-    y: "100%",
-    transition: {
-      ease: [0.455, 0.03, 0.515, 0.955],
-      duration: 0.85,
-    },
-  },
-  animate: {
-    y: 0,
-    transition: {
-      ease: [0.455, 0.03, 0.515, 0.955],
-      duration: 0.75,
-    },
-  },
-};
-
-const Techelons = () => {
+const Techelons = ({ events }: { events: IEvent[] }) => {
   const subtitle = "Annual Tech Fest of Shivaji College";
   const arraySub = subtitle.split(" ").map((s) => s + " ");
-  console.log(arraySub);
+  console.log(events);
 
   return (
     <Layout>
@@ -53,28 +41,24 @@ const Techelons = () => {
       <section className={styles.wrapper}>
         <span className="absolute right-0 h-[500px] w-[200px] rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
         <div className="lg:flex">
-          <div className="col-left w-3/4">
-            <div className="ml-20">
-              <Parallax speed={10}>
+          <div className="col-left lg:w-3/4 w-full">
+            <div className="ml-8 lg:ml-20">
                 <AnimatedText
                   text="TECHELONS"
-                  className="text-[2rem] md:text-[5rem] text-white mt-24"
+                  className="text-[2rem] md:text-[5rem] text-white mt-24 lg:text-left"
                 />
-              </Parallax>
-              <Parallax speed={8} className="-mt-8">
-                <p className="text-white leading-7 font-secondary">
+                <p className="text-white leading-7 font-secondary lg:text-left">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
                   reiciendis libero cupiditate perferendis quos ipsam vel?
                   Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
                 </p>
-              </Parallax>
-              <Parallax speed={5}>
-                <Button className="mt-8">Check Out Events</Button>
-              </Parallax>
+              <div className="flex justify-start">
+                  <Button className="mt-8">Check Out Events</Button>
+              </div>
             </div>
           </div>
-          <div className="col-right lg:h-screen w-full cursor-grabbing  relative -z-1">
+          <div className="col-right h-screen w-full cursor-grabbing  relative -z-1">
             <Canvas
               className=""
               shadows
@@ -90,19 +74,19 @@ const Techelons = () => {
           </div>
         </div>
       </section>
-      <section className="my-24">
+      <section className="my-24 h-[60vh] flex flex-col justify-center">
         <div className="w-[80%] mx-auto">
           <div className="block md:grid grid-cols-2 gap-12 my-24">
             <div className="left-col my-4 md:my-0">
-              <Parallax speed={6}>
+              <Parallax speed={12}>
                 <AnimatedText
                   text="ABOUT TECHELONS"
-                  className="text-white text-[3rem]"
+                  className="text-white text-2xl lg:text-[3rem] mt-20"
                 />
               </Parallax>
               <Parallax speed={10}>
-                <div className="text-gray-500">
-                  <p className="my-4">
+                <div className="text-gray-300">
+                  <p className="my-4 leading-8">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Accusamus quod iusto eligendi ab repellat aut vel officiis!
                     Itaque vel neque possimus, molestias consectetur cum in
@@ -113,9 +97,33 @@ const Techelons = () => {
               </Parallax>
             </div>
             <div className="right-col">
-              <img src="/techelons.png" alt="Techelons" />
+              <Parallax speed={-5}>
+                <img src="/techelons.png" alt="Techelons" />
+              </Parallax>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="events h-screen w-full">
+        <div className="container w-[80%] mx-auto">
+          <Parallax speed={6}>
+            <AnimatedLine
+              text="Our Events"
+              className="text-white text-2xl lg:text-[3rem] mt-20"
+            />
+          </Parallax>
+          <motion.div
+            className="my-8"
+            variants={containerVariants}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div variants={itemVariant}>
+              {events.map((event) => (
+                <EventBanner event={event} key={event.slug} />
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </Layout>
@@ -123,3 +131,18 @@ const Techelons = () => {
 };
 
 export default Techelons;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const events = await sanityClient.fetch(`*[_type == "event"] {
+    name,    
+    "poster": poster.asset->url,
+    "slug": slug.current,
+    description
+  }`);
+
+  return {
+    props: {
+      events,
+    },
+  };
+};

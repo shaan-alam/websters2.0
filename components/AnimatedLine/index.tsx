@@ -72,7 +72,7 @@ const AnimatedLine = ({
           <span
             className={classNames(
               "overflow-hidden inline-block",
-              char === " " ? "mr-4" : "",
+              char === " " ? "mr-4" : ""
             )}
             key={index}
           >
