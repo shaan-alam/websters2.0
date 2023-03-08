@@ -7,7 +7,6 @@ const Events = () => {
       <div className="w-[80%] mx-auto">
         <div className="grid grid-cols-2 gap-8">
           <div className="left-col">
-            <Header text="Our Events" />
             <p className="my-4">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Voluptatem laborum quos hic. Sit quasi doloribus voluptatibus
