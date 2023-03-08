@@ -23,7 +23,7 @@ const Navbar = () => {
         ease: "easeIn",
       },
     });
-  }, []);
+  }, [menuListControls, logoControls]);
 
   /**
    * @name toggleNav
