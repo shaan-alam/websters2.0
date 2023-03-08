@@ -108,7 +108,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
             <div className="mt-12">
               <ol className="relative border-l border-gray-200 dark:border-gray-700">
                 {events.map((event) => (
-                  <TimelineEvent event={event} />
+                  <TimelineEvent event={event} key={event.slug} />
                 ))}
               </ol>
             </div>
