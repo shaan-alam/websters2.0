@@ -15,6 +15,8 @@ import TimelineEvent from "@/components/TimelineEvent";
 import AnimatedImage from "@/components/AnimatedImage";
 import Footer from "@/components/Footer";
 import StarsCanvas from "@/components/StarsCanvas";
+import Sponsers from "@/components/Sponsers";
+import Model2 from "@/components/Model2";
 
 export interface IEvent {
   name: string;
@@ -29,23 +31,23 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       <Navbar />
       <div className="wrapper">
         <section className={styles.wrapper}>
-          <span className="absolute right-0 h-[450px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[500px]"></span>
-          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[200rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[250rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[300rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[350rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[400rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-          <span className="absolute h-[300px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+          <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
+          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[200rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[250rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[300rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[350rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[400rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
           <StarsCanvas />
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">
-              <div className="ml-8 lg:ml-20">
+              <div className="ml-8 lg:ml-20 relative z-20">
                 <AnimatedText
                   text="TECHELONS"
                   className="text-[2rem] md:text-[5rem] text-white mt-24 lg:text-left"
@@ -61,7 +63,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
                 </div>
               </div>
             </div>
-            <div className="col-right h-screen w-full cursor-grabbing  relative z-20">
+            <div className="hidden sm:block col-right h-screen w-full cursor-grabbing  relative z-10">
               <Canvas
                 className=""
                 shadows
@@ -186,146 +188,8 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
                 className="text-white text-xl md:text-4xl my-4"
               />
             </div>
-            <div className={styles.slider}>
-              <div className={styles["slide-track"]}>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.slide}>
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className="slide">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className="slide">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className="slide">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className="slide">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-                <div className="slide">
-                  <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-                    height="100"
-                    width="250"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
+            <Sponsers />
+            <Sponsers reverse={true} />
           </div>
         </section>
 

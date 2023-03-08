@@ -61,7 +61,7 @@ const AnimatedLine = ({
       initial="initial"
       animate={animatedHeaderControls}
       className={classNames(
-        "font-bold font-horizon relative overflow-hidden",
+        "font-bold font-horizon relative",
         className
       )}
       ref={animatedHeaderRef}
