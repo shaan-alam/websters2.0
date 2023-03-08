@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import type { IEvent } from "@/pages/techelons";
 import { motion, useAnimationControls, useInView } from "framer-motion";
 import Link from "next/link";
+import styles from "./TimelineEvent.module.scss";
 
 const TimelineEvent = ({ event }: { event: IEvent }) => {
   const eventRef = useRef(null);
@@ -16,7 +17,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
 
   return (
     <motion.li
-      className="mb-10 ml-4 bg-[#121212] p-4"
+      className={styles.event}
       ref={eventRef}
       initial={{ y: "10%", opacity: 0 }}
       transition={{ duration: 0.6, ease: [0.43, 0.13, 0.112, 0.13] }}
@@ -30,8 +31,10 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
         {event.name}
       </h3>
       <p className="my-6 font-normal text-gray-500 dark:text-gray-400 text-sm leading-7">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quos similique in eaque laudantium pariatur incidunt debitis nisi natus ipsum!.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quos similique in eaque laudantium .
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quos
+        similique in eaque laudantium pariatur incidunt debitis nisi natus
+        ipsum!. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Sapiente quos similique in eaque laudantium .
       </p>
       <img src={event.poster} alt={event.name} className="my-4" />
       <Link

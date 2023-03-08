@@ -28,7 +28,7 @@ const AnimatedImage = ({
     <div className="relative overflow-hidden">
       <motion.div
         ref={slideRef}
-        className="image-container absolute inset-0 bg-[#000] origin-left z-10"
+        className="absolute inset-0 bg-[#000] origin-left z-10"
         initial={{ scaleX: 1 }}
         animate={slideControls}
         transition={{ duration: 0.8, ease: "easeIn" }}

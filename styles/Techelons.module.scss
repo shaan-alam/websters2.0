@@ -1,23 +1,76 @@
-.wrapper {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-
-  .container {
-    @apply w-[80%] mx-auto h-[100%];
-  } 
-}
-
-
 .wrapper-container {
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
   background: rgba(255, 255, 255, 0.112);
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.112),
-    rgb(0, 0, 0, 0.1)
+    rgba(255, 255, 255, 0.03),
+    rgb(255, 255, 255, 0)
   );
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+@mixin white-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 25%
+  );
+}
+
+$animationSpeed: 40s;
+
+// Animation
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+// Styling
+.slider {
+  background: transparent;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 100px;
+  margin: 4rem auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    @include white-gradient;
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+
+  &::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+
+  &::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slide-track {
+    animation: scroll $animationSpeed linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+  }
+
+  .slide {
+    height: 100px;
+    width: 250px;
+  }
+}
+
