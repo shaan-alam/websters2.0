@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import EventCard from "@/components/EventCard";
-import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import Navbar from "@/components/Navbar";
 import TeamCard from "@/components/TeamCard";
@@ -13,7 +12,6 @@ import {
 } from "framer-motion";
 import AnimatedLine from "@/components/AnimatedLine";
 import AnimatedParagraph from "@/components/AnimatedParagraph";
-import { Parallax } from "react-scroll-parallax";
 
 const containerVariants = {
   initial: {
