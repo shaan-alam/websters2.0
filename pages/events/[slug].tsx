@@ -24,7 +24,7 @@ const Event = ({ event }: { event: IEvent }) => {
         </motion.div>
       </div>
       <div className="w-[80%] mx-auto text-white">
-        <AnimatedLine text={event.name} className="text-6xl mt-28 text-white" />
+        <AnimatedLine text={event.name} className="md:text-6xl text-2xl mt-28 text-white" />
         <div className="mt-12">
           <BlockContent blocks={event.description} />
         </div>
