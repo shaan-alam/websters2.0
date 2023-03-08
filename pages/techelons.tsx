@@ -13,7 +13,6 @@ import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
 import TimelineEvent from "@/components/TimelineEvent";
 import AnimatedImage from "@/components/AnimatedImage";
-import StarsCanvas from "@/components/StarsCanvas";
 import Footer from "@/components/Footer";
 
 export interface IEvent {
@@ -34,7 +33,6 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       <div className="wrapper">
         <section className={styles.wrapper}>
           <span className="absolute right-0 h-[500px] w-[200px] rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
-          <StarsCanvas />
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">
               <div className="ml-8 lg:ml-20">
