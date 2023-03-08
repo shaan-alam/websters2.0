@@ -63,7 +63,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
                 </div>
               </div>
             </div>
-            <div className="hidden sm:block col-right h-screen w-full cursor-grabbing  relative z-10">
+            <div className="h-[50vh] col-right lg:h-screen w-full cursor-grabbing  relative z-10">
               <Canvas
                 className=""
                 shadows
