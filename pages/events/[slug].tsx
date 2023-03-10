@@ -10,7 +10,9 @@ import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.scss";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "@/firebase";
+import Confetti from "react-canvas-confetti";
 import Button from "@/components/Button";
+import useWindowSize from "react-use/lib/useWindowSize";
 import {
   addDoc,
   collection,
@@ -41,7 +43,7 @@ const Event = ({ event }: { event: IEvent }) => {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(
     Context
   ) as ContextType;
-
+  const [show, setShow] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -63,6 +65,7 @@ const Event = ({ event }: { event: IEvent }) => {
     onSubmit: (_, { resetForm }) => {
       submitRegistration();
       resetForm();
+      getImpUsers();
     },
   });
 
@@ -72,11 +75,18 @@ const Event = ({ event }: { event: IEvent }) => {
 
     addDoc(dbRef, registration).then((doc) => console.log(doc));
     setUserRegistered(true);
+    setShow(true);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(false);
+    }, 2000);
+  }, [show]);
 
   const checkIfAlreadyRegistered = (email: string) => {
     const eventQuery = query(
-      collection(db, 'googler'),
+      collection(db, "googler"),
       where("email", "==", email)
     );
     return getDocs(eventQuery).then((snap) => {
@@ -96,26 +106,26 @@ const Event = ({ event }: { event: IEvent }) => {
     }
   }, [isLoggedIn]);
 
-  useEffect(() => {
-    const getImpUsers = async () => {
-      const docsRef = collection(db, "googler");
-      const docsSnap = await getDocs(docsRef);
+  const getImpUsers = async () => {
+    const docsRef = collection(db, "googler");
+    const docsSnap = await getDocs(docsRef);
 
-      let importantUsers: { avatar: string; name: string }[] = [];
+    let importantUsers: { avatar: string; name: string }[] = [];
 
-      docsSnap.forEach((doc) => {
-        importantUsers.push({
-          avatar: doc.data().avatar as string,
-          name: doc.data().name as string,
-        });
+    docsSnap.forEach((doc) => {
+      importantUsers.push({
+        avatar: doc.data().avatar as string,
+        name: doc.data().name as string,
       });
+    });
 
-      setTotalRegisteredUsers(importantUsers.length);
-      setImpUsers(
-        importantUsers.length > 3 ? importantUsers.slice(3) : importantUsers
-      );
-    };
+    setTotalRegisteredUsers(importantUsers.length);
+    setImpUsers(
+      importantUsers.length > 3 ? importantUsers.slice(3) : importantUsers
+    );
+  };
 
+  useEffect(() => {
     getImpUsers();
   }, []);
 
@@ -145,10 +155,11 @@ const Event = ({ event }: { event: IEvent }) => {
       }
     });
   };
-
+  const { width, height } = useWindowSize();
   return (
     <Layout>
       <Navbar />
+
       <div className="image-container-single relative overflow-hidden">
         <motion.div
           initial={{ y: 100, scale: 0.8 }}
@@ -161,6 +172,7 @@ const Event = ({ event }: { event: IEvent }) => {
           </div>
         </motion.div>
       </div>
+
       <div className="w-[90%] mx-auto text-white">
         <div className="md:flex gap-8">
           <div className="col-left w-full md:w-[65%]">
