@@ -33,7 +33,7 @@ const OverlappingAvatars = ({
         </div>
       )}
       {totalRegisteredUsers && totalRegisteredUsers < 3 && (
-        <div className="ml-2 text-gray-300 text-sm mt-2">{impUsers[0].name}</div>
+        <div className="ml-2 text-gray-300 text-sm mt-2">{impUsers[0].name} and {totalRegisteredUsers - 1} other</div>
       )}
     </div>
   );

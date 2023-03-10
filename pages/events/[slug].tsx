@@ -162,8 +162,8 @@ const Event = ({ event }: { event: IEvent }) => {
         </motion.div>
       </div>
       <div className="w-[90%] mx-auto text-white">
-        <div className="flex gap-8">
-          <div className="col-left w-[65%]">
+        <div className="md:flex gap-8">
+          <div className="col-left w-full md:w-[65%]">
             <AnimatedLine
               text={event.name}
               className="md:text-6xl text-2xl mt-28 text-white"
@@ -235,12 +235,12 @@ const Event = ({ event }: { event: IEvent }) => {
               </>
             )}
           </div>
-          <div className="col-right mt-28 w-[35%]">
-            <h1 className="mb-4 text-2xl">Live Status</h1>
+          <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
+            <h1 className="mb-4 text-2xl">Details:</h1>
             <div className="live-status bg-[#121212] rounded-md p-4">
               <div className="live-col-left mr-4">
                 <h1 className="text-xl font-bold font-secondary text-white">
-                  85 Registrations
+                  {totalRegisteredUsers} Registrations
                 </h1>
                 <OverlappingAvatars
                   amIRegistered={userRegistered}
