@@ -76,10 +76,10 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[350px] md:blur-[600px]"></span>
-        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
-        <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[400px]"></span>
+        <span className="absolute h-[150px] w-[150px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[600px]"></span>
+        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+        <span className="absolute top-[100rem] right-10 h-[100px] w-[100px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
+        <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
             <div className="relative overflow-hidden">
@@ -126,17 +126,17 @@ const App = () => {
               >
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image.png"
+                  src="/hero-image.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image8.jpg"
+                  src="/hero-image8.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image6.jpg"
+                  src="/hero-image6.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
               </motion.div>
@@ -148,22 +148,22 @@ const App = () => {
               >
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image2.jpg"
+                  src="/hero-image2.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image3.jpg"
+                  src="/hero-image3.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image4.jpg"
+                  src="/hero-image4.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image7.jpg"
+                  src="/hero-image7.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
               </motion.div>
@@ -175,17 +175,17 @@ const App = () => {
               >
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image5.jpg"
+                  src="/hero-image5.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image9.jpg"
+                  src="/hero-image9.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <motion.img
                   variants={colImageVariants}
-                  src="/hero-image10.jpg"
+                  src="/hero-image10.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
               </motion.div>
@@ -260,7 +260,7 @@ const App = () => {
         </div>
       </section>
 
-      <section id="events" className="my-12">
+      {/* <section id="events" className="my-12">
         <div className="w-[80%] mx-auto">
           <AnimatedLine
             text="Our Events"
@@ -288,7 +288,7 @@ const App = () => {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <section id="teams" className="my-24">
         <div className="w-[80%] mx-auto">
