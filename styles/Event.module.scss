@@ -1,0 +1,68 @@
+.input {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  backdrop-filter: blur(14px);
+  display: block;
+  -webkit-backdrop-filter: blur(4px);
+  // border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: none;
+  transition: all 0.4s;
+  clip-path: polygon(98% 0, 100% 25%, 100% 100%, 2% 100%, 0% 75%, 0 0);
+  margin: 0 0 2rem 0;
+  @apply font-secondary;
+  
+}
+
+
+.register_btn {
+  @apply inline-flex items-center py-2 font-medium bg-gray-600 px-5 text-white relative;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+  background: rgba(255, 255, 255, 0.112);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.112),
+    rgb(0, 0, 0, 0.1)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -1rem;
+    height: 100%;
+    width: 120%;
+    @apply bg-gray-900;
+    transform: skew(-15deg) scaleX(0);
+    z-index: -1;
+    transform-origin: left;
+    transition: all 0.4s;
+  }
+
+  &:hover::before {
+    transform: skew(-15deg) scaleX(1);
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+
+.overlapping-avatars {
+  ul {
+    @apply flex mt-2;
+    li {
+      &:not(:first-child) {
+        @apply -ml-2;
+      }
+
+      img {
+        @apply h-6 w-6 rounded-full border-2 border-white;
+      }
+    }
+  }
+}
