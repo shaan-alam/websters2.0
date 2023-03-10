@@ -31,7 +31,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       <Navbar />
       <div className="wrapper">
         <section className={styles.wrapper}>
-          <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
+          {/* <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
           <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
           <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
           <span className="absolute h-[300px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
@@ -43,7 +43,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
           <span className="absolute h-[300px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
           <span className="absolute h-[300px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
           <span className="absolute h-[300px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
+          <span className="absolute h-[300px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span> */}
           <StarsCanvas />
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">
