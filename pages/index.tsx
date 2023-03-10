@@ -103,7 +103,7 @@ const App = () => {
               The Computer Science Society of Shivaji College.The Department of
               Computer Science was established in 1984. The Department aims at
               upholding the cognitive aspect of education by ensuring academic
-              excellence and intellectual growth of its students.
+              excellence and intellectual growt h of its students.
             </motion.p>
             <motion.div className="overflow-hidden relative md:block flex justify-center">
               <motion.div
@@ -118,77 +118,52 @@ const App = () => {
           </div>
           <div className="my-12 md:my-0 hero-right md:w-full relative">
             <div className="masonry-layout flex flex-row justify-center items-stretch mt-20 md:mt-0">
-              <motion.div
-                className="flex flex-col flex-start stretch"
-                variants={colVariants}
-                initial="initial"
-                animate="animate"
-              >
-                <motion.img
-                  variants={colImageVariants}
+              <div className="flex flex-col flex-start stretch">
+                <img
                   src="/hero-image.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image8.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image6.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-              </motion.div>
-              <motion.div
-                className="-my-16 md:-my-32 mx-2"
-                variants={colVariants}
-                initial="initial"
-                animate="animate"
-              >
-                <motion.img
-                  variants={colImageVariants}
+              </div>
+              <div className="-my-16 md:-my-32 mx-2">
+                <img
                   src="/hero-image2.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image3.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image4.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image7.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-              </motion.div>
-              <motion.div
-                className="-my-12"
-                variants={colVariants}
-                initial="initial"
-                animate="animate"
-              >
-                <motion.img
-                  variants={colImageVariants}
+              </div>
+              <div className="-my-12">
+                <img
                   src="/hero-image5.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image9.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-                <motion.img
-                  variants={colImageVariants}
+                <img
                   src="/hero-image10.webp"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
