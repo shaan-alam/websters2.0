@@ -10,73 +10,96 @@ import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.scss";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "@/firebase";
-import Confetti from "react-canvas-confetti";
 import Button from "@/components/Button";
 import useWindowSize from "react-use/lib/useWindowSize";
 import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+  FaCalendar,
+  FaClock,
+  FaUsers,
+  FaGlobe,
+  FaTrash,
+  FaUser,
+} from "react-icons/fa";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { Context, ContextType } from "@/context/GlobalContext";
 import * as yup from "yup";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import FormInput from "@/components/FormInput";
-import { registerVersion } from "firebase/app";
 import { useRouter } from "next/router";
+import { v4 } from "uuid";
 import OverlappingAvatars from "@/components/OverlappingAvatars";
+import Moment from "react-moment";
+import TeamModal from "@/components/Modal/Team";
+import ThankYou from "@/components/Modal/ThankYou";
 
 const Event = ({ event }: { event: IEvent }) => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [userRegistered, setUserRegistered] = useState(false);
-  const [impUsers, setImpUsers] = useState<{ name: string; avatar: string }[]>(
-    []
-  );
+  const [impUsers, setImpUsers] = useState<
+    { name: string; avatar: string }[] | null
+  >(null);
   const [totalRegisteredUsers, setTotalRegisteredUsers] = useState(0);
+  const [successModal, setSuccessModal] = useState(false);
 
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(
     Context
   ) as ContextType;
+
+  console.log("user", user);
+
   const [show, setShow] = useState(false);
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      course: "",
-      college: "",
-      rollNo: "",
-    },
-    validationSchema: yup.object({
-      name: yup.string().required("First Name is required"),
-      email: yup
-        .string()
-        .email("Please provide a valid email")
-        .required("Email is Required"),
-      course: yup.string().required("Course Name is required"),
-      college: yup.string().required("College Name is required"),
-      rollNo: yup.string().required("Roll No is required"),
-    }),
-    onSubmit: (_, { resetForm }) => {
-      submitRegistration();
-      resetForm();
-      getImpUsers();
-    },
-  });
 
-  const submitRegistration = () => {
-    const dbRef = collection(db, "googler");
-    const registration = { ...formik.values, avatar: user.avatar };
+  // const formik = useFormik({
+  //   initialValues: {
+  //     name: user?.name,
+  //     email: user?.email,
+  //     course: "",
+  //     college: "",
+  //     rollNo: "",
+  //     members: [
+  //       {
+  //         id: v4(),
+  //         name: user?.name,
+  //         email: user?.email,
+  //         isLeader: true,
+  //       },
+  //     ],
+  //   },
+  //   validationSchema: yup.object({
+  //     name: yup.string().required("First Name is required"),
+  //     email: yup
+  //       .string()
+  //       .email("Please provide a valid email")
+  //       .required("Email is Required"),
+  //     course: yup.string().required("Course Name is required"),
+  //     college: yup.string().required("College Name is required"),
+  //     rollNo: yup.string().required("Roll No is required"),
+  //     phone: yup.number().required("Phone number is required"),
+  //     members: yup.array().of(
+  //       yup.object().shape({
+  //         id: yup.string(),
+  //         name: yup.string().required("Name is required"),
+  //         email: yup.string().required("Email is required"),
+  //         isLeader: yup.boolean(),
+  //       })
+  //     ),
+  //   }),
+  //   onSubmit: (_, { resetForm }) => {
+  //     submitRegistration();
+  //     resetForm();
+  //     getImpUsers();
+  //     setSuccessModal(true);
+  //   },
+  // });
 
-    addDoc(dbRef, registration).then((doc) => console.log(doc));
-    setUserRegistered(true);
-    setShow(true);
-  };
+  // const submitRegistration = () => {
+  //   const dbRef = collection(db, event.name);
+  //   const registration = { ...formik.values, avatar: user?.avatar };
+
+  //   addDoc(dbRef, registration).then((doc) => console.log(doc));
+  //   setUserRegistered(true);
+  //   setShow(true);
+  // };
 
   useEffect(() => {
     setTimeout(() => {
@@ -86,7 +109,7 @@ const Event = ({ event }: { event: IEvent }) => {
 
   const checkIfAlreadyRegistered = (email: string) => {
     const eventQuery = query(
-      collection(db, "googler"),
+      collection(db, event.name),
       where("email", "==", email)
     );
     return getDocs(eventQuery).then((snap) => {
@@ -96,9 +119,7 @@ const Event = ({ event }: { event: IEvent }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log("loggeed in ");
-      checkIfAlreadyRegistered(user.email).then((value) => {
-        console.log(value);
+      checkIfAlreadyRegistered(user?.email as string).then((value) => {
         setUserRegistered(value.length > 0);
       });
     } else {
@@ -107,7 +128,7 @@ const Event = ({ event }: { event: IEvent }) => {
   }, [isLoggedIn]);
 
   const getImpUsers = async () => {
-    const docsRef = collection(db, "googler");
+    const docsRef = collection(db, event.name);
     const docsSnap = await getDocs(docsRef);
 
     let importantUsers: { avatar: string; name: string }[] = [];
@@ -121,7 +142,7 @@ const Event = ({ event }: { event: IEvent }) => {
 
     setTotalRegisteredUsers(importantUsers.length);
     setImpUsers(
-      importantUsers.length > 3 ? importantUsers.slice(3) : importantUsers
+      importantUsers.length > 3 ? importantUsers.slice(0, 3) : importantUsers
     );
   };
 
@@ -147,11 +168,11 @@ const Event = ({ event }: { event: IEvent }) => {
         setIsLoggedIn(true);
         setUser(newUser);
 
-        formik.setValues({
-          ...formik.values,
-          name: displayName as string,
-          email: email as string,
-        });
+        // formik.setValues({
+        //   ...formik.values,
+        //   name: displayName as string,
+        //   email: email as string,
+        // });
       }
     });
   };
@@ -177,12 +198,12 @@ const Event = ({ event }: { event: IEvent }) => {
         <div className="md:flex gap-8">
           <div className="col-left w-full md:w-[65%]">
             <AnimatedLine
-              text={event.name}
+              text={event.name || ""}
               className="md:text-6xl text-2xl mt-28 text-white"
             />
             {isLoggedIn && userRegistered && (
-              <div className="my-4 w-full text-green-900 bg-green-400 px-4 py-2 font-bold font-secondary md:w-1/2 rounded-md">
-                😀 You already registered for {event.name}
+              <div className="my-4 w-full text-green-700 bg-green-300 px-4 py-2 font-semibold font-secondary md:w-1/2 rounded-sm">
+                😀 You have registered for {event.name}
               </div>
             )}
             <div className="mt-12">
@@ -203,62 +224,255 @@ const Event = ({ event }: { event: IEvent }) => {
               </div>
             )}
 
-            {isLoggedIn && !userRegistered && (
+            {isLoggedIn && !userRegistered && user && (
               <>
                 <AnimatedLine
                   text="Registration"
                   className="md:text-6xl text-2xl mt-28 mb-6 text-white"
                 />
-                <form onSubmit={formik.handleSubmit}>
-                  <div className="relative w-full md:w-[50%]">
-                    <FormInput
-                      type="text"
-                      placeholder="John Doe"
-                      name="name"
-                      formik={formik}
-                    />
-                    <FormInput
-                      type="email"
-                      placeholder="For ex: johndoe@gmail.com"
-                      name="email"
-                      formik={formik}
-                    />
-                    <FormInput
-                      type="text"
-                      placeholder="Roll No"
-                      name="rollNo"
-                      formik={formik}
-                    />
-                    <FormInput
-                      type="text"
-                      placeholder="Course"
-                      name="course"
-                      formik={formik}
-                    />
-                    <FormInput
-                      type="text"
-                      placeholder="College"
-                      name="college"
-                      formik={formik}
-                    />
-                    <Button>Register</Button>
-                  </div>
-                </form>
+                <Formik
+                  initialValues={{
+                    name: user?.name,
+                    email: user?.email,
+                    course: "",
+                    college: "",
+                    rollNo: "",
+                    members: [
+                      {
+                        id: v4(),
+                        name: user?.name,
+                        email: user?.email,
+                        isLeader: true,
+                      },
+                    ],
+                  }}
+                  validationSchema={yup.object({
+                    name: yup.string().required("First Name is required"),
+                    email: yup
+                      .string()
+                      .email("Please provide a valid email")
+                      .required("Email is Required"),
+                    course: yup.string().required("Course Name is required"),
+                    college: yup.string().required("College Name is required"),
+                    rollNo: yup.string().required("Roll No is required"),
+                    phone: yup.number().required("Phone number is required"),
+                    members: yup.array().of(
+                      yup.object().shape({
+                        id: yup.string(),
+                        name: yup.string().required("Name is required"),
+                        email: yup.string().required("Email is required"),
+                        isLeader: yup.boolean(),
+                      })
+                    ),
+                  })}
+                  onSubmit={(values, { resetForm }) => {
+                    const dbRef = collection(db, event.name);
+                    const registration = { ...values, avatar: user?.avatar };
+
+                    addDoc(dbRef, registration).then((doc) => console.log(doc));
+                    setUserRegistered(true);
+                    setShow(true);
+
+                    resetForm();
+                    getImpUsers();
+                    setSuccessModal(true);
+                  }}
+                >
+                  {(formik) => (
+                    <form onSubmit={formik.handleSubmit}>
+                      <div className="relative w-full">
+                        <div className="md:grid grid-cols-3 gap-6">
+                          <FormInput
+                            type="text"
+                            placeholder="John Doe"
+                            name="name"
+                            formik={formik}
+                            label="Name"
+                            disabled={true}
+                          />
+                          <FormInput
+                            type="email"
+                            placeholder="For ex: johndoe@gmail.com"
+                            name="email"
+                            formik={formik}
+                            label="Email"
+                            disabled={true}
+                          />
+                          <FormInput
+                            type="phone"
+                            placeholder="555-555-5555"
+                            name="phone"
+                            formik={formik}
+                            label="Phone"
+                          />
+                        </div>
+                        <div className="md:grid grid-cols-3 gap-6 my-6">
+                          <FormInput
+                            type="text"
+                            placeholder="Roll No"
+                            name="rollNo"
+                            formik={formik}
+                            label="Roll No"
+                          />
+                          <FormInput
+                            type="text"
+                            placeholder="Course"
+                            name="course"
+                            formik={formik}
+                            label="Course"
+                          />
+                          <FormInput
+                            type="text"
+                            placeholder="College"
+                            name="college"
+                            formik={formik}
+                            label="College"
+                          />
+                        </div>
+                        <div>
+                          <h1 className="text-white mb-6">Team Details</h1>
+                          <div className="mt-4" key={v4()}>
+                            {formik.values.members.length < 2 && (
+                              <a
+                                href="#!"
+                                onClick={() => setIsOpen(true)}
+                                className="px-4 py-2 bg-[#121212] text-white text-sm inline-block rounded-md"
+                              >
+                                Add a team member
+                              </a>
+                            )}
+                            {isOpen && (
+                              <TeamModal
+                                isOpen={isOpen}
+                                setIsOpen={setIsOpen}
+                                addMember={(name: string, email: string) => {
+                                  formik.setValues({
+                                    ...formik.values,
+                                    members: [
+                                      ...formik.values.members,
+                                      {
+                                        id: v4(),
+                                        name,
+                                        email,
+                                        isLeader: false,
+                                      },
+                                    ],
+                                  });
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                        <div className="members md:grid grid-cols-3 gap-4 my-6">
+                          {formik.values.members.map((member) => (
+                            <div
+                              className="member p-4 my-6 md:my-0 rounded-md bg-[#121212]"
+                              key={v4()}
+                            >
+                              <div className="header flex justify-end">
+                                {!member.isLeader && (
+                                  <a
+                                    href="#!"
+                                    className="text-sm p-2 rounded-full hover:bg-[#333]"
+                                    onClick={() => {
+                                      formik.setValues({
+                                        ...formik.values,
+                                        members: formik.values.members.filter(
+                                          (m) => m.id !== member.id
+                                        ),
+                                      });
+                                    }}
+                                  >
+                                    <FaTrash className="text-red-600" />
+                                  </a>
+                                )}
+                              </div>
+                              {member.isLeader && (
+                                <div className="flex text-sm text-gray-400 items-center mb-2">
+                                  <FaUser className="text-green-400" />
+                                  &nbsp;Leader
+                                </div>
+                              )}
+                              <h1 className="text-white mb-2 font-secondary">
+                                {member.name}
+                              </h1>
+                              <h1 className="text-gray-400 mb-2 font-secondary text-sm">
+                                {member.email}
+                              </h1>
+                            </div>
+                          ))}
+                        </div>
+                        <Button className="my-8">Register</Button>
+                        {successModal && (
+                          <ThankYou
+                            isOpen={successModal}
+                            setIsOpen={setSuccessModal}
+                          />
+                        )}
+                      </div>
+                    </form>
+                  )}
+                </Formik>
               </>
             )}
           </div>
           <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
             <h1 className="mb-4 text-2xl">Details:</h1>
-            <div className="live-status bg-[#121212] rounded-md p-4">
-              <div className="live-col-left mr-4">
-                <h1 className="text-xl font-bold font-secondary text-white">
-                  {totalRegisteredUsers} Registrations
+            <div className={styles["live-status-block"]}>
+              <div className="block">
+                <h1 className="text-lg font-medium font-secondary text-white">
+                  {totalRegisteredUsers} Registration
+                  {totalRegisteredUsers > 1 ? "s" : ""}
                 </h1>
                 <OverlappingAvatars
                   amIRegistered={userRegistered}
                   impUsers={impUsers}
                   totalRegisteredUsers={totalRegisteredUsers}
                 />
+              </div>
+              <div className="grid grid-cols-2">
+                <div className="flex items-center my-6">
+                  <FaCalendar className="text-gray-400 mr-4" size={25} />
+                  <div>
+                    <h1 className="text-lg font-medium font-secondary text-white">
+                      Deadline
+                    </h1>
+                    <p className="text-gray-400 text-sm">
+                      <Moment from={Date.now()}>{event.deadline}</Moment>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center my-6">
+                  <FaClock className="text-gray-400 mr-4" size={25} />
+                  <div>
+                    <h1 className="text-lg font-medium font-secondary text-white">
+                      Event Date
+                    </h1>
+                    <p className="text-gray-400 text-sm">
+                      {new Date(event.eventDate).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center my-4">
+                  <FaUsers className="text-gray-400 mr-4" size={25} />
+                  <div>
+                    <h1 className="text-lg font-medium font-secondary text-white">
+                      Team size
+                    </h1>
+                    <p className="text-gray-400 text-sm">
+                      {event.minTeamSize} - {event.maxTeamSize}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center my-4">
+                  <FaGlobe className="text-gray-400 mr-4" size={25} />
+                  <div>
+                    <h1 className="text-lg font-medium font-secondary text-white">
+                      Venue
+                    </h1>
+                    <p className="text-gray-400 text-sm">{event.venue}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -273,10 +487,15 @@ export default Event;
 export const getStaticProps: GetStaticProps = async (context) => {
   const events =
     await sanityClient.fetch(`*[_type == "event" && slug.current == "${context.params?.slug}"] {
-    name,
-    description,
-    "poster": poster.asset->url,  
-    slug,
+      name,
+      "poster": poster.asset->url,
+      "slug": slug.current,
+      deadline,
+      minTeamSize,
+      maxTeamSize,
+      eventDate,
+      venue,
+      description
   }`);
 
   return {

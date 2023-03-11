@@ -7,8 +7,8 @@ interface IUser {
 }
 
 export interface ContextType {
-  user: IUser;
-  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  user: IUser | null;
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -16,13 +16,13 @@ export interface ContextType {
 export const Context = createContext<ContextType | null>(null);
 
 const ContextProvider = ({ children }) => {
-  const [user, setUser] = useState<IUser>({ avatar: "", email: "", name: "" });
+  const [user, setUser] = useState<IUser | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    setIsLoggedIn(user.name ? true : false);
-    setUser(user);
+    const loggedInUser = JSON.parse(localStorage.getItem("user") || "{}");
+    setIsLoggedIn(loggedInUser.name ? true : false);
+    setUser(loggedInUser);
   }, []);
 
   return (

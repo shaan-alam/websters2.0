@@ -23,9 +23,15 @@ export interface IEvent {
   poster: string;
   slug: string;
   description: string | null;
+  deadline: string;
+  minTeamSize: number;
+  maxTeamSize: number;
+  eventDate: string;
+  venue: string;
 }
 
 const Techelons = ({ events }: { events: IEvent[] }) => {
+  console.log(events);
   return (
     <Layout>
       <Navbar />
@@ -265,10 +271,15 @@ export default Techelons;
 
 export const getStaticProps: GetStaticProps = async () => {
   const events = await sanityClient.fetch(`*[_type == "event"] {
-    name,    
+    name,
     "poster": poster.asset->url,
-    "slug": slug.current,
-    description
+      "slug": slug.current,
+      deadline,
+      minTeamSize,
+      maxTeamSize,
+      eventDate,
+      venue,
+      description
   }`);
 
   return {

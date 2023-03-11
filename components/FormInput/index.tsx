@@ -6,11 +6,14 @@ interface IProps {
   name: string;
   placeholder: string;
   formik: any;
+  label: string
+  disabled?: boolean
 }
 
-const FormInput = ({ type, name, formik, placeholder }: IProps) => {
+const FormInput = ({ type, name, formik, placeholder, label, disabled }: IProps) => {
   return (
-    <>
+    <div>
+      <label htmlFor={name} className="text-gray-300 text-sm">{label}</label>
       {formik.errors[name] && formik.touched[name] && (
         <AnimatedLine
           text={formik.errors[name]}
@@ -22,10 +25,12 @@ const FormInput = ({ type, name, formik, placeholder }: IProps) => {
         id={name}
         className={styles.input}
         placeholder={placeholder}
+        disabled={disabled}
         {...formik.getFieldProps(name)}
       />
-    </>
+    </div>
   );
 };
 
 export default FormInput;
+

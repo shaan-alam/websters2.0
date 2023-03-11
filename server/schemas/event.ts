@@ -11,6 +11,31 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'minTeamSize',
+      title: 'Min Team Size',
+      type: 'number',
+    }),
+    defineField({
+      name: 'maxTeamSize',
+      title: 'Max Team Size',
+      type: 'number',
+    }),
+    defineField({
+      name: 'deadline',
+      title: 'Deadline',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'eventDate',
+      title: 'Event Date',
+      type: 'date',
+    }),
+    defineField({
+      name: 'venue',
+      title: 'Venue',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
