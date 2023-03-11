@@ -11,7 +11,6 @@ import styles from "@/styles/Event.module.scss";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "@/firebase";
 import Button from "@/components/Button";
-import useWindowSize from "react-use/lib/useWindowSize";
 import {
   FaCalendar,
   FaClock,
@@ -48,58 +47,6 @@ const Event = ({ event }: { event: IEvent }) => {
   console.log("user", user);
 
   const [show, setShow] = useState(false);
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: user?.name,
-  //     email: user?.email,
-  //     course: "",
-  //     college: "",
-  //     rollNo: "",
-  //     members: [
-  //       {
-  //         id: v4(),
-  //         name: user?.name,
-  //         email: user?.email,
-  //         isLeader: true,
-  //       },
-  //     ],
-  //   },
-  //   validationSchema: yup.object({
-  //     name: yup.string().required("First Name is required"),
-  //     email: yup
-  //       .string()
-  //       .email("Please provide a valid email")
-  //       .required("Email is Required"),
-  //     course: yup.string().required("Course Name is required"),
-  //     college: yup.string().required("College Name is required"),
-  //     rollNo: yup.string().required("Roll No is required"),
-  //     phone: yup.number().required("Phone number is required"),
-  //     members: yup.array().of(
-  //       yup.object().shape({
-  //         id: yup.string(),
-  //         name: yup.string().required("Name is required"),
-  //         email: yup.string().required("Email is required"),
-  //         isLeader: yup.boolean(),
-  //       })
-  //     ),
-  //   }),
-  //   onSubmit: (_, { resetForm }) => {
-  //     submitRegistration();
-  //     resetForm();
-  //     getImpUsers();
-  //     setSuccessModal(true);
-  //   },
-  // });
-
-  // const submitRegistration = () => {
-  //   const dbRef = collection(db, event.name);
-  //   const registration = { ...formik.values, avatar: user?.avatar };
-
-  //   addDoc(dbRef, registration).then((doc) => console.log(doc));
-  //   setUserRegistered(true);
-  //   setShow(true);
-  // };
 
   useEffect(() => {
     setTimeout(() => {
@@ -167,16 +114,9 @@ const Event = ({ event }: { event: IEvent }) => {
         localStorage.setItem("user", JSON.stringify(newUser));
         setIsLoggedIn(true);
         setUser(newUser);
-
-        // formik.setValues({
-        //   ...formik.values,
-        //   name: displayName as string,
-        //   email: email as string,
-        // });
       }
     });
   };
-  const { width, height } = useWindowSize();
   return (
     <Layout>
       <Navbar />
@@ -403,12 +343,6 @@ const Event = ({ event }: { event: IEvent }) => {
                           ))}
                         </div>
                         <Button className="my-8">Register</Button>
-                        {successModal && (
-                          <ThankYou
-                            isOpen={successModal}
-                            setIsOpen={setSuccessModal}
-                          />
-                        )}
                       </div>
                     </form>
                   )}
@@ -416,6 +350,9 @@ const Event = ({ event }: { event: IEvent }) => {
               </>
             )}
           </div>
+          {successModal && (
+            <ThankYou isOpen={successModal} setIsOpen={setSuccessModal} />
+          )}
           <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
             <h1 className="mb-4 text-2xl">Details:</h1>
             <div className={styles["live-status-block"]}>
