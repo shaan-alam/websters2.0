@@ -12,8 +12,8 @@ const About = () => {
         <div className="">
           <div className="p-10 flex flex-col md:flex-row gap-10 items-center">
             <img src="./logo.svg" alt="Techelons" />
-            <div>
-              <h1 className="text-4xl mb-4">About Websters</h1>
+            <div className="text-center">
+              <h1 className="md:text-4xl mb-4 text-3xl font-black">About Websters</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Explicabo alias odio tempore quos, pariatur numquam maiores
@@ -24,8 +24,8 @@ const About = () => {
           </div>
           <div className="p-10 flex gap-10 flex-col md:flex-row-reverse">
             <img src="./techelons-logo.svg" alt="" className="w-96" />
-            <div>
-              <h1 className="text-4xl mb-4">About Techelons</h1>
+            <div className="text-center">
+              <h1 className="text-3xl md:text-4xl mb-4 font-black">About Techelons</h1>
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
                 sunt nostrum quo similique! Sint, eius minima architecto ea,
