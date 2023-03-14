@@ -28,6 +28,7 @@ export interface IEvent {
   maxTeamSize: number;
   eventDate: string;
   venue: string;
+  participationType: "individual" | "team";
 }
 
 const Techelons = ({ events }: { events: IEvent[] }) => {
@@ -279,7 +280,8 @@ export const getStaticProps: GetStaticProps = async () => {
       maxTeamSize,
       eventDate,
       venue,
-      description
+      description,
+      participationType
   }`);
 
   return {

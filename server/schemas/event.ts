@@ -11,10 +11,22 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      title: 'Participation Type',
+      name: 'participationType',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Individual', value: 'individual' },
+          { title: 'Team', value: 'team' },
+        ],
+      },
+    },),
+    defineField({
       name: 'minTeamSize',
       title: 'Min Team Size',
       type: 'number',
     }),
+
     defineField({
       name: 'maxTeamSize',
       title: 'Max Team Size',

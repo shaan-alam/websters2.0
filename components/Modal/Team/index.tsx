@@ -8,9 +8,10 @@ interface IProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   addMember: (name: string, email: string) => void;
+  title: string;
 }
 
-const TeamModal = ({ isOpen, setIsOpen, addMember }: IProps) => {
+const TeamModal = ({ isOpen, setIsOpen, addMember, title }: IProps) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -28,7 +29,7 @@ const TeamModal = ({ isOpen, setIsOpen, addMember }: IProps) => {
   });
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={title}>
       <div className="form-field my-4">
         <form onSubmit={formik.handleSubmit}>
           <FormInput
@@ -45,7 +46,12 @@ const TeamModal = ({ isOpen, setIsOpen, addMember }: IProps) => {
             label="Email"
             formik={formik}
           />
-          <Button onClick={() => formik.handleSubmit()}>+ Add Member</Button>
+          <button
+            className="px-4 py-2 bg-[#000] text-white text-sm inline-block rounded-md mx-auto w-full text-center"
+            onClick={() => formik.handleSubmit()}
+          >
+            Add
+          </button>
         </form>
       </div>
     </Modal>
