@@ -1,16 +1,17 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { addDoc, collection, getFirestore} from "firebase/firestore";
+import { getFirestore} from "firebase/firestore";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyA8TW1swioCyTYjmpjM7Tx45CQtZ9kEGWk",
-  authDomain: "websters-3bffb.firebaseapp.com",
-  projectId: "websters-3bffb",
-  storageBucket: "websters-3bffb.appspot.com",
-  messagingSenderId: "1057115948111",
-  appId: "1:1057115948111:web:30a5a97383d50c2625163a",
-  measurementId: "G-D2T9JTPSTV"
+  apiKey: "AIzaSyAFpvytSRiojIPWns2BPtBRfBAKByxveBs",
+  authDomain: "websters-e507c.firebaseapp.com",
+  projectId: "websters-e507c",
+  storageBucket: "websters-e507c.appspot.com",
+  messagingSenderId: "636922744643",
+  appId: "1:636922744643:web:15748cb35ad1c9fe60e9f6",
+  measurementId: "G-500BDCC8BW"
 };
+
 
 let app;
 

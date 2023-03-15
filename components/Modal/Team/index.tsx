@@ -19,7 +19,7 @@ const TeamModal = ({ isOpen, setIsOpen, addMember, title }: IProps) => {
     },
     validationSchema: yup.object({
       name: yup.string().required("Name is required"),
-      email: yup.string().required("Email is required"),
+      email: yup.string().email("Email must be valid").required("Email is required"),
     }),
     onSubmit: (values) => {
       const { name, email } = values;

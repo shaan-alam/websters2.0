@@ -76,10 +76,9 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[150px] w-[150px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[600px]"></span>
-        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-        <span className="absolute top-[100rem] right-10 h-[100px] w-[100px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
-        <span className="absolute h-[200px] top-[150rem] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
+        <span className="absolute h-[150px] w-[150px] right-0 rounded-full md:h-[300px] md:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
+        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px] md:w-[500px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+        <span className="absolute top-[100rem] right-10 h-[100px] w-[100px] rounded-full md:w-[500px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
         <div className="w-[80%] mx-auto py-12 lg:flex items-center">
           <div className="hero-left">
             <div className="relative overflow-hidden">
@@ -231,53 +230,6 @@ const App = () => {
           </div>
           <div className="right-col">
             <img src="/techelons.png" alt="Techelons" />
-          </div>
-        </div>
-      </section>
-
-      {/* <section id="events" className="my-12">
-        <div className="w-[80%] mx-auto">
-          <AnimatedLine
-            text="Our Events"
-            className="text-3xl md:text-6xl font-bold text-primary uppercase"
-          />
-        </div>
-        <div className="w-[80%] mx-auto">
-          <motion.div
-            className="lg:grid gap-12 justify-items-center grid-cols-4 my-8"
-            variants={containerVariants}
-            initial="initial"
-            animate="animate"
-          >
-            <motion.div variants={itemVariant}>
-              <EventCard />
-            </motion.div>
-            <motion.div variants={itemVariant}>
-              <EventCard />
-            </motion.div>
-            <motion.div variants={itemVariant}>
-              <EventCard />
-            </motion.div>
-            <motion.div variants={itemVariant}>
-              <EventCard />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section> */}
-
-      <section id="teams" className="my-24">
-        <div className="w-[80%] mx-auto">
-          <AnimatedLine
-            text="Meet The Team"
-            className="text-5xl md:text-6xl font-bold text-primary uppercase"
-          />
-          <div className="md:grid grid-cols-3 gap-8 my-8">
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-          </div>
-          <div className="w-full flex justify-center">
-            <Button>See All</Button>
           </div>
         </div>
       </section>

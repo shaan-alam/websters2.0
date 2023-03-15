@@ -1,22 +1,23 @@
-import Navbar from "@/components/Navbar";
 import styles from "../styles/Techelons.module.scss";
 import AnimatedText from "@/components/AnimatedLine";
-import Layout from "@/components/Layout";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei/core";
-import Model from "@/components/Model";
-import Button from "@/components/Button";
-import AnimatedLine from "@/components/AnimatedLine";
 import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
-import TimelineEvent from "@/components/TimelineEvent";
-import AnimatedImage from "@/components/AnimatedImage";
-import Footer from "@/components/Footer";
-import StarsCanvas from "@/components/StarsCanvas";
-import Sponsers from "@/components/Sponsers";
-import Model2 from "@/components/Model2";
+import {
+  Navbar,
+  AnimatedLine,
+  Layout,
+  Model,
+  Button,
+  TimelineEvent,
+  AnimatedImage,
+  Footer,
+  StarsCanvas,
+  Sponsers,
+} from "@/components";
 
 export interface IEvent {
   name: string;
@@ -38,19 +39,19 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       <Navbar />
       <div className="wrapper">
         <section className={styles.wrapper}>
-          {/* <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
-          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute top-[100rem] right-10 h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[200rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[250rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[300rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[350rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[400rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span>
-          <span className="absolute h-[300px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[300px] md:blur-[500px]"></span> */}
+          <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute top-[100rem] right-10 sm:h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[200rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[250rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[300rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[350rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[400rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute h-[100px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
           <StarsCanvas />
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">

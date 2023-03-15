@@ -54,11 +54,7 @@ const RegistrationForm = ({
   const { user } = useContext(Context) as ContextType;
 
   return (
-    <>
-      <AnimatedLine
-        text="Registration"
-        className="md:text-6xl text-2xl mt-28 mb-6 text-white"
-      />
+    <div className="mt-8">
       <Formik
         initialValues={{
           name: user?.name,
@@ -174,8 +170,9 @@ const RegistrationForm = ({
                     </p>
                     {teamError && (
                       <AnimatedLine
-                        className="text-sm text-red-600 font-secondary font-bold mt-2"
+                        className="text-red-600 font-secondary font-bold mt-2"
                         text={teamError}
+                        isHeading={false}
                       />
                     )}
                     <div className="mt-6" key={v4()}>
@@ -257,7 +254,7 @@ const RegistrationForm = ({
           </form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 

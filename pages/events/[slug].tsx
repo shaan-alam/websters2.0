@@ -35,7 +35,7 @@ const Event = ({ event }: { event: IEvent }) => {
   const [teamModal, setTeamModal] = useState(false);
   const [teamError, setTeamError] = useState("");
 
-  const { user, setUser, isLoggedIn, setIsLoggedIn, loggingIn } = useContext(
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(
     Context
   ) as ContextType;
 
@@ -83,6 +83,8 @@ const Event = ({ event }: { event: IEvent }) => {
   return (
     <Layout>
       <Navbar />
+      <span className="absolute top-[30rem] right-0 hidden sm:block h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
+      <span className="absolute top-[25rem] hidden sm:block h-[200px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
       <div className="image-container-single relative overflow-hidden">
         <motion.div
           initial={{ y: 100, scale: 0.8 }}
@@ -105,7 +107,12 @@ const Event = ({ event }: { event: IEvent }) => {
             />
             {isLoggedIn && userRegistered && (
               <div className="my-4 w-full text-green-700 bg-green-300 px-4 py-2 font-semibold font-secondary rounded-sm">
-                😀 You have registered for {event.name}
+                You have registered for {event.name} 😀
+              </div>
+            )}
+            {new Date() > new Date(event.deadline) && (
+              <div className="my-4 w-full text-white bg-red-600 px-4 py-2 font-semibold font-secondary rounded-sm">
+                Registrations closed!! 😥
               </div>
             )}
             <div className="mt-12 font-secondary">
@@ -129,49 +136,70 @@ const Event = ({ event }: { event: IEvent }) => {
               </div>
             )}
 
-            {!isLoggedIn && (
-              <div
-                onClick={() => googleLogin({ setIsLoggedIn, setUser })}
-                className="my-8 cursor-pointer flex items-center justify-between font-secondary w-[220px] bg-[#fff] text-gray-800 font-bold px-4 py-2 rounded-md"
-              >
-                <img
-                  src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
-                  alt=""
-                  className="w-6 h-6"
-                />
-                Login with Google
-              </div>
+            {new Date(event.deadline) > new Date() && (
+              <>
+                {!userRegistered && (
+                  <>
+                    <AnimatedLine
+                      text="Registration"
+                      className="md:text-6xl text-2xl mt-28 mb-2 text-white"
+                    />
+                    {!isLoggedIn && (
+                      <p className="text-gray-400 mb-8">
+                        You need to login with Google in order to Register for
+                        the events
+                      </p>
+                    )}
+                  </>
+                )}
+                {!isLoggedIn && (
+                  <div
+                    onClick={() => googleLogin({ setIsLoggedIn, setUser })}
+                    className="my-8 cursor-pointer flex items-center justify-between font-secondary w-[220px] bg-[#fff] text-gray-800 font-bold px-4 py-2 rounded-md"
+                  >
+                    <img
+                      src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
+                      alt=""
+                      className="w-6 h-6"
+                    />
+                    Login with Google
+                  </div>
+                )}
+                {isLoggedIn && !loading && !userRegistered && user && (
+                  <RegistrationForm
+                    event={event}
+                    registerForEvent={registerForEvent}
+                    setSuccessModal={setSuccessModal}
+                    setTeamError={setTeamError}
+                    setTeamModal={setTeamModal}
+                    teamError={teamError}
+                    teamModal={teamModal}
+                  />
+                )}
+              </>
             )}
+          </div>
 
-            {isLoggedIn && !loading && !userRegistered && user && (
-              <RegistrationForm
+          {new Date(event.deadline) > new Date() && (
+            <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
+              <EventDetails
+                amIRegistered={userRegistered}
                 event={event}
-                registerForEvent={registerForEvent}
-                setSuccessModal={setSuccessModal}
-                setTeamError={setTeamError}
-                setTeamModal={setTeamModal}
-                teamError={teamError}
-                teamModal={teamModal}
+                impUsers={impUsers}
+                totalRegisteredUsers={totalRegisteredUsers}
               />
-            )}
-          </div>
-          {successModal && (
-            <ThankYou
-              isOpen={successModal}
-              setIsOpen={setSuccessModal}
-              title="Thank You!"
-            />
+            </div>
           )}
-          <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
-            <EventDetails
-              amIRegistered={userRegistered}
-              event={event}
-              impUsers={impUsers}
-              totalRegisteredUsers={totalRegisteredUsers}
-            />
-          </div>
         </div>
+        {successModal && (
+          <ThankYou
+            isOpen={successModal}
+            setIsOpen={setSuccessModal}
+            title="Thank You!"
+          />
+        )}
       </div>
+
       <div className="w-[90%] mx-auto">
         <AnimatedLine
           text="Sponsers"

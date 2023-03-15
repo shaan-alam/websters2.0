@@ -10,12 +10,14 @@ import classNames from "classnames";
 const AnimatedLine = ({
   text,
   className,
-  delay,
+  isHeading,
 }: {
   text: string;
   className?: string;
-  delay?: number;
+  isHeading?: boolean;
 }) => {
+  if (isHeading === undefined) isHeading = true;
+
   const arraySub = text.split("");
 
   const animatedHeaderRef = useRef(null);
@@ -60,10 +62,7 @@ const AnimatedLine = ({
       variants={headerContainerVariant}
       initial="initial"
       animate={animatedHeaderControls}
-      className={classNames(
-        "font-bold font-horizon relative",
-        className
-      )}
+      className={classNames("font-bold font-horizon relative", className)}
       ref={animatedHeaderRef}
     >
       <span>
@@ -71,7 +70,8 @@ const AnimatedLine = ({
           <span
             className={classNames(
               "overflow-hidden inline-block",
-              char === " " ? "mr-1" : ""
+              char === " " && !isHeading ? "mr-1" : "",
+              char === " " && isHeading ? "mr-6" : ""
             )}
             key={index}
           >

@@ -9,6 +9,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <AnimatePresence mode="wait" initial={true}>
         <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>
-    </ContextProvider>
+    </ContextProvider>  
   );
 }

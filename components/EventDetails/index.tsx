@@ -45,7 +45,7 @@ const EventDetails = ({
                 Deadline
               </h1>
               <p className="text-gray-400 text-sm">
-                <Moment from={Date.now()}>{event.deadline}</Moment>
+                <Moment fromNow>{event.deadline}</Moment>
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ const EventDetails = ({
                 Event Date
               </h1>
               <p className="text-gray-400 text-sm">
-                {new Date(event.eventDate).toLocaleDateString()}
+                <Moment format="DD/MM/YYYY">{event.eventDate}</Moment>
               </p>
             </div>
           </div>

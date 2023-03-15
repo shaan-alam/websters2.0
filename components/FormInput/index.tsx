@@ -18,6 +18,7 @@ const FormInput = ({ type, name, formik, placeholder, label, disabled }: IProps)
         <AnimatedLine
           text={formik.errors[name]}
           className="text-[0.7rem] text-red-600 font-secondary"
+          isHeading={false}
         />
       )}
       <input

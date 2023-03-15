@@ -27,7 +27,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
       <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
         February 2022
       </time>
-      <h3 className="md:text-2xl  text-xl font-semibold text-gray-900 dark:text-white my-4">
+      <h3 className="md:text-2xl  text-xl font-semibold text-white my-4">
         {event.name}
       </h3>
       <Link
