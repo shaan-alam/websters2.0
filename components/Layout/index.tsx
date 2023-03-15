@@ -5,14 +5,14 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     <>
       {children}
       <motion.div
-        className="absolute inset-0 bg-[#000] z-[100] origin-left"
+        className="fixed inset-0 bg-[#000] z-[100] origin-left"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       ></motion.div>
       <motion.div
-        className="absolute inset-0 bg-[#000] z-[100] origin-right"
+        className="fixed inset-0 bg-[#000] z-[100] origin-right"
         initial={{ scaleX: 1 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 0 }}
