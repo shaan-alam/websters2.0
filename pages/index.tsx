@@ -76,25 +76,21 @@ const App = () => {
     <Layout>
       <Navbar />
       <section className="hero relative">
-        <span className="absolute h-[150px] w-[150px] right-0 rounded-full md:h-[300px] md:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
-        <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px] md:w-[500px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-        <span className="absolute top-[100rem] right-10 h-[100px] w-[100px] rounded-full md:w-[500px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
-        <div className="w-[80%] mx-auto py-12 lg:flex items-center">
-          <div className="hero-left">
-            <div className="relative overflow-hidden">
-              <AnimatedLine
-                text="Hey, we are"
-                className="text-center md:text-left text-gray-500 text-2xl my-0"
-              />
-            </div>
-            <div className="relative overflow-hidden">
-              <AnimatedLine
-                text="Websters"
-                className="text-center md:text-left text-[3rem] mb-4 font-primary text-white font-bold uppercase md:text-[7rem] md:mb-0"
-              />
-            </div>
+        <span className="absolute h-[150px] w-[150px] left-0 rounded-full lg:h-[400px] lg:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
+        <span className="absolute top-[50rem] h-[100px] w-[200px] right-0 rounded-full lg:h-[400px] lg:w-[500px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+        <span className="absolute top-[100rem] right-10 h-[100px] left-0 w-[100px] rounded-full md:h-[400px] md:w-[500px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
+        <div className="w-[80%] mx-auto lg:grid grid-cols-2 gap-8 items-center">
+          <div className="hero-left lg:mt-[3rem] xl:mt-[-5rem]">
+            <AnimatedLine
+              text="Hey, we are"
+              className="text-center md:text-left text-gray-500 text-2xl my-0"
+            />
+            <AnimatedLine
+              text="Websters"
+              className="text-center md:text-left text-[3rem] mb-4 font-primary text-white font-bold uppercase lg:text-[4rem] xl:text-[6.5rem] md:mb-0"
+            />
             <motion.p
-              className="text-center md:text-left text-gray-500 md:w-3/4 w-full -mt-8"
+              className="text-center md:text-left text-gray-500 md:w-3/4 w-full lg:-mt-8 leading-7"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, ease: "easeInOut" }}
@@ -102,7 +98,7 @@ const App = () => {
               The Computer Science Society of Shivaji College.The Department of
               Computer Science was established in 1984. The Department aims at
               upholding the cognitive aspect of education by ensuring academic
-              excellence and intellectual growt h of its students.
+              excellence and intellectual growth of its students.
             </motion.p>
             <motion.div className="overflow-hidden relative md:block flex justify-center">
               <motion.div
@@ -115,8 +111,8 @@ const App = () => {
               </motion.div>
             </motion.div>
           </div>
-          <div className="my-12 md:my-0 hero-right md:w-full relative">
-            <div className="masonry-layout flex flex-row justify-center items-stretch mt-20 md:mt-0">
+          <div className="hero-right md:w-full relative">
+            <div className="masonry-layout flex flex-row justify-center items-stretch mt-24 lg:mt-0">
               <div className="flex flex-col flex-start stretch">
                 <img
                   src="/hero-image.webp"
@@ -145,11 +141,11 @@ const App = () => {
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <img
-                  src="/hero-image7.gif"
+                  src="/hero-image14.gif"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <img
-                  src="/hero-image.gif"
+                  src="/hero-image11.jpg"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
               </div>
@@ -180,7 +176,7 @@ const App = () => {
           <div className="right-col">
             <AnimatedLine
               text="About Websters"
-              className="text-4xl font-bold text-primary uppercase"
+              className="text-2xl md:text-4xl font-bold text-primary uppercase"
             />
 
             <div className="about-container text-gray-500">
@@ -214,7 +210,7 @@ const App = () => {
           <div className="left-col my-4 md:my-0">
             <AnimatedLine
               text="About Techelons"
-              className="text-4xl font-bold text-primary uppercase"
+              className="text-2xl md:text-4xl font-bold text-primary uppercase"
             />
             <div className="text-gray-500">
               <p className="my-4">

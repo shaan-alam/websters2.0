@@ -27,7 +27,7 @@
     left: -1rem;
     height: 100%;
     width: 120%;
-    @apply bg-blue-900;
+    @apply bg-red-900;
     transform: skew(-15deg) scaleX(0);
     z-index: -1;
     transform-origin: left;
@@ -38,24 +38,6 @@
   &:hover::before {
     transform: skew(-15deg) scaleX(1);
   }
-
-  &:hover {
-    color: #fff;
-  }
-}
-
-.btn__content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background: red;
-  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-  z-index: 2;
 
   &:hover {
     color: #fff;

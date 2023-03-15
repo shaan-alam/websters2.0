@@ -40,25 +40,25 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
       <div className="wrapper">
         <section className={styles.wrapper}>
           <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
-          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute top-[100rem] right-10 sm:h-[500px] w-[200px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[150rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[200rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[250rem] w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[300rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[350rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[400rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[450rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[500rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[550rem] left-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
-          <span className="absolute h-[100px] top-[600rem] right-10 w-[300px] rounded-full md:w-[600px] bg-blue-700 blur-[150px] md:blur-[500px]"></span>
+          <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px]  md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute top-[100rem] right-10 sm:h-[500px] w-[200px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[150rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[200rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[250rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[300rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[350rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[400rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[450rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[500rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[550rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute h-[100px] top-[600rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <StarsCanvas />
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">
               <div className="ml-8 lg:ml-20 relative z-20">
                 <AnimatedText
                   text="TECHELONS"
-                  className="text-[2rem] md:text-[5rem] text-white mt-24 lg:text-left"
+                  className="text-[2rem] md:text-[5rem] text-white mt-36 lg:text-left"
                 />
                 <p className="text-white leading-7 font-secondary lg:text-left">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
