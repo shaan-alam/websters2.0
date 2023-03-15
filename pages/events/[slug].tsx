@@ -2,12 +2,14 @@ import { useState, useEffect, useContext } from "react";
 import {
   AnimatedLine,
   EventDetails,
+  Footer,
   Layout,
   Navbar,
   RegistrationForm,
   Sponsers,
   ThankYou,
 } from "@/components";
+import styles from "@/styles/Event.module.scss";
 import { motion } from "framer-motion";
 import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
@@ -19,6 +21,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import {
   checkIfUserAlreadyRegistered,
+  fetchRegistrations,
   getImpUsers,
   googleLogin,
 } from "@/helpers";
@@ -34,6 +37,8 @@ const Event = ({ event }: { event: IEvent }) => {
 
   const [teamModal, setTeamModal] = useState(false);
   const [teamError, setTeamError] = useState("");
+
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(
     Context
@@ -80,6 +85,15 @@ const Event = ({ event }: { event: IEvent }) => {
     getImpUsers({ event, setImpUsers, setTotalRegisteredUsers });
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const isWebstersAdmin = JSON.parse(
+        localStorage.getItem("isWebstersAdmin") || "{}"
+      );
+      setIsAdmin(isWebstersAdmin);
+    }
+  }, []);
+
   return (
     <Layout>
       <Navbar />
@@ -113,6 +127,17 @@ const Event = ({ event }: { event: IEvent }) => {
             {new Date() > new Date(event.deadline) && (
               <div className="my-4 w-full text-white bg-red-600 px-4 py-2 font-semibold font-secondary rounded-sm">
                 Registrations closed!! 😥
+              </div>
+            )}
+            {isAdmin && (
+              <div>
+                <a
+                  href="#!"
+                  className={styles.download_btn}
+                  onClick={() => fetchRegistrations(event.name)}
+                >
+                  Download Registrations
+                </a>
               </div>
             )}
             <div className="mt-12 font-secondary">
@@ -178,6 +203,10 @@ const Event = ({ event }: { event: IEvent }) => {
                 )}
               </>
             )}
+            <AnimatedLine
+              text="Sponsers"
+              className="md:text-6xl text-2xl mt-28 mb-6 text-white"
+            />
           </div>
 
           {new Date(event.deadline) > new Date() && (
@@ -199,14 +228,9 @@ const Event = ({ event }: { event: IEvent }) => {
           />
         )}
       </div>
-
-      <div className="w-[90%] mx-auto">
-        <AnimatedLine
-          text="Sponsers"
-          className="md:text-6xl text-2xl mt-28 mb-6 text-white"
-        />
-      </div>
       <Sponsers />
+
+      <Footer />
     </Layout>
   );
 };

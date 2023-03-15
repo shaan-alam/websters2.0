@@ -3,6 +3,7 @@ import { auth, db } from "@/firebase";
 import { IEvent } from "@/pages/techelons";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { Parser } from '@json2csv/plainjs';
 
 interface GetImpUsersInterface {
   event: IEvent,
@@ -85,3 +86,51 @@ export const googleLogin = async ({setIsLoggedIn, setUser }: GoogleLoginInterfac
     }
   });
 };
+
+
+export const exportCSVDocument = (csvString, fileName: string) => {
+  const hiddenElement = document.createElement('a');  
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvString);  
+    hiddenElement.target = '_blank';  
+      
+    //provide the name for the CSV file to be downloaded  
+    hiddenElement.download = `${fileName}.csv`  
+    hiddenElement.click();  
+}
+
+const getTeamMembers = (members: { name: string, email: string} []) => {
+  const length = members.length;
+  const result = {};
+
+  for (let i = 0; i < length; i++) {
+    result[`Team member ${i + 1} Name`] = members[i].name;
+    result[`Team member ${i + 1} Email`] = members[i].email;
+  }
+
+  return result
+}
+
+export const fetchRegistrations = async (eventName: string) => {
+  const docsRef = collection(db, eventName);
+  const docsSnap = await getDocs(docsRef);
+
+  let registrations = [{}];
+
+  docsSnap.forEach((doc) => {
+    registrations.push({
+      name: doc.data().name as string,
+      rollNo: doc.data().rollNo as string,
+      course: doc.data().course as string,
+      college: doc.data().college as string,
+      phone: doc.data().phone as string,
+      email: doc.data().email as string,
+      ...getTeamMembers(doc.data().members)
+    });
+  });
+
+  const parser = new Parser();
+  const csv = parser.parse(registrations);
+  console.log(csv);
+  exportCSVDocument(csv, `${eventName} Registrations`)
+
+}

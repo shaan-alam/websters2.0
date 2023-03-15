@@ -5,21 +5,21 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     <>
       {children}
       <motion.div
-        className="absolute inset-0 bg-[#000] z-10 origin-left"
+        className="absolute inset-0 bg-[#000] z-[100] origin-left"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       ></motion.div>
       <motion.div
-        className="absolute inset-0 bg-[#000] z-10 origin-right"
+        className="absolute inset-0 bg-[#000] z-[100] origin-right"
         initial={{ scaleX: 1 }}
         animate={{ scaleX: 0 }}
         exit={{ scaleX: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       ></motion.div>
       <svg
-        className="absolute top-[50%] left-[50%] z-10 -translate-x-[50%] -translate-y-[50%]"
+        className="absolute top-[50%] left-[50%] z-[100] -translate-x-[50%] -translate-y-[50%]"
         width="219"
         height="242"
         viewBox="0 0 219 242"
@@ -51,7 +51,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
         </defs>
       </svg>
       <svg
-        className="absolute top-[50%] left-[50%] z-10 -translate-x-[50%] -translate-y-[50%]"
+        className="absolute top-[50%] left-[50%] z-[100] -translate-x-[50%] -translate-y-[50%]"
         width="219"
         height="242"
         viewBox="0 0 219 242"
