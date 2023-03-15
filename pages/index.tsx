@@ -145,7 +145,11 @@ const App = () => {
                   className="w-full my-2 rounded-md masonry-tile"
                 />
                 <img
-                  src="/hero-image7.webp"
+                  src="/hero-image7.gif"
+                  className="w-full my-2 rounded-md masonry-tile"
+                />
+                <img
+                  src="/hero-image.gif"
                   className="w-full my-2 rounded-md masonry-tile"
                 />
               </div>

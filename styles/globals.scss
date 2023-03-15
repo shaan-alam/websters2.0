@@ -46,13 +46,3 @@ body {
   font-family: "horizon";
   src: url("../public/horizon.otf");
 }
-
-.masonry-tile {
-  filter: grayscale(100%);
-  transition: all 0.4s;
-
-  &:hover {
-    filter: grayscale(0);
-  }
-}
-
