@@ -88,7 +88,7 @@ const Event = ({ event }: { event: IEvent }) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const isWebstersAdmin = JSON.parse(
-        localStorage.getItem("isWebstersAdmin") || "{}"
+        localStorage.getItem("isWebstersAdmin") || "false"
       );
       setIsAdmin(isWebstersAdmin);
     }
@@ -99,17 +99,14 @@ const Event = ({ event }: { event: IEvent }) => {
       <Navbar />
       <span className="absolute top-[30rem] right-0 hidden sm:block h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
       <span className="absolute top-[25rem] hidden sm:block h-[200px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
-      <div className="image-container-single relative overflow-hidden">
-        <motion.div
-          initial={{ y: 100, scale: 0.8 }}
-          animate={{ y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className="thumbnail-single"
-        >
-          <div className="frame-single">
-            <img src={event.poster} alt={event.name} className="w-full" />
-          </div>
-        </motion.div>
+      <div className="image-container-single relative overflow-hidden w-[90%] mx-auto">
+        <div className="frame-single">
+          <img
+            src={event.poster}
+            alt={event.name}
+            className="w-[100%] mx-auto"
+          />
+        </div>
       </div>
 
       <div className="w-[90%] mx-auto text-white">
@@ -143,23 +140,6 @@ const Event = ({ event }: { event: IEvent }) => {
             <div className="mt-12 font-secondary">
               <BlockContent blocks={event.description} />
             </div>
-
-            {loading && (
-              <div>
-                <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                  <div className="md:grid grid-cols-3 gap-8">
-                    <Skeleton height={25} />
-                    <Skeleton height={25} />
-                    <Skeleton height={25} />
-                  </div>
-                  <div className="md:grid grid-cols-3 gap-8 md:my-6">
-                    <Skeleton height={25} />
-                    <Skeleton height={25} />
-                    <Skeleton height={25} />
-                  </div>
-                </SkeletonTheme>
-              </div>
-            )}
 
             {new Date(event.deadline) > new Date() && (
               <>
@@ -201,12 +181,24 @@ const Event = ({ event }: { event: IEvent }) => {
                     teamModal={teamModal}
                   />
                 )}
+                {loading && (
+                  <div>
+                    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                      <div className="md:grid grid-cols-3 gap-8">
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                      </div>
+                      <div className="md:grid grid-cols-3 gap-8 md:my-6">
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                        <Skeleton height={35} className="my-3 md:my-0" />
+                      </div>
+                    </SkeletonTheme>
+                  </div>
+                )}
               </>
             )}
-            <AnimatedLine
-              text="Sponsers"
-              className="md:text-6xl text-2xl mt-28 mb-6 text-white"
-            />
           </div>
 
           {new Date(event.deadline) > new Date() && (
@@ -228,8 +220,13 @@ const Event = ({ event }: { event: IEvent }) => {
           />
         )}
       </div>
+      <div className="w-[90%] mx-auto">
+        <AnimatedLine
+          text="Sponsers"
+          className="md:text-6xl text-2xl mt-28 mb-6 text-white"
+        />
+      </div>
       <Sponsers />
-
       <Footer />
     </Layout>
   );
