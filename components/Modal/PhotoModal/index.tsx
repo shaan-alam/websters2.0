@@ -9,7 +9,7 @@ interface IProps {
 const PhotoModal = ({ isOpen, setIsOpen, img }: IProps) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <img src={img} alt="" />
+      <img src={img} className="h-full" />
     </Modal>
   );
 };

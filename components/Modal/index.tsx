@@ -1,4 +1,6 @@
 import { FaTimes } from "react-icons/fa";
+import { useOnClickOutside } from '@/hooks/useOnClickOutside'
+import { useRef } from "react";
 
 interface IProps {
   isOpen: boolean;
@@ -8,10 +10,17 @@ interface IProps {
 }
 
 const Modal = ({ isOpen, setIsOpen, children, title }: IProps) => {
+
+  const ref = useRef(null);
+
+  useOnClickOutside(ref, () => {
+    setIsOpen(false);
+  })
+
   return isOpen ? (
-    <div className="fixed inset-0 z-[50] flex items-center justify-center">
+    <div className="fixed inset-0 z-[50] flex items-center justify-center" ref={ref}>
       <div className="fixed z-[20] inset-0 bg-[#000] opacity-90"></div>
-      <div className="modal-body rounded-md shadow-md w-[90%] md:w-[auto] reltative z-[50] bg-[#121212]">
+      <div className="modal-body rounded-md shadow-md w-[90%] md:w-[50%] reltative z-[50] bg-[#121212]">
         <div className="header py-2 flex items-center justify-end mb-4 border-b border-[#333]">
           {title && (
             <div className="font-secondary ml-auto text-gray-500 font-bold">
