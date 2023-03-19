@@ -10,6 +10,8 @@ export { default as Layout } from "./Layout";
 export { default as ThankYou } from "./Modal/ThankYou";
 export { default as TeamModal } from "./Modal/Team";
 export { default as Model } from "./Model";
+export { default as Modal } from "./Modal";
+export { default as PhotoModal } from "./Modal/PhotoModal";
 export { default as Navbar } from "./Navbar";
 export { default as OverlappingAvatars } from "./OverlappingAvatars";
 export { default as Sponsers } from "./Sponsers";

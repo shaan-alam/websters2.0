@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/Event.module.scss";
+import { v4 } from "uuid";
 
 interface IProps {
   amIRegistered: boolean;
@@ -18,8 +19,6 @@ const OverlappingAvatars = ({
   totalRegisteredUsers,
 }: IProps) => {
   const [str, setStr] = useState("");
-
-  console.log(impUsers);
 
   useEffect(() => {
     let str = "";
@@ -45,13 +44,13 @@ const OverlappingAvatars = ({
       <div className={styles["overlapping-avatars"]}>
         <ul>
           {impUsers?.map((user) => (
-            <li key={user.name}>
+            <li key={v4()}>
               <img src={user.avatar} alt="" />
             </li>
           ))}
         </ul>
       </div>
-      {totalRegisteredUsers >= 3 && (
+      {totalRegisteredUsers > 3 && (
         <div className="ml-2 text-gray-300 text-sm mt-2">{str}</div>
       )}
       {totalRegisteredUsers === 1 && amIRegistered && (
