@@ -2,7 +2,7 @@
     background-image: url('../public/about-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    @apply flex justify-start p-12 text-white relative;
+    @apply flex justify-start py-12 text-white relative;
 
     &::after {
       content: '';

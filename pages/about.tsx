@@ -15,15 +15,15 @@ const About = () => {
         <hr className="text-red-500 w-[100px] block mb-8 mt-2" />
         <AnimatedLine
           text="Empowering the future"
-          className="text-white text-6xl mt-2 w-full"
+          className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
         <AnimatedLine
           text="through innovation"
-          className="text-white text-6xl my-2 w-full"
+          className="text-white text-2xl md:text-6xl my-2 w-full"
         />
         <AnimatedLine
           text="and technology"
-          className="text-white text-6xl my-2 w-full"
+          className="text-white text-2xl md:text-6xl my-2 w-full"
         />
       </div>
       <AnimatedImage
@@ -35,9 +35,9 @@ const About = () => {
         <div className="w-[80%] mx-auto">
           <AnimatedLine
             text="About Websters"
-            className="text-white text-6xl mt-2 w-full"
+            className="text-white text-2xl md:text-6xl mt-2 w-full"
           />
-          <div className="w-1/2">
+          <div className="md:w-1/2">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
               consequuntur optio nihil error, necessitatibus quae a unde
@@ -71,9 +71,9 @@ const About = () => {
       <div className="w-[80%] my-20 mx-auto">
         <AnimatedLine
           text="Our Council"
-          className="text-white text-6xl mt-2 w-full"
+          className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
-        <div className="grid grid-cols-3 gap-8 my-8">
+        <div className="md:grid grid-cols-3 gap-8 my-8">
           <TeamCard />
           <TeamCard />
           <TeamCard />
