@@ -1,54 +1,91 @@
 /* eslint-disable @next/next/no-img-element */
-import Layout from "@/components/Layout";
-import Navbar from "@/components/Navbar";
-import TeamCard from "@/components/TeamCard";
-import Footer from "@/components/Footer";
+import { Layout, Navbar, TeamCard } from "@/components/";
+import { AnimatedImage, AnimatedLine } from "@/components";
+import styles from "@/styles/About.module.scss";
 
 const About = () => {
   return (
     <Layout>
       <Navbar />
-      <div className="max-w-5xl text-white mx-auto container px-4">
-        <div className="">
-          <div className="p-10 flex flex-col md:flex-row gap-10 items-center">
-            <img src="./logo.svg" alt="Techelons" />
-            <div className="text-center">
-              <h1 className="md:text-4xl mb-4 text-3xl font-black">About Websters</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo alias odio tempore quos, pariatur numquam maiores
-                facere, veniam dicta culpa corporis qui, enim quasi aliquid
-                error molestiae praesentium dolorem. Nihil.
-              </p>
-            </div>
-          </div>
-          <div className="p-10 flex gap-10 flex-col md:flex-row-reverse">
-            <img src="./techelons-logo.svg" alt="" className="w-96" />
-            <div className="text-center">
-              <h1 className="text-3xl md:text-4xl mb-4 font-black">About Techelons</h1>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
-                sunt nostrum quo similique! Sint, eius minima architecto ea,
-                veritatis accusamus nulla nemo a similique iure veniam
-                blanditiis consequuntur nisi odit?
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="p-10 text-center my-10">
-          <h1 className="text-5xl font-black">Council</h1>
-          <div className="md:grid grid-cols-3 gap-8 my-8">
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
+      <span className="absolute h-[150px] w-[150px] left-0 rounded-full lg:h-[400px] lg:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
+      <span className="absolute top-[50rem] h-[100px] w-[200px] right-0 rounded-full lg:h-[400px] lg:w-[500px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute top-[100rem] right-10 h-[100px] left-0 w-[100px] rounded-full md:h-[400px] md:w-[500px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
+      <div className="w-[80%] mx-auto my-8">
+        <h1 className="text-white">About Us</h1>
+        <hr className="text-red-500 w-[100px] block mb-8 mt-2" />
+        <AnimatedLine
+          text="Empowering the future"
+          className="text-white text-6xl mt-2 w-full"
+        />
+        <AnimatedLine
+          text="through innovation"
+          className="text-white text-6xl my-2 w-full"
+        />
+        <AnimatedLine
+          text="and technology"
+          className="text-white text-6xl my-2 w-full"
+        />
+      </div>
+      <AnimatedImage
+        src="/about-hero.png"
+        alt=""
+        className="w-full object-cover"
+      />
+      <div className={styles["about-bg"]}>
+        <div className="w-[80%] mx-auto">
+          <AnimatedLine
+            text="About Websters"
+            className="text-white text-6xl mt-2 w-full"
+          />
+          <div className="w-1/2">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+              consequuntur optio nihil error, necessitatibus quae a unde
+              blanditiis debitis architecto iste quidem nobis! Quidem ad, ex
+              nihil assumenda voluptatem dicta!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam perferendis id laborum sunt commodi excepturi quos,
+              dolore quam illum ad, cupiditate repellat. Natus cum laborum alias
+              totam earum saepe nisi eaque provident, dolorem error deleniti
+              excepturi officia? Expedita, sed nihil?
+            </p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+              consequuntur optio nihil error, necessitatibus quae a unde
+              blanditiis debitis architecto iste quidem nobis! Quidem ad, ex
+              nihil assumenda voluptatem dicta!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam perferendis id laborum sunt commodi excepturi quos,
+              dolore quam illum ad, cupiditate repellat. Natus cum laborum alias
+              totam earum saepe nisi eaque provident, dolorem error deleniti
+              excepturi officia? Expedita, sed nihil?
+            </p>
           </div>
         </div>
       </div>
-      <Footer />
+
+      <div className="w-[80%] my-20 mx-auto">
+        <AnimatedLine
+          text="Our Council"
+          className="text-white text-6xl mt-2 w-full"
+        />
+        <div className="grid grid-cols-3 gap-8 my-8">
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+          <TeamCard />
+        </div>
+      </div>
     </Layout>
   );
 };
-
-
 
 export default About;

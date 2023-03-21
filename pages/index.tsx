@@ -87,7 +87,7 @@ const App = () => {
             />
             <AnimatedLine
               text="Websters"
-              className="text-center md:text-left text-[3rem] mb-4 font-primary text-white font-bold uppercase lg:text-[4rem] xl:text-[6.5rem] md:mb-0"
+              className="text-center md:text-left text-[3rem] mb-4 font-primary text-white font-bold uppercase lg:text-[6rem] md:mb-0"
             />
             <motion.p
               className="text-center md:text-left text-gray-500 md:w-3/4 w-full lg:-mt-8 leading-7"

@@ -27,15 +27,13 @@ const EventDetails = ({
       <h1 className="mb-4 text-2xl">Details:</h1>
       <div className={styles["live-status-block"]}>
         <div className="block">
-          <h1 className="text-lg font-medium font-secondary text-white">
-            {totalRegisteredUsers} Registration
-            {totalRegisteredUsers > 1 ? "s" : ""}
-          </h1>
-          <OverlappingAvatars
-            amIRegistered={amIRegistered}
-            impUsers={impUsers}
-            totalRegisteredUsers={totalRegisteredUsers}
-          />
+          {totalRegisteredUsers > 3 && (
+            <OverlappingAvatars
+              amIRegistered={amIRegistered}
+              impUsers={impUsers}
+              totalRegisteredUsers={totalRegisteredUsers}
+            />
+          )}
         </div>
         <div className="grid grid-cols-2">
           <div className="flex items-center my-6">

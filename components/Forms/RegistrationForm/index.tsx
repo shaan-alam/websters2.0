@@ -1,21 +1,82 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AnimatedLine from "@/components/AnimatedLine";
-import { Formik } from "formik";
+import { Formik, useFormik } from "formik";
 import { Context, ContextType } from "@/context/GlobalContext";
 import { v4 } from "uuid";
 import * as yup from "yup";
 import { IEvent } from "@/pages/techelons";
 import {
-  addDoc,
   collection,
   CollectionReference,
   DocumentData,
 } from "firebase/firestore";
 import { db } from "@/firebase";
 import FormInput from "@/components/FormInput";
-import TeamModal from "@/components/Modal/Team";
 import { FaTrash, FaUser } from "react-icons/fa";
 import Button from "@/components/Button";
+import TeamModal from "@/components/Modal/Team";
+
+const MemberForm = ({
+  addMember,
+  values,
+}: {
+  addMember: (name: string, email: string) => void;
+  values: {
+    id: string;
+    name: string | undefined;
+    email: string | undefined;
+    isLeader: boolean;
+  };
+}) => {
+  const { name, email, isLeader } = values;
+
+  const formik = useFormik({
+    initialValues: {
+      name: name || "",
+      email: email || "",
+    },
+    validationSchema: yup.object({
+      name: yup.string().required("Name is required"),
+      email: yup
+        .string()
+        .email("Email must be valid")
+        .required("Email is required"),
+    }),
+    onSubmit: (values) => {
+      const { name, email } = values;
+      addMember(name, email);
+    },
+  });
+
+  return (
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        {isLeader && (
+          <div className="flex text-lg text-gray-400 items-center mb-2">
+            <FaUser className="text-green-400" />
+            &nbsp;Leader
+          </div>
+        )}
+        <FormInput
+          name="name"
+          type="text"
+          placeholder="John Doe"
+          label="Name"
+          formik={formik}
+          disabled={isLeader}
+        />
+        <FormInput
+          name="email"
+          type="email"
+          placeholder="johndoe@gmail.com"
+          label="Email"
+          formik={formik}
+          disabled={isLeader}
+        />
+      </form>
+    </>
+  );
+};
 
 interface IProps {
   event: IEvent;
@@ -53,6 +114,8 @@ const RegistrationForm = ({
 }: IProps) => {
   const { user } = useContext(Context) as ContextType;
 
+  const [] = useState();
+
   return (
     <div className="mt-8">
       <Formik
@@ -68,6 +131,7 @@ const RegistrationForm = ({
               name: user?.name,
               email: user?.email,
               isLeader: true,
+              avatar: `https://api.dicebear.com/5.x/bottts/svg?seed=${user?.name}`,
             },
           ],
         }}
@@ -87,6 +151,7 @@ const RegistrationForm = ({
               name: yup.string().required("Name is required"),
               email: yup.string().required("Email is required"),
               isLeader: yup.boolean(),
+              avatar: yup.string(),
             })
           ),
         })}
@@ -179,7 +244,9 @@ const RegistrationForm = ({
                       {formik.values.members.length < event.maxTeamSize && (
                         <a
                           href="#!"
-                          onClick={() => setTeamModal(true)}
+                          onClick={() => {
+                            setTeamModal(true);
+                          }}
                           className="px-4 py-2 bg-[#121212] text-white text-sm inline-block rounded-md"
                         >
                           Add a team member
@@ -190,7 +257,11 @@ const RegistrationForm = ({
                           title="Add a Team Member"
                           isOpen={teamModal}
                           setIsOpen={setTeamModal}
-                          addMember={(name: string, email: string) => {
+                          addMember={(
+                            name: string,
+                            email: string,
+                            avatar: string
+                          ) => {
                             formik.setValues({
                               ...formik.values,
                               members: [
@@ -200,52 +271,57 @@ const RegistrationForm = ({
                                   name,
                                   email,
                                   isLeader: false,
+                                  avatar,
                                 },
                               ],
                             });
                           }}
                         />
                       )}
-                    </div>
-                  </div>
-                  <div className="members md:grid grid-cols-3 gap-4 my-6">
-                    {formik.values.members.map((member) => (
-                      <div
-                        className="member p-4 my-6 md:my-0 rounded-md bg-[#121212]"
-                        key={v4()}
-                      >
-                        <div className="header flex justify-end">
-                          {!member.isLeader && (
-                            <a
-                              href="#!"
-                              className="text-sm p-2 rounded-full hover:bg-[#333]"
-                              onClick={() => {
-                                formik.setValues({
-                                  ...formik.values,
-                                  members: formik.values.members.filter(
-                                    (m) => m.id !== member.id
-                                  ),
-                                });
-                              }}
-                            >
-                              <FaTrash className="text-red-600" />
-                            </a>
-                          )}
-                        </div>
-                        {member.isLeader && (
-                          <div className="flex text-sm text-gray-400 items-center mb-2">
-                            <FaUser className="text-green-400" />
-                            &nbsp;Leader
+                      <div className="members md:grid grid-cols-3 gap-4 my-6">
+                        {formik.values.members.map((member) => (
+                          <div
+                            className="member p-4 my-6 md:my-0 rounded-md bg-[#121212]"
+                            key={v4()}
+                          >
+                            <div className="header flex justify-end">
+                              {!member.isLeader && (
+                                <a
+                                  href="#!"
+                                  className="text-sm p-2 rounded-full hover:bg-[#333]"
+                                  onClick={() => {
+                                    formik.setValues({
+                                      ...formik.values,
+                                      members: formik.values.members.filter(
+                                        (m) => m.id !== member.id
+                                      ),
+                                    });
+                                  }}
+                                >
+                                  <FaTrash className="text-red-600" />
+                                </a>
+                              )}
+                            </div>
+                            {member.isLeader && (
+                              <div className="flex text-sm text-gray-400 items-center mb-2">
+                                <FaUser className="text-green-400" />
+                                &nbsp;Leader
+                              </div>
+                            )}
+                            <img
+                              src={member.avatar}
+                              className="rounded-full h-20 w-20 my-4"
+                            />
+                            <h1 className="text-white mb-2 font-secondary">
+                              {member.name}
+                            </h1>
+                            <h1 className="text-gray-400 mb-2 font-secondary text-sm">
+                              {member.email}
+                            </h1>
                           </div>
-                        )}
-                        <h1 className="text-white mb-2 font-secondary">
-                          {member.name}
-                        </h1>
-                        <h1 className="text-gray-400 mb-2 font-secondary text-sm">
-                          {member.email}
-                        </h1>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </>
               )}

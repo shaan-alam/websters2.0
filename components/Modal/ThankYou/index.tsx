@@ -15,7 +15,12 @@ const ThankYou = ({ isOpen, setIsOpen, title }: IProps) => {
   const { width, height } = useWindowSize();
   const { user } = useContext(Context) as ContextType;
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={title}>
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title={title}
+      className="w-[700px]"
+    >
       <ReactConfetti width={width} height={height} />
       <div className="w-[auto] text-center">
         <img
@@ -27,7 +32,7 @@ const ThankYou = ({ isOpen, setIsOpen, title }: IProps) => {
           Thank you {user?.name} for registering...
         </h1>
         <p className="font-secondary text-gray-400 text-sm">
-          Please join this WhatsApp Group -{" "}
+          Please join this WhatsApp Group -&nbsp;
           <a
             rel="noreferrer"
             target="_blank"

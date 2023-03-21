@@ -1,13 +1,13 @@
 import Modal from "@/components/Modal";
 import { useFormik } from "formik";
 import FormInput from "@/components/FormInput";
-import Button from "@/components/Button";
 import * as yup from "yup";
+import { v4 } from "uuid";
 
 interface IProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  addMember: (name: string, email: string) => void;
+  addMember: (name: string, email: string, avatar: string) => void;
   title: string;
 }
 
@@ -19,11 +19,19 @@ const TeamModal = ({ isOpen, setIsOpen, addMember, title }: IProps) => {
     },
     validationSchema: yup.object({
       name: yup.string().required("Name is required"),
-      email: yup.string().email("Email must be valid").required("Email is required"),
+      email: yup
+        .string()
+        .email("Email must be valid")
+        .required("Email is required"),
+      avatar: yup.string(),
     }),
     onSubmit: (values) => {
       const { name, email } = values;
-      addMember(name, email);
+      addMember(
+        name,
+        email,
+        `https://api.dicebear.com/5.x/bottts/svg?seed=${name}`
+      );
       setIsOpen(false);
     },
   });

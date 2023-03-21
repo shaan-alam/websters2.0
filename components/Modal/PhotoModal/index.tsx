@@ -8,7 +8,7 @@ interface IProps {
 
 const PhotoModal = ({ isOpen, setIsOpen, img }: IProps) => {
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} className="w-[900px]">
       <img src={img} className="h-full" />
     </Modal>
   );

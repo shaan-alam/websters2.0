@@ -45,7 +45,7 @@ const OverlappingAvatars = ({
         <ul>
           {impUsers?.map((user) => (
             <li key={v4()}>
-              <img src={user.avatar} alt="" />
+              <img src={user.avatar} />
             </li>
           ))}
         </ul>

@@ -64,18 +64,34 @@ const Gallery = () => {
             </div>
             <div className="w-full md:w-[33.33%] mx-0 md:mx-4">
               {sliceIntoChunks(images, images.length / 3)[1]?.map((img) => (
-                <div key={v4()}>
+                <div
+                  key={v4()}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setCurrentImg(img);
+                    setPhotoModal(true);
+                  }}
+                >
                   <LazyImage
                     placeholder="/placeholder.png"
                     uri={img}
-                    render={(src) => <img src={src} className="w-full m-4 sm:mx-4" />}
+                    render={(src) => (
+                      <img src={src} className="w-full m-4 sm:mx-4" />
+                    )}
                   />
                 </div>
               ))}
             </div>
             <div className="w-full md:w-[33.33%]">
               {sliceIntoChunks(images, images.length / 3)[2]?.map((img) => (
-                <div key={v4()}>
+                <div
+                  key={v4()}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setCurrentImg(img);
+                    setPhotoModal(true);
+                  }}
+                >
                   <LazyImage
                     placeholder="/placeholder.png"
                     uri={img}

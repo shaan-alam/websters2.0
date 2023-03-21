@@ -10,7 +10,6 @@ import {
   ThankYou,
 } from "@/components";
 import styles from "@/styles/Event.module.scss";
-import { motion } from "framer-motion";
 import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
 import { IEvent } from "../techelons";
@@ -108,7 +107,6 @@ const Event = ({ event }: { event: IEvent }) => {
           />
         </div>
       </div>
-
       <div className="w-[90%] mx-auto text-white">
         <div className="md:flex gap-8">
           <div className="col-left w-full md:w-[65%]">
@@ -117,8 +115,19 @@ const Event = ({ event }: { event: IEvent }) => {
               className="md:text-6xl text-2xl mt-28 text-white"
             />
             {isLoggedIn && userRegistered && (
-              <div className="my-4 w-full text-green-700 bg-green-300 px-4 py-2 font-semibold font-secondary rounded-sm">
-                You have registered for {event.name} 😀
+              <div className="my-4 w-[fit-content] text-green-700 bg-green-300 pr-8 pl-4 py-4 font-semibold font-secondary rounded-sm">
+                <p className="mb-2">You have registered for {event.name} 😀</p>
+                <p>
+                  Please join this WhatsApp Group -&nbsp;
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ"
+                    className="text-blue-500 text-sm"
+                  >
+                    https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ
+                  </a>
+                </p>
               </div>
             )}
             {new Date() > new Date(event.deadline) && (
