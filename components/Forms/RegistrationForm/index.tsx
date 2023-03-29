@@ -185,7 +185,7 @@ const RegistrationForm = ({
                           onClick={() => {
                             setTeamModal(true);
                           }}
-                          className="px-4 py-2 bg-[#121212] text-white text-sm inline-block rounded-md"
+                          className="px-4 py-2 bg-[#333] text-white text-sm inline-block rounded-md"
                         >
                           Add a team member
                         </a>

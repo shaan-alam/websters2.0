@@ -118,7 +118,7 @@ const Event = ({ event }: { event: IEvent }) => {
                     <button
                       className={classNames(
                         "p-4 mr-2 outline-none rounded-md",
-                        selected ? "bg-blue-700" : "bg-black"
+                        selected ? "bg-blue-900" : "bg-black"
                       )}
                     >
                       Description
@@ -130,7 +130,7 @@ const Event = ({ event }: { event: IEvent }) => {
                     <button
                       className={classNames(
                         "p-4 mr-2 outline-none rounded-md",
-                        selected ? "bg-blue-700" : "bg-black"
+                        selected ? "bg-blue-900" : "bg-black"
                       )}
                     >
                       Register
@@ -171,10 +171,10 @@ const Event = ({ event }: { event: IEvent }) => {
                           <a
                             rel="noreferrer"
                             target="_blank"
-                            href="https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ"
+                            href={event.whatsAppGroupUrl}
                             className="text-blue-500 text-sm"
                           >
-                            https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ
+                            {event.whatsAppGroupUrl}
                           </a>
                         </p>
                       </div>
@@ -280,6 +280,7 @@ const Event = ({ event }: { event: IEvent }) => {
             isOpen={successModal}
             setIsOpen={setSuccessModal}
             title="Thank You!"
+            whatsAppGroupUrl={event.whatsAppGroupUrl}
           />
         )}
       </div>
@@ -289,7 +290,7 @@ const Event = ({ event }: { event: IEvent }) => {
           className="md:text-6xl text-2xl mt-28 mb-6 text-white"
         />
       </div>
-      <Sponsers />
+      <Sponsers sponsers={event.eventSponsers} />
       <Footer />
     </Layout>
   );
@@ -316,6 +317,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
           participationType
           slug
+          whatsAppGroupUrl
+          eventSponsers {
+            url
+          }
         }
       }
     `);
@@ -346,6 +351,10 @@ export const getStaticPaths = async () => {
         }
         participationType
         slug
+        whatsAppGroupUrl
+        eventSponsers {
+          url
+        }
       }
     }
 `);

@@ -28,7 +28,12 @@ export interface IEvent {
     url: string;
   };
   participationType: "Individual" | "Team";
-  slug: string
+  slug: string;
+  whatsAppGroupUrl: string;
+  tagline: string;
+  eventSponsers: {
+    url: string
+  }[]
 }
 
 export const graphcms = new GraphQLClient(
@@ -87,7 +92,12 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
                 </Suspense>
                 <OrbitControls autoRotate />
               </Canvas> */}
-              <video src="/techelons23.mp4" autoPlay controls className="my-12"></video>
+              <video
+                src="/techelons23.mp4"
+                autoPlay
+                controls
+                className="my-12"
+              ></video>
             </div>
           </div>
         </section>
@@ -295,6 +305,10 @@ export const getStaticProps: GetStaticProps = async () => {
         },
         participationType,
         slug
+        whatsAppGroupUrl
+        eventSponsers {
+          url
+        }
       }
     }
   `

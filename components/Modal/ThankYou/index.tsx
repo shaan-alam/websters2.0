@@ -9,17 +9,19 @@ interface IProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title?: string;
+  whatsAppGroupUrl: string
 }
 
-const ThankYou = ({ isOpen, setIsOpen, title }: IProps) => {
+const ThankYou = ({ isOpen, setIsOpen, title, whatsAppGroupUrl }: IProps) => {
   const { width, height } = useWindowSize();
   const { user } = useContext(Context) as ContextType;
+
   return (
     <Modal
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={title}
-      className="w-[50%]"
+      className="md:w-[40%]"
     >
       <ReactConfetti width={width} height={height} />
       <div className="w-[auto] text-center">
@@ -36,7 +38,7 @@ const ThankYou = ({ isOpen, setIsOpen, title }: IProps) => {
           <a
             rel="noreferrer"
             target="_blank"
-            href="https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ"
+            href={whatsAppGroupUrl}
             className="text-blue-500 text-sm"
           >
             Click here
