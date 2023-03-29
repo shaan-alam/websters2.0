@@ -37,7 +37,7 @@ const TeamModal = ({ isOpen, setIsOpen, addMember, title }: IProps) => {
   });
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={title}>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={title} className="md:w-[40%]">
       <div className="form-field my-4">
         <form onSubmit={formik.handleSubmit}>
           <FormInput

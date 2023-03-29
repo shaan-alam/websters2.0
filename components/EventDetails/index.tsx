@@ -54,7 +54,7 @@ const EventDetails = ({
                 Event Date
               </h1>
               <p className="text-gray-400 text-sm">
-                <Moment format="DD/MM/YYYY">{event.eventDate}</Moment>
+                <Moment format="DD/MM/YYYY">{event.date}</Moment>
               </p>
             </div>
           </div>

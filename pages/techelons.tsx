@@ -1,36 +1,39 @@
 import styles from "../styles/Techelons.module.scss";
 import AnimatedText from "@/components/AnimatedLine";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
-import { OrbitControls } from "@react-three/drei/core";
-import sanityClient from "@/lib/sanityClient";
 import { GetStaticProps } from "next";
 import {
   Navbar,
   AnimatedLine,
   Layout,
-  Model,
   Button,
   TimelineEvent,
   AnimatedImage,
   Footer,
-  StarsCanvas,
   Sponsers,
 } from "@/components";
+import { GraphQLClient } from "graphql-request";
 
 export interface IEvent {
-  name: string;
-  poster: string;
-  slug: string;
-  description: string | null;
+  id: string;
+  description: {
+    markdown: string;
+  };
   deadline: string;
+  eventHeading: string;
+  date: string;
+  venue: string;
   minTeamSize: number;
   maxTeamSize: number;
-  eventDate: string;
-  venue: string;
-  participationType: "individual" | "team";
+  poster: {
+    url: string;
+  };
+  participationType: string;
+  slug: string
 }
+
+export const graphcms = new GraphQLClient(
+  "https://api-ap-south-1.hygraph.com/v2/clfqvrwvy0im601ui0g4xdhl6/master"
+);
 
 const Techelons = ({ events }: { events: IEvent[] }) => {
   console.log(events);
@@ -52,7 +55,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
           <span className="absolute h-[100px] top-[500rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute h-[100px] top-[550rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute h-[100px] top-[600rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-          <StarsCanvas />
+          {/* <StarsCanvas /> */}
           <div className="lg:flex bg-wrapper">
             <div className="col-left lg:w-3/4 w-full">
               <div className="ml-8 lg:ml-20 relative z-20">
@@ -72,7 +75,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
               </div>
             </div>
             <div className="h-[50vh] col-right lg:h-screen w-full cursor-grabbing  relative z-10">
-              <Canvas
+              {/* <Canvas
                 className=""
                 shadows
                 dpr={[1, 2]}
@@ -83,7 +86,8 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
                   <Environment preset="city" />
                 </Suspense>
                 <OrbitControls autoRotate />
-              </Canvas>
+              </Canvas> */}
+              <video src="/techelons23.mp4" autoPlay controls className="my-12"></video>
             </div>
           </div>
         </section>
@@ -128,7 +132,7 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
             <div className="mt-12">
               <ol className="relative border-l border-gray-200 dark:border-gray-700">
                 {events.map((event) => (
-                  <TimelineEvent event={event} key={event.slug} />
+                  <TimelineEvent event={event} key={event.id} />
                 ))}
               </ol>
             </div>
@@ -272,22 +276,33 @@ const Techelons = ({ events }: { events: IEvent[] }) => {
 export default Techelons;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const events = await sanityClient.fetch(`*[_type == "event"] {
-    name,
-    "poster": poster.asset->url,
-      "slug": slug.current,
-      deadline,
-      minTeamSize,
-      maxTeamSize,
-      eventDate,
-      venue,
-      description,
-      participationType
-  }`);
+  const { event }: { event: IEvent[] } = await graphcms.request(
+    `
+    query Events {
+      event {
+        id,
+        description{
+          markdown
+        },
+        deadline,
+        eventHeading,
+        date,
+        venue,
+        minTeamSize,
+        maxTeamSize,
+        poster {
+          url
+        },
+        participationType,
+        slug
+      }
+    }
+  `
+  );
 
   return {
     props: {
-      events,
+      events: event,
     },
   };
 };

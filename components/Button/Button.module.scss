@@ -42,4 +42,15 @@
   &:hover {
     color: #fff;
   }
+
+  &:disabled {
+    color: grey;
+    cursor: default;
+
+    &:hover {
+      &:before {
+        transform: skew(-15deg) scaleX(0);
+      }
+    }
+  }
 }

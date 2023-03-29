@@ -16,68 +16,6 @@ import { FaTrash, FaUser } from "react-icons/fa";
 import Button from "@/components/Button";
 import TeamModal from "@/components/Modal/Team";
 
-const MemberForm = ({
-  addMember,
-  values,
-}: {
-  addMember: (name: string, email: string) => void;
-  values: {
-    id: string;
-    name: string | undefined;
-    email: string | undefined;
-    isLeader: boolean;
-  };
-}) => {
-  const { name, email, isLeader } = values;
-
-  const formik = useFormik({
-    initialValues: {
-      name: name || "",
-      email: email || "",
-    },
-    validationSchema: yup.object({
-      name: yup.string().required("Name is required"),
-      email: yup
-        .string()
-        .email("Email must be valid")
-        .required("Email is required"),
-    }),
-    onSubmit: (values) => {
-      const { name, email } = values;
-      addMember(name, email);
-    },
-  });
-
-  return (
-    <>
-      <form onSubmit={formik.handleSubmit}>
-        {isLeader && (
-          <div className="flex text-lg text-gray-400 items-center mb-2">
-            <FaUser className="text-green-400" />
-            &nbsp;Leader
-          </div>
-        )}
-        <FormInput
-          name="name"
-          type="text"
-          placeholder="John Doe"
-          label="Name"
-          formik={formik}
-          disabled={isLeader}
-        />
-        <FormInput
-          name="email"
-          type="email"
-          placeholder="johndoe@gmail.com"
-          label="Email"
-          formik={formik}
-          disabled={isLeader}
-        />
-      </form>
-    </>
-  );
-};
-
 interface IProps {
   event: IEvent;
   teamModal: boolean;
@@ -167,7 +105,7 @@ const RegistrationForm = ({
               }!`
             );
           } else {
-            const dbRef = collection(db, event.name);
+            const dbRef = collection(db, event.eventHeading);
             const registration = { ...values, avatar: user?.avatar };
             registerForEvent(dbRef, registration);
             resetForm();
@@ -281,7 +219,7 @@ const RegistrationForm = ({
                       <div className="members md:grid grid-cols-3 gap-4 my-6">
                         {formik.values.members.map((member) => (
                           <div
-                            className="member p-4 my-6 md:my-0 rounded-md bg-[#121212]"
+                            className="member p-4 my-6 md:my-0 rounded-md bg-[#333]"
                             key={v4()}
                           >
                             <div className="header flex justify-end">
@@ -303,8 +241,8 @@ const RegistrationForm = ({
                               )}
                             </div>
                             {member.isLeader && (
-                              <div className="flex text-sm text-gray-400 items-center mb-2">
-                                <FaUser className="text-green-400" />
+                              <div className="flex text-base text-gray-300 items-center mb-2">
+                                <FaUser className="text-green-500" />
                                 &nbsp;Leader
                               </div>
                             )}

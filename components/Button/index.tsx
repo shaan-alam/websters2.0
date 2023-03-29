@@ -9,9 +9,13 @@ interface ButtonProps
   className?: string;
 }
 
-const Button = ({ className, children, onClick}: ButtonProps) => {
+const Button = ({ className, children, onClick, disabled }: ButtonProps) => {
   return (
-    <button className={classnames(styles.btn, className)} onClick={onClick}>
+    <button
+      className={classnames(styles.btn, className)}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

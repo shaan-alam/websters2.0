@@ -3,8 +3,10 @@ import type { IEvent } from "@/pages/techelons";
 import { motion, useAnimationControls, useInView } from "framer-motion";
 import Link from "next/link";
 import styles from "./TimelineEvent.module.scss";
+import Moment from "react-moment";
 
 const TimelineEvent = ({ event }: { event: IEvent }) => {
+  console.log(event);
   const eventRef = useRef(null);
   const isEventInView = useInView(eventRef);
   const eventControls = useAnimationControls();
@@ -25,15 +27,12 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
     >
       <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
       <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-        February 2022
+        <Moment format="DD/MM/YYYY">{event.date}</Moment>
       </time>
       <h3 className="md:text-2xl  text-xl font-semibold text-white my-4">
-        {event.name}
+        {event.eventHeading}
       </h3>
-      <Link
-        href={`events/${event.slug}`}
-        className={styles.register_btn}
-      >
+      <Link href={`events/${event.id}`} className={styles.register_btn}>
         Register
         <svg
           className="w-3 h-3 ml-2"
@@ -54,7 +53,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
         ipsum!. Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Sapiente quos similique in eaque laudantium .
       </p>
-      <img src={event.poster} alt={event.name} className="my-4" />
+      <img src={event.poster.url} alt={event.eventHeading} className="my-4" />
     </motion.li>
   );
 };

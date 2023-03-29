@@ -19,7 +19,7 @@ const ThankYou = ({ isOpen, setIsOpen, title }: IProps) => {
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       title={title}
-      className="w-[700px]"
+      className="w-[50%]"
     >
       <ReactConfetti width={width} height={height} />
       <div className="w-[auto] text-center">

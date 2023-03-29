@@ -17,7 +17,7 @@ interface GetImpUsersInterface {
  * @returns Promise<void>
  */
 export const getImpUsers = async ({event, setTotalRegisteredUsers, setImpUsers}: GetImpUsersInterface) => {
-  const docsRef = collection(db, event.name);
+  const docsRef = collection(db, event.eventHeading);
   const docsSnap = await getDocs(docsRef);
 
   let importantUsers: { avatar: string; name: string }[] = [];
@@ -48,7 +48,7 @@ interface CheckIfUserAlreadyRegisteredInterface {
  */
 export const checkIfUserAlreadyRegistered = ({email, event}: CheckIfUserAlreadyRegisteredInterface) => {
   const eventQuery = query(
-    collection(db, event.name),
+    collection(db, event.eventHeading),
     where("email", "==", email)
   );
   return getDocs(eventQuery).then((snap) => {
