@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { v4 } from "uuid";
 import styles from "./Sponsers.module.scss";
 
 interface IProps {
@@ -22,7 +23,7 @@ const Sponsers = ({ reverse, sponsers }: IProps) => {
         )}
       >
         {sponsers?.map((sponser) => (
-          <div className={styles.slide}>
+          <div className={styles.slide} key={v4()}>
             <img src={sponser.url} className="w-full" alt="" />
           </div>
         ))}
