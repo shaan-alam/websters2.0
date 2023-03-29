@@ -117,7 +117,7 @@ const Event = ({ event }: { event: IEvent }) => {
                   {({ selected }) => (
                     <button
                       className={classNames(
-                        "p-4 mr-2 outline-none rounded-sm",
+                        "p-4 mr-2 outline-none rounded-md",
                         selected ? "bg-blue-700" : "bg-black"
                       )}
                     >
@@ -129,7 +129,7 @@ const Event = ({ event }: { event: IEvent }) => {
                   {({ selected }) => (
                     <button
                       className={classNames(
-                        "p-4 mr-2 outline-none rounded-sm",
+                        "p-4 mr-2 outline-none rounded-md",
                         selected ? "bg-blue-700" : "bg-black"
                       )}
                     >
