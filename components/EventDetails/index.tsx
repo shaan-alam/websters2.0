@@ -65,7 +65,7 @@ const EventDetails = ({
                 Team size
               </h1>
               <p className="text-gray-400 text-sm">
-                {event.participationType === "individual"
+                {event.participationType === "Individual"
                   ? "Individual "
                   : `${event.minTeamSize} - ${event.maxTeamSize}`}
               </p>

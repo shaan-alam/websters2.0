@@ -144,29 +144,6 @@ const Event = ({ event }: { event: IEvent }) => {
                     text={event.eventHeading || ""}
                     className="md:text-6xl text-2xl mt-6 text-white"
                   />
-                  {isLoggedIn && userRegistered && (
-                    <div className="my-4 w-[fit-content] text-green-700 bg-green-300 pr-8 pl-4 py-4 font-semibold font-secondary rounded-sm">
-                      <p className="mb-2">
-                        You have registered for {event.eventHeading} 😀
-                      </p>
-                      <p>
-                        Please join this WhatsApp Group -&nbsp;
-                        <a
-                          rel="noreferrer"
-                          target="_blank"
-                          href="https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ"
-                          className="text-blue-500 text-sm"
-                        >
-                          https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ
-                        </a>
-                      </p>
-                    </div>
-                  )}
-                  {new Date() > new Date(event.deadline) && (
-                    <div className="my-4 w-full text-white bg-red-600 px-4 py-2 font-semibold font-secondary rounded-sm">
-                      Registrations closed!! 😥
-                    </div>
-                  )}
                   {isAdmin && (
                     <div>
                       <a
@@ -183,6 +160,42 @@ const Event = ({ event }: { event: IEvent }) => {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
+                  {isLoggedIn && userRegistered && (
+                    <>
+                      <div className="my-4 w-full text-green-700 bg-green-300 pr-8 pl-4 py-4 font-semibold font-secondary rounded-sm">
+                        <p className="mb-2">
+                          You have registered for {event.eventHeading} 😀
+                        </p>
+                        <p>
+                          Please join this WhatsApp Group -&nbsp;
+                          <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href="https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ"
+                            className="text-blue-500 text-sm"
+                          >
+                            https://chat.whatsapp.com/Cg2lnyouPumBsCm9XvLSfJ
+                          </a>
+                        </p>
+                      </div>
+                      <img
+                        src="https://media1.giphy.com/media/l3q2wJsC23ikJg9xe/giphy.gif?cid=ecf05e47lb5tj26yzegurat29rfvyihte161pfpg8hp8vnyi&rid=giphy.gif&ct=g"
+                        className="w-full"
+                      />
+                    </>
+                  )}
+
+                  {new Date() > new Date(event.deadline) && (
+                    <>
+                      <div className="my-4 w-full text-white bg-red-600 px-4 py-2 font-semibold font-secondary rounded-sm">
+                        Registrations closed!! 😥
+                      </div>
+                      <img
+                        src="https://media4.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif?cid=ecf05e47oq2hecesbo9jm264d3ecybty3clryfoy07chvucq&rid=giphy.gif&ct=g"
+                        className="w-full"
+                      />
+                    </>
+                  )}
                   {new Date(event.deadline) > new Date() && (
                     <>
                       {!userRegistered && (

@@ -95,7 +95,7 @@ const RegistrationForm = ({
         })}
         onSubmit={(values, { resetForm }) => {
           if (
-            event.participationType !== "individual" &&
+            event.participationType !== "Individual" &&
             values.members.length < event.minTeamSize
           ) {
             const remainingMembers = event.minTeamSize - values.members.length;
@@ -163,7 +163,7 @@ const RegistrationForm = ({
                   label="College"
                 />
               </div>
-              {event.participationType !== "individual" && (
+              {event.participationType !== "Individual" && (
                 <>
                   <div>
                     <h1 className="text-white text-xl">Team Details</h1>

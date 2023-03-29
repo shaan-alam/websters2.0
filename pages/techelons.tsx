@@ -27,7 +27,7 @@ export interface IEvent {
   poster: {
     url: string;
   };
-  participationType: string;
+  participationType: "Individual" | "Team";
   slug: string
 }
 
