@@ -25,6 +25,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
+import Truncate from "react-truncate";
 
 const Event = ({ event }: { event: IEvent }) => {
   const [userRegistered, setUserRegistered] = useState(false);
@@ -174,7 +175,9 @@ const Event = ({ event }: { event: IEvent }) => {
                             href={event.whatsAppGroupUrl}
                             className="text-blue-500 text-sm"
                           >
-                            {event.whatsAppGroupUrl}
+                            <Truncate lines={1}>
+                              {event.whatsAppGroupUrl}
+                            </Truncate>
                           </a>
                         </p>
                       </div>
