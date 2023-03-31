@@ -29,7 +29,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
       <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
         <Moment format="DD/MM/YYYY">{event.date}</Moment>
       </time>
-      <h3 className="md:text-2xl  text-xl font-semibold text-white my-4">
+      <h3 className="md:text-6xl text-xl font-semibold text-white my-4">
         {event.eventHeading}
       </h3>
       <Link href={`events/${event.id}`} className={styles.register_btn}>
@@ -48,10 +48,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
         </svg>
       </Link>
       <p className="my-6 font-normal text-gray-500 dark:text-gray-400 text-sm leading-7">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quos
-        similique in eaque laudantium pariatur incidunt debitis nisi natus
-        ipsum!. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Sapiente quos similique in eaque laudantium .
+        {event.tagline}
       </p>
       <img src={event.poster.url} alt={event.eventHeading} className="my-4" />
     </motion.li>

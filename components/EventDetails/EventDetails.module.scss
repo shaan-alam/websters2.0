@@ -1,12 +1,3 @@
 .live-status-block {
-  @apply rounded-sm p-4;
-  background: rgba(255, 255, 255, 0.112);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.112),
-    rgb(0, 0, 0, 0.1)
-  );
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  @apply rounded-md p-4 bg-[#121212];
 }

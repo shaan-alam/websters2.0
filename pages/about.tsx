@@ -2,8 +2,36 @@
 import { Layout, Navbar, TeamCard } from "@/components/";
 import { AnimatedImage, AnimatedLine } from "@/components";
 import styles from "@/styles/About.module.scss";
+import { graphcms } from "./techelons";
+import { GetStaticProps } from "next";
 
-const About = () => {
+export interface ITeam {
+  id: string;
+  instagramUrl: string;
+  linkedInUrl: string;
+  name: string;
+  post: string;
+  photo: {
+    url: string;
+  } | null;
+}
+
+const About = ({
+  team,
+}: {
+  team: {
+    president: ITeam;
+    technicalHeads: ITeam[];
+    creativeHead: ITeam;
+    studentCoordinators: ITeam[];
+    members: ITeam[];
+    coreMembers: ITeam[];
+    secretary: ITeam;
+    generalSecretary: ITeam;
+    treasurer: ITeam;
+  };
+}) => {
+  console.log(team);
   return (
     <Layout>
       <Navbar />
@@ -15,19 +43,19 @@ const About = () => {
         <hr className="text-red-500 w-[100px] block mb-8 mt-2" />
         <AnimatedLine
           text="Empowering the future"
-          className="text-white text-2xl md:text-6xl mt-2 w-full"
+          className="text-white text-xl md:text-6xl mt-2 w-full"
         />
         <AnimatedLine
           text="through innovation"
-          className="text-white text-2xl md:text-6xl my-2 w-full"
+          className="text-white text-xl md:text-6xl my-2 w-full"
         />
         <AnimatedLine
           text="and technology"
-          className="text-white text-2xl md:text-6xl my-2 w-full"
+          className="text-white text-xl md:text-6xl my-2 w-full"
         />
       </div>
       <AnimatedImage
-        src="/about-hero.png"
+        src="/about-hero.webp"
         alt=""
         className="w-full object-cover"
       />
@@ -39,30 +67,23 @@ const About = () => {
           />
           <div className="md:w-1/2">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
-              consequuntur optio nihil error, necessitatibus quae a unde
-              blanditiis debitis architecto iste quidem nobis! Quidem ad, ex
-              nihil assumenda voluptatem dicta!
+              The Department of Computer Science was established in 1984. The
+              Department aims at upholding the cognitivean aspect of education
+              by ensuring academic excellence and the intellectual growth of its
+              students. The department lays prime focus on academics
+              interspersed with co-curricular and extra-curricular activities
+              that bring the versatility of its students to the fore and gives
+              them a sound sense of perspective. The faculty comprises
+              experienced and dedicated teachers who with their expert inputs
+              encourage students to explore new avenues.
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam perferendis id laborum sunt commodi excepturi quos,
-              dolore quam illum ad, cupiditate repellat. Natus cum laborum alias
-              totam earum saepe nisi eaque provident, dolorem error deleniti
-              excepturi officia? Expedita, sed nihil?
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
-              consequuntur optio nihil error, necessitatibus quae a unde
-              blanditiis debitis architecto iste quidem nobis! Quidem ad, ex
-              nihil assumenda voluptatem dicta!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam perferendis id laborum sunt commodi excepturi quos,
-              dolore quam illum ad, cupiditate repellat. Natus cum laborum alias
-              totam earum saepe nisi eaque provident, dolorem error deleniti
-              excepturi officia? Expedita, sed nihil?
+              The computer society “Websters” was started to foster interest in
+              the world of computers and technology. It provides a platform for
+              like-minded brains to communicate with each other and expand their
+              horizons. Every year the Department organizes lectures by eminent
+              people from the industry. The Society celebrates its annual
+              technical fest “Techelons” with great enthusiasm and zeal.
             </p>
           </div>
         </div>
@@ -74,14 +95,22 @@ const About = () => {
           className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
+          <TeamCard member={team.president} />
+          <TeamCard member={team.secretary} />
+          <TeamCard member={team.generalSecretary} />
+          <TeamCard member={team.treasurer} />
+          {team.technicalHeads.map((member) => (
+            <TeamCard member={member} />
+          ))}
+          {team.studentCoordinators.map((member) => (
+            <TeamCard member={member} />
+          ))}
+          {team.coreMembers.map((member) => (
+            <TeamCard member={member} />
+          ))}
+          {team.members.map((member) => (
+            <TeamCard member={member} />
+          ))}
         </div>
       </div>
     </Layout>
@@ -89,3 +118,57 @@ const About = () => {
 };
 
 export default About;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { teams }: { teams: ITeam[] } = await graphcms.request(
+    `
+    query Team {
+      teams() {
+        id
+        instagramUrl
+        linkedInUrl
+        name
+        post
+        photo {
+          url
+        }
+      }
+    }
+    
+  `
+  );
+
+  const president = teams.find((member) => member.post === "President");
+  const technicalHeads = teams.filter(
+    (member) => member.post === "Technical Head"
+  );
+  const creativeHead = teams.find(
+    (member) => member.post === "Creative Head"
+  );
+  const studentCoordinators = teams.filter(
+    (member) => member.post === "Student Coordinator"
+  );
+  const members = teams.filter((member) => member.post === "Member");
+  const coreMembers = teams.filter((member) => member.post === "Core Member");
+  const secretary = teams.find((member) => member.post === "Secretary");
+  const generalSecretary = teams.find(
+    (member) => member.post === "General Secretary"
+  );
+  const treasurer = teams.filter((member) => member.post === "Treasurer");
+
+  return {
+    props: {
+      team: {
+        president,
+        technicalHeads,
+        creativeHead,
+        studentCoordinators,
+        members,
+        coreMembers,
+        secretary,
+        generalSecretary,
+        treasurer,
+      },
+    },
+  };
+};

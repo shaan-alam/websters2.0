@@ -26,6 +26,7 @@ import ReactMarkdown from "react-markdown";
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
 import Truncate from "react-truncate";
+import Suggestions from "@/components/Suggestions";
 
 const Event = ({ event }: { event: IEvent }) => {
   const [userRegistered, setUserRegistered] = useState(false);
@@ -275,6 +276,7 @@ const Event = ({ event }: { event: IEvent }) => {
                 impUsers={impUsers}
                 totalRegisteredUsers={totalRegisteredUsers}
               />
+              <Suggestions currentEvent={event.id} /> 
             </div>
           )}
         </div>
@@ -321,6 +323,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           participationType
           slug
           whatsAppGroupUrl
+          tagline
           eventSponsers {
             url
           }

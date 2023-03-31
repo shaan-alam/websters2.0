@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
 import styles from "./TeamCard.module.scss";
 import { motion, useInView, useAnimationControls } from "framer-motion";
-import {
-  IoLogoFacebook,
-  IoLogoInstagram,
-  IoLogoLinkedin,
-} from "react-icons/io";
+import { IoLogoInstagram, IoLogoLinkedin } from "react-icons/io";
 import AnimatedLine from "../AnimatedLine";
+import { ITeam } from "@/pages/about";
 
 const boxVariants = {
   initial: {
@@ -23,7 +20,7 @@ const boxVariants = {
   },
 };
 
-const TeamCard = () => {
+const TeamCard = ({ member }: { member: ITeam }) => {
   // Card controls
   const cardRef = useRef(null);
   const isCardInView = useInView(cardRef);
@@ -48,15 +45,6 @@ const TeamCard = () => {
   const socialRef = useRef(null);
   const areSocialsInView = useInView(socialRef);
   const socialsControls = useAnimationControls();
-
-  // Card controls
-  useEffect(() => {
-    // if (isCardInView) {
-    //   cardControls.start({ y: 0, opacity: 1 });
-    // } else {
-    //   cardControls.start({ y: "10%", opacity: 0 });
-    // }
-  }, [isCardInView, cardControls]);
 
   // event name controls
   useEffect(() => {
@@ -95,16 +83,10 @@ const TeamCard = () => {
   }, [areSocialsInView, socialsControls]);
 
   return (
-    <div
-      ref={cardRef}
-      className={styles.crosshair_card}
-    >
+    <div ref={cardRef} className={styles.crosshair_card}>
       <div className={styles.card_body}>
         <div className="img_container">
-          <img
-            src="/shaan.png"
-            className="object-cover"
-          />
+          <img src={member.photo?.url} className="h-[400px] w-[400px] object-contain" />
         </div>
         <div className={styles.card_content}>
           <h1 ref={eventNameRef} className={styles.event_name}>
@@ -113,7 +95,7 @@ const TeamCard = () => {
               animate={eventNameControls}
               transition={{ duration: "1" }}
             >
-              Shaan Alam
+              {member.name}
             </motion.div>
           </h1>
           <div className="relative overflow-hidden">
@@ -123,7 +105,7 @@ const TeamCard = () => {
               animate={eventDescriptionControls}
               transition={{ duration: "1" }}
             >
-              Technical Head
+              {member.post}
             </motion.h2>
           </div>
           <motion.div
@@ -133,15 +115,7 @@ const TeamCard = () => {
             className="socials flex items-center justify-between w-1/3 mt-4"
           >
             <a
-              href="#!"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[#a1a1a1] hover:text-primary transition-colors"
-            >
-              <IoLogoFacebook size={25} />
-            </a>
-            <a
-              href="#!"
+              href={member.instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"
@@ -149,7 +123,7 @@ const TeamCard = () => {
               <IoLogoInstagram size={25} />
             </a>
             <a
-              href="#!"
+              href={member.instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"
