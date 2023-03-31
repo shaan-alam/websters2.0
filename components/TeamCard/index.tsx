@@ -20,7 +20,7 @@ const boxVariants = {
   },
 };
 
-const TeamCard = ({ member }: { member: ITeam }) => {
+const TeamCard = () => {
   // Card controls
   const cardRef = useRef(null);
   const isCardInView = useInView(cardRef);
@@ -86,7 +86,10 @@ const TeamCard = ({ member }: { member: ITeam }) => {
     <div ref={cardRef} className={styles.crosshair_card}>
       <div className={styles.card_body}>
         <div className="img_container">
-          <img src={member.photo?.url} className="h-[400px] w-[400px] object-contain" />
+          <img
+            src={'/shaan.png'}
+            className="h-[400px] w-[400px] object-contain"
+          />
         </div>
         <div className={styles.card_content}>
           <h1 ref={eventNameRef} className={styles.event_name}>
@@ -95,7 +98,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
               animate={eventNameControls}
               transition={{ duration: "1" }}
             >
-              {member.name}
+              Shaan
             </motion.div>
           </h1>
           <div className="relative overflow-hidden">
@@ -105,7 +108,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
               animate={eventDescriptionControls}
               transition={{ duration: "1" }}
             >
-              {member.post}
+              Technnical Head
             </motion.h2>
           </div>
           <motion.div
@@ -115,7 +118,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
             className="socials flex items-center justify-between w-1/3 mt-4"
           >
             <a
-              href={member.instagramUrl}
+              href="#!"
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"
@@ -123,7 +126,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
               <IoLogoInstagram size={25} />
             </a>
             <a
-              href={member.instagramUrl}
+              href="#!"
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"

@@ -95,22 +95,7 @@ const About = ({
           className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
-          <TeamCard member={team.president} />
-          <TeamCard member={team.secretary} />
-          <TeamCard member={team.generalSecretary} />
-          <TeamCard member={team.treasurer} />
-          {team.technicalHeads.map((member) => (
-            <TeamCard member={member} />
-          ))}
-          {team.studentCoordinators.map((member) => (
-            <TeamCard member={member} />
-          ))}
-          {team.coreMembers.map((member) => (
-            <TeamCard member={member} />
-          ))}
-          {team.members.map((member) => (
-            <TeamCard member={member} />
-          ))}
+         <TeamCard />
         </div>
       </div>
     </Layout>
@@ -119,56 +104,56 @@ const About = ({
 
 export default About;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { teams }: { teams: ITeam[] } = await graphcms.request(
-    `
-    query Team {
-      teams() {
-        id
-        instagramUrl
-        linkedInUrl
-        name
-        post
-        photo {
-          url
-        }
-      }
-    }
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { teams }: { teams: ITeam[] } = await graphcms.request(
+//     `
+//     query Team {
+//       teams() {
+//         id
+//         instagramUrl
+//         linkedInUrl
+//         name
+//         post
+//         photo {
+//           url
+//         }
+//       }
+//     }
     
-  `
-  );
+//   `
+//   );
 
-  const president = teams.find((member) => member.post === "President");
-  const technicalHeads = teams.filter(
-    (member) => member.post === "Technical Head"
-  );
-  const creativeHead = teams.find(
-    (member) => member.post === "Creative Head"
-  );
-  const studentCoordinators = teams.filter(
-    (member) => member.post === "Student Coordinator"
-  );
-  const members = teams.filter((member) => member.post === "Member");
-  const coreMembers = teams.filter((member) => member.post === "Core Member");
-  const secretary = teams.find((member) => member.post === "Secretary");
-  const generalSecretary = teams.find(
-    (member) => member.post === "General Secretary"
-  );
-  const treasurer = teams.filter((member) => member.post === "Treasurer");
+//   const president = teams.find((member) => member.post === "President");
+//   const technicalHeads = teams.filter(
+//     (member) => member.post === "Technical Head"
+//   );
+//   const creativeHead = teams.find(
+//     (member) => member.post === "Creative Head"
+//   );
+//   const studentCoordinators = teams.filter(
+//     (member) => member.post === "Student Coordinator"
+//   );
+//   const members = teams.filter((member) => member.post === "Member");
+//   const coreMembers = teams.filter((member) => member.post === "Core Member");
+//   const secretary = teams.find((member) => member.post === "Secretary");
+//   const generalSecretary = teams.find(
+//     (member) => member.post === "General Secretary"
+//   );
+//   const treasurer = teams.filter((member) => member.post === "Treasurer");
 
-  return {
-    props: {
-      team: {
-        president,
-        technicalHeads,
-        creativeHead,
-        studentCoordinators,
-        members,
-        coreMembers,
-        secretary,
-        generalSecretary,
-        treasurer,
-      },
-    },
-  };
-};
+//   return {
+//     props: {
+//       team: {
+//         president,
+//         technicalHeads,
+//         creativeHead,
+//         studentCoordinators,
+//         members,
+//         coreMembers,
+//         secretary,
+//         generalSecretary,
+//         treasurer,
+//       },
+//     },
+//   };
+// };
