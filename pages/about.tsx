@@ -16,22 +16,7 @@ export interface ITeam {
   } | null;
 }
 
-const About = ({
-  team,
-}: {
-  team: {
-    president: ITeam;
-    technicalHeads: ITeam[];
-    creativeHead: ITeam;
-    studentCoordinators: ITeam[];
-    members: ITeam[];
-    coreMembers: ITeam[];
-    secretary: ITeam;
-    generalSecretary: ITeam;
-    treasurer: ITeam;
-  };
-}) => {
-  console.log(team);
+const About = () => {
   return (
     <Layout>
       <Navbar />
@@ -95,7 +80,7 @@ const About = ({
           className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
-         <TeamCard />
+          <TeamCard />
         </div>
       </div>
     </Layout>
@@ -119,7 +104,7 @@ export default About;
 //         }
 //       }
 //     }
-    
+
 //   `
 //   );
 
