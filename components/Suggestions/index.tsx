@@ -11,7 +11,6 @@ interface Suggestion {
 }
 
 const Suggestions = ({ currentEvent }: { currentEvent: string }) => {
-  const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   useEffect(() => {
@@ -31,14 +30,14 @@ const Suggestions = ({ currentEvent }: { currentEvent: string }) => {
       setSuggestions(event.filter((e) => e.id !== currentEvent).slice(0, 4));
     };
     fetchEvents();
-  }, []);
+  }, [currentEvent]);
 
   return (
     <div className="suggestions-wrapper mt-20">
       <h1 className="mb-4 text-2xl">Check out other events!</h1>
       <div className="suggestions-container sm:grid grid-cols-2 gap-8">
         {suggestions.map((suggestion) => (
-          <Link href={`/events/${suggestion.id}`}>
+          <Link href={`/events/${suggestion.id}`} key={suggestion.id}>
             <div className="event p-4 bg-[#121212] rounded-md mt-6 hover:scale-105 transition-all">
               <img src={suggestion.poster.url} alt="" className="rounded-md" />
               <h1 className="mt-4">{suggestion.eventHeading}</h1>
