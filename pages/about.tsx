@@ -11,7 +11,7 @@ export interface ITeam {
   linkedInUrl: string;
   name: string;
   post: string;
-  photo: {
+  photo: {  
     url: string;
   } | null;
 }
@@ -28,15 +28,15 @@ const About = () => {
         <hr className="text-red-500 w-[100px] block mb-8 mt-2" />
         <AnimatedLine
           text="Empowering the future"
-          className="text-white text-xl md:text-6xl mt-2 w-full"
+          className="text-white text-xl md:text-6xl mt-2 w-full uppercase"
         />
         <AnimatedLine
           text="through innovation"
-          className="text-white text-xl md:text-6xl my-2 w-full"
+          className="text-white text-xl md:text-6xl my-2 w-full uppercase"
         />
         <AnimatedLine
           text="and technology"
-          className="text-white text-xl md:text-6xl my-2 w-full"
+          className="text-white text-xl md:text-6xl my-2 w-full uppercase"
         />
       </div>
       <AnimatedImage
@@ -51,7 +51,7 @@ const About = () => {
             className="text-white text-2xl md:text-6xl mt-2 w-full"
           />
           <div className="md:w-1/2">
-            <p>
+            <p className="font-primary text-xl leading-7 my-4">
               The Department of Computer Science was established in 1984. The
               Department aims at upholding the cognitivean aspect of education
               by ensuring academic excellence and the intellectual growth of its
@@ -62,7 +62,7 @@ const About = () => {
               experienced and dedicated teachers who with their expert inputs
               encourage students to explore new avenues.
             </p>
-            <p>
+            <p className="font-primary text-xl leading-7 my-4">
               The computer society “Websters” was started to foster interest in
               the world of computers and technology. It provides a platform for
               like-minded brains to communicate with each other and expand their

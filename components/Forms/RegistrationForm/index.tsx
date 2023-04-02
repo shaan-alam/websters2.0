@@ -52,8 +52,6 @@ const RegistrationForm = ({
 }: IProps) => {
   const { user } = useContext(Context) as ContextType;
 
-  const [] = useState();
-
   return (
     <div className="mt-8">
       <Formik
@@ -185,7 +183,7 @@ const RegistrationForm = ({
                           onClick={() => {
                             setTeamModal(true);
                           }}
-                          className="px-4 py-2 bg-[#333] text-white text-sm inline-block rounded-md"
+                          className="px-4 py-2 bg-[#333] text-white text-base inline-block rounded-md"
                         >
                           Add a team member
                         </a>
@@ -250,10 +248,10 @@ const RegistrationForm = ({
                               src={member.avatar}
                               className="rounded-full h-20 w-20 my-4"
                             />
-                            <h1 className="text-white mb-2 font-secondary">
+                            <h1 className="text-white mb-2 font-primary text-3xl">
                               {member.name}
                             </h1>
-                            <h1 className="text-gray-400 mb-2 font-secondary text-sm">
+                            <h1 className="text-gray-400 mb-2 font-primary text-lg">
                               {member.email}
                             </h1>
                           </div>

@@ -17,7 +17,7 @@ a {
 
 p,
 a {
-  @apply font-secondary;
+  @apply font-primary text-lg;
 }
 
 html,
@@ -30,6 +30,11 @@ body {
 @font-face {
   font-family: "stratumno1";
   src: url("../public/stratumno1-black.ttf");
+}
+
+@font-face {
+  font-family: "Origin Tech";
+  src: url("../public/OriginTech.ttf");
 }
 
 @font-face {

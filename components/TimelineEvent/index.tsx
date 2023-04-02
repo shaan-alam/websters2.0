@@ -26,12 +26,15 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
       animate={eventControls}
     >
       <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-      <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+      <time className="mb-1 text-base font-normal leading-none text-gray-400 dark:text-gray-500">
         <Moment format="DD/MM/YYYY">{event.date}</Moment>
       </time>
-      <h3 className="md:text-6xl text-xl font-semibold text-white my-4">
+      <h3 className="md:text-6xl text-xl font-semibold text-white my-4 uppercase">
         {event.eventHeading}
       </h3>
+      <p className="my-6 font-normal text-gray-500 dark:text-gray-400 text-2xl leading-7">
+        {event.tagline}
+      </p>
       <Link href={`events/${event.id}`} className={styles.register_btn}>
         Register
         <svg
@@ -47,9 +50,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
           ></path>
         </svg>
       </Link>
-      <p className="my-6 font-normal text-gray-500 dark:text-gray-400 text-sm leading-7">
-        {event.tagline}
-      </p>
+
       <img src={event.poster.url} alt={event.eventHeading} className="my-4" />
     </motion.li>
   );

@@ -105,7 +105,7 @@ const Navbar = () => {
               <Link href="/techelons">Techelons</Link>
             </li>
             <li>
-              <Link href="/about">Contact Us</Link>
+              <Link href="/contact">Contact Us</Link>
             </li>
           </motion.ul>
         </div>
