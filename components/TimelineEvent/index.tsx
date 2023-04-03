@@ -4,6 +4,8 @@ import { motion, useAnimationControls, useInView } from "framer-motion";
 import Link from "next/link";
 import styles from "./TimelineEvent.module.scss";
 import Moment from "react-moment";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import Truncate from "react-truncate";
 
 const TimelineEvent = ({ event }: { event: IEvent }) => {
   const eventRef = useRef(null);
@@ -25,14 +27,15 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
       animate={eventControls}
     >
       <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-      <time className="mb-1 text-base font-normal leading-none text-gray-400 dark:text-gray-500">
-        <Moment format="DD/MM/YYYY">{event.date}</Moment>
-      </time>
-      <h3 className="md:text-6xl text-xl font-semibold text-white my-4 uppercase">
+      <img src={event.poster.url} alt={event.eventHeading} className="my-4" />
+      <h3 className="md:text-3xl text-xl font-semibold text-white my-4 uppercase">
         {event.eventHeading}
       </h3>
-      <p className="my-6 font-normal text-gray-500 dark:text-gray-400 text-2xl leading-7">
-        {event.tagline}
+      <div className="mt-4 mb-6 text-lg font-normal leading-none text-gray-400">
+        <Moment format="DD/MM/YYYY">{event.date}</Moment>
+      </div>
+      <p className="my-6 font-secondary text-gray-500  leading-9">
+        <ReactMarkdown>{event?.caption?.markdown}</ReactMarkdown>
       </p>
       <Link href={`events/${event.id}`} className={styles.register_btn}>
         Register
@@ -49,8 +52,6 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
           ></path>
         </svg>
       </Link>
-
-      <img src={event.poster.url} alt={event.eventHeading} className="my-4" />
     </motion.li>
   );
 };

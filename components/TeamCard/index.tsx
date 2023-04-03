@@ -2,29 +2,11 @@ import { useEffect, useRef } from "react";
 import styles from "./TeamCard.module.scss";
 import { motion, useInView, useAnimationControls } from "framer-motion";
 import { IoLogoInstagram, IoLogoLinkedin } from "react-icons/io";
-import AnimatedLine from "../AnimatedLine";
 import { ITeam } from "@/pages/about";
 
-const boxVariants = {
-  initial: {
-    y: "20%",
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      staggerChildren: 0.5,
-    },
-  },
-};
-
-const TeamCard = () => {
+const TeamCard = ({ member }: { member: ITeam }) => {
   // Card controls
   const cardRef = useRef(null);
-  const isCardInView = useInView(cardRef);
-  const cardControls = useAnimationControls();
 
   // Event Name controls
   const eventNameRef = useRef(null);
@@ -50,8 +32,6 @@ const TeamCard = () => {
   useEffect(() => {
     if (isEventNameInView) {
       eventNameControls.start({ y: 0, opacity: 1 });
-    } else {
-      eventNameControls.start({ y: "44%", opacity: 0 });
     }
   }, [isEventNameInView, eventNameControls]);
 
@@ -59,8 +39,6 @@ const TeamCard = () => {
   useEffect(() => {
     if (isEventDescriptionInView) {
       eventDescriptionControls.start({ y: 0, opacity: 1 });
-    } else {
-      eventDescriptionControls.start({ y: "24%", opacity: 0 });
     }
   }, [isEventDescriptionInView, eventDescriptionControls]);
 
@@ -68,8 +46,6 @@ const TeamCard = () => {
   useEffect(() => {
     if (isEventImageInView) {
       eventImageControls.start({ opacity: 1 });
-    } else {
-      eventImageControls.start({ opacity: 0 });
     }
   }, [isEventImageInView, eventImageControls]);
 
@@ -77,8 +53,6 @@ const TeamCard = () => {
   useEffect(() => {
     if (areSocialsInView) {
       socialsControls.start({ opacity: 1 });
-    } else {
-      socialsControls.start({ opacity: 0 });
     }
   }, [areSocialsInView, socialsControls]);
 
@@ -87,7 +61,7 @@ const TeamCard = () => {
       <div className={styles.card_body}>
         <div className="img_container">
           <img
-            src={'/shaan.png'}
+            src={member.photo?.url}
             className="h-[400px] w-[400px] object-contain"
           />
         </div>
@@ -98,7 +72,7 @@ const TeamCard = () => {
               animate={eventNameControls}
               transition={{ duration: "1" }}
             >
-              Shaan
+              {member.name}
             </motion.div>
           </h1>
           <div className="relative overflow-hidden">
@@ -108,7 +82,7 @@ const TeamCard = () => {
               animate={eventDescriptionControls}
               transition={{ duration: "1" }}
             >
-              Technnical Head
+              {member.post}
             </motion.h2>
           </div>
           <motion.div
@@ -118,7 +92,7 @@ const TeamCard = () => {
             className="socials flex items-center justify-between w-1/3 mt-4"
           >
             <a
-              href="#!"
+              href={member.instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"
@@ -126,7 +100,7 @@ const TeamCard = () => {
               <IoLogoInstagram size={25} />
             </a>
             <a
-              href="#!"
+              href={member.linkedInUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#a1a1a1] hover:text-primary transition-colors"

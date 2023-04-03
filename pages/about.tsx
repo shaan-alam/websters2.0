@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Layout, Navbar, TeamCard } from "@/components/";
+import { Footer, Layout, Navbar, TeamCard } from "@/components/";
 import { AnimatedImage, AnimatedLine } from "@/components";
 import styles from "@/styles/About.module.scss";
 import { graphcms } from "./techelons";
@@ -11,18 +11,35 @@ export interface ITeam {
   linkedInUrl: string;
   name: string;
   post: string;
-  photo: {  
+  photo: {
     url: string;
   } | null;
 }
 
-const About = () => {
+const About = ({
+  team,
+}: {
+  team: {
+    president: ITeam;
+    technicalHeads: ITeam[];
+    creativeHead: ITeam;
+    studentCoordinators: ITeam[];
+    members: ITeam[];
+    coreMembers: ITeam[];
+    treasurer: ITeam;
+    secretary: ITeam;
+  };
+}) => {
   return (
     <Layout>
       <Navbar />
-      <span className="absolute h-[150px] w-[150px] left-0 rounded-full lg:h-[400px] lg:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
-      <span className="absolute top-[50rem] h-[100px] w-[200px] right-0 rounded-full lg:h-[400px] lg:w-[500px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-      <span className="absolute top-[100rem] right-10 h-[100px] left-0 w-[100px] rounded-full md:h-[400px] md:w-[500px] bg-blue-700 blur-[100px] md:blur-[400px]"></span>
+      <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px]  md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute top-[100rem] right-10 sm:h-[500px] w-[200px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute h-[100px] top-[150rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute h-[100px] top-[200rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute h-[100px] top-[250rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
+      <span className="absolute h-[100px] top-[300rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
       <div className="w-[80%] mx-auto my-8">
         <h1 className="text-white">About Us</h1>
         <hr className="text-red-500 w-[100px] block mb-8 mt-2" />
@@ -51,7 +68,7 @@ const About = () => {
             className="text-white text-2xl md:text-6xl mt-2 w-full"
           />
           <div className="md:w-1/2">
-            <p className="font-primary text-xl leading-7 my-4">
+            <p className="font-secondary leading-7 my-4">
               The Department of Computer Science was established in 1984. The
               Department aims at upholding the cognitivean aspect of education
               by ensuring academic excellence and the intellectual growth of its
@@ -62,7 +79,7 @@ const About = () => {
               experienced and dedicated teachers who with their expert inputs
               encourage students to explore new avenues.
             </p>
-            <p className="font-primary text-xl leading-7 my-4">
+            <p className="font-secondary leading-7 my-4">
               The computer society “Websters” was started to foster interest in
               the world of computers and technology. It provides a platform for
               like-minded brains to communicate with each other and expand their
@@ -80,65 +97,88 @@ const About = () => {
           className="text-white text-2xl md:text-6xl mt-2 w-full"
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
-          <TeamCard />
+          <TeamCard member={team.president} />
+          {team.technicalHeads.map((member) => (
+            <TeamCard member={member} key={member.id} />
+          ))}
+          <TeamCard member={team.creativeHead} />
+          <TeamCard member={team.treasurer} />
+          <TeamCard member={team.secretary} />
+          {team.studentCoordinators.map((member) => (
+            <TeamCard member={member} key={member.id} />
+          ))}
+          {team.coreMembers.map((member) => (
+            <TeamCard member={member} key={member.id} />
+          ))}
+          {team.members.map((member) => (
+            <TeamCard member={member} key={member.id} />
+          ))}
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 };
 
 export default About;
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const { teams }: { teams: ITeam[] } = await graphcms.request(
-//     `
-//     query Team {
-//       teams() {
-//         id
-//         instagramUrl
-//         linkedInUrl
-//         name
-//         post
-//         photo {
-//           url
-//         }
-//       }
-//     }
+export const getStaticProps: GetStaticProps = async () => {
+  const { teams }: { teams: ITeam[] } = await graphcms.request(
+    `
+    query Team {
+      teams() {
+        id
+        instagramUrl
+        linkedInUrl
+        name
+        post
+        photo {
+          url
+        }
+      }
+    }
 
-//   `
-//   );
+  `
+  );
 
-//   const president = teams.find((member) => member.post === "President");
-//   const technicalHeads = teams.filter(
-//     (member) => member.post === "Technical Head"
-//   );
-//   const creativeHead = teams.find(
-//     (member) => member.post === "Creative Head"
-//   );
-//   const studentCoordinators = teams.filter(
-//     (member) => member.post === "Student Coordinator"
-//   );
-//   const members = teams.filter((member) => member.post === "Member");
-//   const coreMembers = teams.filter((member) => member.post === "Core Member");
-//   const secretary = teams.find((member) => member.post === "Secretary");
-//   const generalSecretary = teams.find(
-//     (member) => member.post === "General Secretary"
-//   );
-//   const treasurer = teams.filter((member) => member.post === "Treasurer");
+  const president = teams.find(
+    (member) => member.post.trim().toLowerCase() === "president"
+  );
+  const technicalHeads = teams.filter(
+    (member) => member.post === "Technical Head"
+  );
+  const creativeHead = teams.find(
+    (member) => member.post.trim().toLowerCase() === "creative head"
+  );
+  const studentCoordinators = teams.filter(
+    (member) => member.post === "Student Coordinator"
+  );
+  const members = teams.filter(
+    (member) => member.post.trim().toLowerCase() === "member"
+  );
+  const coreMembers = teams.filter(
+    (member) => member.post.trim().toLowerCase() === "core member"
+  );
+  const secretary = teams.find(
+    (member) => member.post.trim().toLowerCase() === "secretary"
+  );
 
-//   return {
-//     props: {
-//       team: {
-//         president,
-//         technicalHeads,
-//         creativeHead,
-//         studentCoordinators,
-//         members,
-//         coreMembers,
-//         secretary,
-//         generalSecretary,
-//         treasurer,
-//       },
-//     },
-//   };
-// };
+  const treasurer = teams.find(
+    (member) => member.post.trim().toLowerCase() === "treasurer"
+  );
+
+  return {
+    props: {
+      team: {
+        president,
+        technicalHeads,
+        creativeHead,
+        studentCoordinators,
+        members,
+        coreMembers,
+        treasurer,
+        secretary,
+      },
+    },
+  };
+};

@@ -17,7 +17,11 @@ a {
 
 p,
 a {
-  @apply font-primary text-lg;
+  @apply font-secondary;
+}
+
+p {
+  @apply leading-7;
 }
 
 html,

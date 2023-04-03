@@ -311,6 +311,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
           description {
             markdown
           }
+          caption {
+            markdown
+          },
           deadline
           eventHeading
           date
@@ -346,6 +349,9 @@ export const getStaticPaths = async () => {
         description {
           markdown
         }
+        caption {
+          markdown
+        },
         deadline
         eventHeading
         date

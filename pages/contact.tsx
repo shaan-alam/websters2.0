@@ -15,14 +15,14 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="w-[80%] mx-auto my-24">
+      <div className="w-[90%] sm:w-[80%] mx-auto my-24">
         <div className="lg:grid grid-cols-2 gap-24">
           <div className="col-left">
             <AnimatedLine
               text="Get in touch with us!"
               className="text-white text-xl sm:text-4xl md:text-5xl uppercase"
             />
-            <p className="text-gray-400 mt-4 text-xl w-full md:w-[80%]">
+            <p className="text-gray-400 mt-4 w-full md:w-[80%]">
               If you have any query or doubt, feel free to contact us. Our
               socials are mentioned below 👇
             </p>
@@ -96,7 +96,7 @@ const Contact = () => {
                       formik={formik}
                       label="Email"
                       name="email"
-                      placeholder="John Doe"
+                      placeholder="johndoe@gmail.com"
                       type="Email"
                     />
                     <FormInput

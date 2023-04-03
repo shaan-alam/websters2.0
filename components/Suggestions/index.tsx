@@ -8,6 +8,7 @@ interface Suggestion {
   poster: {
     url: string;
   };
+  tagline: string;
 }
 
 const Suggestions = ({ currentEvent }: { currentEvent: string }) => {
@@ -20,6 +21,7 @@ const Suggestions = ({ currentEvent }: { currentEvent: string }) => {
         event() {
           id    
           eventHeading
+          tagline
           poster {
             url
           }
@@ -42,8 +44,7 @@ const Suggestions = ({ currentEvent }: { currentEvent: string }) => {
               <img src={suggestion.poster.url} alt="" className="rounded-md" />
               <h1 className="mt-4">{suggestion.eventHeading}</h1>
               <p className="text-gray-400 text-sm mt-2 leading-7">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-                quae!
+                {suggestion.tagline}
               </p>
             </div>
           </Link>

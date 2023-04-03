@@ -25,6 +25,9 @@ export interface IEvent {
   description: {
     markdown: string;
   };
+  caption: {
+    markdown: string;
+  } | null;
   deadline: string;
   eventHeading: string;
   date: string;
@@ -274,6 +277,9 @@ export const getStaticProps: GetStaticProps = async () => {
       event {
         id,
         description{
+          markdown
+        },
+        caption {
           markdown
         },
         deadline,

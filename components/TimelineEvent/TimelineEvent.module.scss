@@ -12,14 +12,9 @@
 }
 
 .register_btn {
-  @apply inline-flex items-center py-2 font-medium bg-gray-600 px-5 text-white relative;
+  @apply inline-flex items-center py-2 font-medium font-secondary bg-gray-600 px-5 text-white relative mb-6;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
   background: rgba(255, 255, 255, 0.112);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.112),
-    rgb(0, 0, 0, 0.1)
-  );
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.08);

@@ -14,7 +14,7 @@ module.exports = {
         primary: "#fff"
       },
       fontFamily: {
-        'primary': ['StratumNo1', 'sans-serif'],
+        'primary': ['Aquire', 'sans-serif'],
         'secondary': ['montserrat', 'sans-serif']
       }
     },
