@@ -35,7 +35,7 @@ const TimelineEvent = ({ event }: { event: IEvent }) => {
         <Moment format="DD/MM/YYYY">{event.date}</Moment>
       </div>
       <p className="my-6 font-secondary text-gray-500  leading-9">
-        <ReactMarkdown>{event?.caption?.markdown}</ReactMarkdown>
+        {/* <ReactMarkdown>{event?.caption?.markdown}</ReactMarkdown> */}
       </p>
       <Link href={`events/${event.id}`} className={styles.register_btn}>
         Register

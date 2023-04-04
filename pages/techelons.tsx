@@ -1,24 +1,17 @@
-import styles from "../styles/Techelons.module.scss";
+import styles from "@/styles/Techelons.module.scss";
 import AnimatedText from "@/components/AnimatedLine";
 import { GetStaticProps } from "next";
 import {
   Navbar,
   AnimatedLine,
   Layout,
-  Button,
   TimelineEvent,
   AnimatedImage,
   Footer,
   Sponsers,
-  Model,
-  StarsCanvas,
 } from "@/components";
 import { GraphQLClient } from "graphql-request";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { Environment, OrbitControls, Stars } from "@react-three/drei";
-import Link from "next/link";
 
 export interface IEvent {
   id: string;
@@ -63,12 +56,12 @@ export const graphcms = new GraphQLClient(
 
 const Techelons = ({
   events,
-  speakers,
+  speaker,
 }: {
   events: IEvent[];
-  speakers: ISpeaker[];
+  speaker: ISpeaker;
 }) => {
-  console.log(speakers);
+  console.log(speaker);
   return (
     <Layout>
       <Navbar />
@@ -84,8 +77,6 @@ const Techelons = ({
           <span className="absolute h-[100px] top-[350rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute h-[100px] top-[400rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute h-[100px] top-[450rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-          <span className="absolute h-[100px] top-[500rem] right-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
-          <span className="absolute h-[100px] top-[550rem] left-10 w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
         </section>
         <section className="h-auto flex flex-col justify-center about-techelons">
           <div className="w-[80%] mx-auto">
@@ -217,47 +208,25 @@ const Techelons = ({
         <section className="speakers-section my-24">
           <div className="w-[80%] mx-auto">
             <AnimatedLine
-              text="Speakers"
+              text="Speaker"
               className="text-white my-4 text-2xl md:text-4xl"
             />
             <div className="md:grid grid-cols-2 gap-8 my-6">
               <div className="col-left">
                 <AnimatedImage
-                  src={speakers[0].speakerImg.url}
+                  src={speaker.speakerImg.url}
                   alt=""
                   className="my-8 mx-auto speaker-img h-[360px] w-[360px] object-cover"
                 />
               </div>
               <div className="col-right">
                 <AnimatedLine
-                  text={speakers[0].name}
+                  text={speaker.name}
                   className="text-white my-4 text-2xl md:text-6xl"
                 />
-                <div className="text-white leading-7 font-primary">
-                  <ReactMarkdown>
-                    {speakers[0].description.markdown}
-                  </ReactMarkdown>
+                <div className={styles['event-description']}>
+                  <ReactMarkdown>{speaker.description.markdown}</ReactMarkdown>
                 </div>
-              </div>
-            </div>
-            <div className="flex flex-col-reverse md:flex-row my-24">
-              <div className="col-right w-full md:w-1/2 md:mr-8">
-                <AnimatedLine
-                  text={speakers[0].name}
-                  className="text-white my-4 text-2xl md:text-6xl"
-                />
-                <div className="text-white leading-7 font-primary">
-                  <ReactMarkdown>
-                    {speakers[0].description.markdown}
-                  </ReactMarkdown>
-                </div>
-              </div>
-              <div className="col-left w-full md:w-1/2">
-                <AnimatedImage
-                  src={speakers[0].speakerImg.url}
-                  alt=""
-                  className="my-8 mx-auto speaker-img h-[360px] w-[360px] object-cover"
-                />
               </div>
             </div>
           </div>
@@ -322,7 +291,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       events: event,
-      speakers,
+      speaker: speakers[0],
     },
   };
 };

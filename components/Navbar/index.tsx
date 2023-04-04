@@ -81,9 +81,9 @@ const Navbar = () => {
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/gallery">Gallery</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/about">About</Link>
             </li>
@@ -94,12 +94,13 @@ const Navbar = () => {
                   initial={{ opacity: 0 }}
                   animate={logoControls}
                 >
-                  <img src={navActive ? "/logo-black.svg": "/logo.svg"} alt="Techelons" className="w-8 h-8" />
+                  <img
+                    src={navActive ? "/logo-black.svg" : "/logo.svg"}
+                    alt="Techelons"
+                    className="w-8 h-8"
+                  />
                 </motion.div>
               </Link>
-            </li>
-            <li>
-              <Link href="/events">Events</Link>
             </li>
             <li>
               <Link href="/techelons">Techelons</Link>

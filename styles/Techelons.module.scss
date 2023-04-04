@@ -11,3 +11,10 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.event_description {
+  @apply text-white leading-7 font-primary hidden;
+
+  p {
+    @apply my-4;
+  }
+}

@@ -72,3 +72,11 @@
 .download_btn {
   @apply my-6 font-secondary;
 }
+
+.event_description {
+  @apply mt-12 font-secondary leading-8;
+
+  p {
+    @apply my-4;
+  }
+}

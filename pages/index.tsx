@@ -93,7 +93,7 @@ const App = () => {
               className="text-center md:text-left text-gray-500 md:w-3/4 w-full lg:-mt-8 leading-7"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, ease: "easeInOut" }}
+              transition={{ delay: 0.5, ease: "easeInOut" }}
             >
               The Computer Science Society of Shivaji College.The Department of
               Computer Science was established in 1984. The Department aims at
@@ -104,7 +104,7 @@ const App = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.3, ease: "easeInOut" }}
+                transition={{ delay: 1, ease: "easeInOut" }}
                 className="relative block"
               >
                 <Button className="mt-8">Get Started</Button>
@@ -201,35 +201,6 @@ const App = () => {
                 each other and expand their horizons.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about-techelons" className="my-20 md:my-48">
-        <div className="w-[80%] mx-auto block md:grid grid-cols-2 gap-12">
-          <div className="left-col my-4 md:my-0">
-            <AnimatedLine
-              text="About Techelons"
-              className="text-2xl md:text-4xl font-bold text-primary uppercase"
-            />
-            <div className="text-gray-500">
-              <p className="my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Veritatis saepe, aliquid nesciunt vero ducimus, corporis dolor
-                reiciendis libero cupiditate perferendis quos ipsam vel?
-                Aperiam, corporis fugiat. Iusto molestiae labore laboriosam?
-              </p>
-              <p className="my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus quod iusto eligendi ab repellat aut vel officiis!
-                Itaque vel neque possimus, molestias consectetur cum in ratione
-                sequi error natus molestiae distinctio facere accusamus, minima
-                facilis autem sint unde! Delectus, quam!
-              </p>
-            </div>
-          </div>
-          <div className="right-col">
-            <img src="/techelons.png" alt="Techelons" />
           </div>
         </div>
       </section>

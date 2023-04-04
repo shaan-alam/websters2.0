@@ -157,7 +157,7 @@ const Event = ({ event }: { event: IEvent }) => {
                       </a>
                     </div>
                   )}
-                  <div className="mt-12 font-secondary leading-8">
+                  <div className={styles.event_description}>
                     <ReactMarkdown>{event.description.markdown}</ReactMarkdown>
                   </div>
                 </Tab.Panel>
