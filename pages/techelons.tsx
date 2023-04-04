@@ -62,7 +62,7 @@ const Techelons = ({
   speaker: ISpeaker;
 }) => {
   return (
-    <Layout>
+    <Layout title="Techelons - The Annual Tech Fest of Shivaji College">
       <Navbar />
       <div className="wrapper">
         <section className={styles.wrapper}>
@@ -137,7 +137,7 @@ const Techelons = ({
             </div>
           </div>
         </section>
-{/* 
+        {/* 
         <section className="sponsers-section my-24">
           <div className="w-[80%] mx-auto">
             <AnimatedLine

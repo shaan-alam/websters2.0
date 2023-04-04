@@ -60,10 +60,17 @@ const TeamCard = ({ member }: { member: ITeam }) => {
     <div ref={cardRef} className={styles.crosshair_card}>
       <div className={styles.card_body}>
         <div className="img_container">
-          <img
-            src={member.photo?.url}
-            className="h-[400px] w-[400px] object-contain"
-          />
+          {member.photo != null ? (
+            <img
+              src={member.photo?.url}
+              className="h-[400px] w-[400px] object-contain"
+            />
+          ) : (
+            <h1 className="text-white text-6xl">INSECURE CHUTIYA</h1>
+          )}
+          {member.photo === null && (
+            <p className="text-white">Inhone photo ni bheji apni</p>
+          )}
         </div>
         <div className={styles.card_content}>
           <h1 ref={eventNameRef} className={styles.event_name}>

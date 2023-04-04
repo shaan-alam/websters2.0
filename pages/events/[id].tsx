@@ -97,7 +97,7 @@ const Event = ({ event }: { event: IEvent }) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title={`${event.eventHeading} - Techelons'23`}>
       <Navbar />
       <span className="absolute top-[30rem] right-0 hidden sm:block h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
       <span className="absolute top-[25rem] hidden sm:block h-[200px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[350px] md:blur-[400px]"></span>
@@ -162,32 +162,34 @@ const Event = ({ event }: { event: IEvent }) => {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  {isLoggedIn && userRegistered && (
-                    <>
-                      <div className="my-4 w-full text-green-700 bg-green-300 pr-8 pl-4 py-4 font-semibold font-secondary rounded-sm">
-                        <p className="mb-2">
-                          You have registered for {event.eventHeading} 😀
-                        </p>
-                        <p>
-                          Please join this WhatsApp Group -&nbsp;
-                          <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href={event.whatsAppGroupUrl}
-                            className="text-blue-500 text-sm"
-                          >
-                            <Truncate lines={1}>
-                              {event.whatsAppGroupUrl}
-                            </Truncate>
-                          </a>
-                        </p>
-                      </div>
-                      <img
-                        src="https://media1.giphy.com/media/l3q2wJsC23ikJg9xe/giphy.gif?cid=ecf05e47lb5tj26yzegurat29rfvyihte161pfpg8hp8vnyi&rid=giphy.gif&ct=g"
-                        className="w-full"
-                      />
-                    </>
-                  )}
+                  {isLoggedIn &&
+                    userRegistered &&
+                    new Date() < new Date(event.deadline) && (
+                      <>
+                        <div className="my-4 w-full text-green-700 bg-green-300 pr-8 pl-4 py-4 font-semibold font-secondary rounded-sm">
+                          <p className="mb-2">
+                            You have registered for {event.eventHeading} 😀
+                          </p>
+                          <p>
+                            Please join this WhatsApp Group -&nbsp;
+                            <a
+                              rel="noreferrer"
+                              target="_blank"
+                              href={event.whatsAppGroupUrl}
+                              className="text-blue-500 text-sm"
+                            >
+                              <Truncate lines={1}>
+                                {event.whatsAppGroupUrl}
+                              </Truncate>
+                            </a>
+                          </p>
+                        </div>
+                        <img
+                          src="https://media1.giphy.com/media/l3q2wJsC23ikJg9xe/giphy.gif?cid=ecf05e47lb5tj26yzegurat29rfvyihte161pfpg8hp8vnyi&rid=giphy.gif&ct=g"
+                          className="w-full"
+                        />
+                      </>
+                    )}
 
                   {new Date() > new Date(event.deadline) && (
                     <>
@@ -268,17 +270,17 @@ const Event = ({ event }: { event: IEvent }) => {
             </Tab.Group>
           </div>
 
-          {new Date(event.deadline) > new Date() && (
-            <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
+          <div className="col-right mt-12 md:mt-28 w-full md:w-[35%]">
+            {new Date(event.deadline) > new Date() && (
               <EventDetails
                 amIRegistered={userRegistered}
                 event={event}
                 impUsers={impUsers}
                 totalRegisteredUsers={totalRegisteredUsers}
               />
-              <Suggestions currentEvent={event.id} /> 
-            </div>
-          )}
+            )}
+            <Suggestions currentEvent={event.id} />
+          </div>
         </div>
         {successModal && (
           <ThankYou

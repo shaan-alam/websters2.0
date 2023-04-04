@@ -28,10 +28,12 @@ const About = ({
     coreMembers: ITeam[];
     treasurer: ITeam;
     secretary: ITeam;
+    socialMediaHead: ITeam;
+    vicePresident: ITeam;
   };
 }) => {
   return (
-    <Layout>
+    <Layout title="About Us">
       <Navbar />
       <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
       <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px]  md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
@@ -98,6 +100,7 @@ const About = ({
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
           <TeamCard member={team.president} />
+          <TeamCard member={team.vicePresident} />
           {team.technicalHeads.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
@@ -113,6 +116,7 @@ const About = ({
           {team.members.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
+          <TeamCard member={team.socialMediaHead} />
         </div>
       </div>
       <Footer />
@@ -144,6 +148,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const president = teams.find(
     (member) => member.post.trim().toLowerCase() === "president"
   );
+
+  const vicePresident = teams.find(
+    (member) => member.post.trim().toLowerCase() === "vice president"
+  );
+
   const technicalHeads = teams.filter(
     (member) => member.post === "Technical Head"
   );
@@ -167,6 +176,10 @@ export const getStaticProps: GetStaticProps = async () => {
     (member) => member.post.trim().toLowerCase() === "treasurer"
   );
 
+  const socialMediaHead = teams.find(
+    (member) => member.post.trim().toLowerCase() === "social media head"
+  );
+
   return {
     props: {
       team: {
@@ -178,6 +191,8 @@ export const getStaticProps: GetStaticProps = async () => {
         coreMembers,
         treasurer,
         secretary,
+        socialMediaHead,
+        vicePresident,
       },
     },
   };

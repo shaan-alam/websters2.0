@@ -73,7 +73,7 @@ const colImageVariants = {
 
 const App = () => {
   return (
-    <Layout>
+    <Layout title="Home - Websters">
       <Navbar />
       <section className="hero relative">
         <span className="absolute h-[150px] w-[150px] left-0 rounded-full lg:h-[400px] lg:w-[600px] bg-blue-700 blur-[100px] md:blur-[500px]"></span>
