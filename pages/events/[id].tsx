@@ -295,7 +295,7 @@ const Event = ({ event }: { event: IEvent }) => {
           className="md:text-6xl text-2xl mt-28 mb-6 text-white"
         />
       </div>
-      <Sponsers sponsers={event.eventSponsers} />
+      {/* <Sponsers sponsers={event.eventSponsers} /> */}
       <Footer />
     </Layout>
   );
@@ -313,7 +313,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
           caption {
             markdown
-          },
+          }
           deadline
           eventHeading
           date
@@ -351,7 +351,7 @@ export const getStaticPaths = async () => {
         }
         caption {
           markdown
-        },
+        }
         deadline
         eventHeading
         date

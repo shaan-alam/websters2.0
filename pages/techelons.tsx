@@ -20,7 +20,7 @@ export interface IEvent {
   };
   caption: {
     markdown: string;
-  } | null;
+  };
   deadline: string;
   eventHeading: string;
   date: string;
@@ -61,7 +61,6 @@ const Techelons = ({
   events: IEvent[];
   speaker: ISpeaker;
 }) => {
-  console.log(speaker);
   return (
     <Layout>
       <Navbar />
@@ -138,7 +137,7 @@ const Techelons = ({
             </div>
           </div>
         </section>
-
+{/* 
         <section className="sponsers-section my-24">
           <div className="w-[80%] mx-auto">
             <AnimatedLine
@@ -203,7 +202,7 @@ const Techelons = ({
             <Sponsers />
             <Sponsers reverse={true} />
           </div>
-        </section>
+        </section> */}
 
         <section className="speakers-section my-24">
           <div className="w-[80%] mx-auto">
@@ -224,7 +223,7 @@ const Techelons = ({
                   text={speaker.name}
                   className="text-white my-4 text-2xl md:text-6xl"
                 />
-                <div className={styles['event-description']}>
+                <div className="text-white">
                   <ReactMarkdown>{speaker.description.markdown}</ReactMarkdown>
                 </div>
               </div>
@@ -250,7 +249,7 @@ export const getStaticProps: GetStaticProps = async () => {
         },
         caption {
           markdown
-        },
+        }
         deadline,
         eventHeading,
         date,
@@ -259,8 +258,8 @@ export const getStaticProps: GetStaticProps = async () => {
         maxTeamSize,
         poster {
           url
-        },
-        participationType,
+        }
+        participationType
         slug
         whatsAppGroupUrl
         tagline
