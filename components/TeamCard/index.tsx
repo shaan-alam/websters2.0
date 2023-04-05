@@ -60,7 +60,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
     <div ref={cardRef} className={styles.crosshair_card}>
       <div className={styles.card_body}>
         <div className="img_container">
-          {member.photo != null ? (
+          {/* {member.photo != null ? (
             <img
               src={member.photo?.url}
               className="h-[400px] w-[400px] object-contain"
@@ -70,7 +70,7 @@ const TeamCard = ({ member }: { member: ITeam }) => {
           )}
           {member.photo === null && (
             <p className="text-white">Inhone photo ni bheji apni</p>
-          )}
+          )} */}
         </div>
         <div className={styles.card_content}>
           <h1 ref={eventNameRef} className={styles.event_name}>
