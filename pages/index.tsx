@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import AnimatedLine from "@/components/AnimatedLine";
 import AnimatedParagraph from "@/components/AnimatedParagraph";
+import Link from "next/link";
 
 const containerVariants = {
   initial: {
@@ -107,7 +108,9 @@ const App = () => {
                 transition={{ delay: 1, ease: "easeInOut" }}
                 className="relative block"
               >
-                <Button className="mt-8">Get Started</Button>
+                <Link href="/techelons">
+                  <Button className="mt-8">Get Started</Button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
