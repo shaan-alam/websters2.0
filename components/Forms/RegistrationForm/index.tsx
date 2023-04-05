@@ -248,10 +248,10 @@ const RegistrationForm = ({
                               src={member.avatar}
                               className="rounded-full h-20 w-20 my-4"
                             />
-                            <h1 className="text-white mb-2 font-primary text-3xl">
+                            <h1 className="text-white mb-2 font-primary text-2xl">
                               {member.name}
                             </h1>
-                            <h1 className="text-gray-400 mb-2 font-primary text-lg">
+                            <h1 className="text-gray-400 mb-2 font-secondary">
                               {member.email}
                             </h1>
                           </div>

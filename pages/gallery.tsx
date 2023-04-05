@@ -32,7 +32,7 @@ const Gallery = () => {
   };
 
   return (
-    <Layout>
+    <Layout title="Gallery">
       <Navbar />
       <div className="w-[80%] mx-auto">
         {photoModal && (
