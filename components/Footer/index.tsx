@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import styles from "./Footer.module.scss";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -15,24 +16,27 @@ const Footer = () => {
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-              <a href="\about" className="mr-4 hover:underline md:mr-6 ">
+              <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
+              <Link
+                href="/techelons#events"
+                className="mr-4 hover:underline md:mr-6"
+              >
                 Events
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <Link href="/techelons" className="mr-4 hover:underline md:mr-6 ">
                 Techelons
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <Link href="contact" className="hover:underline">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -46,15 +50,21 @@ const Footer = () => {
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a href="#" className="text-gray-500 hover:text-white">
-              <FaFacebook />
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a href="#" className="text-gray-500 hover:text-white">
+            <a
+              href="https://www.instagram.com/websters.shivaji"
+              rel="noreferrer"
+              target="_blank"
+              className="text-gray-500 hover:text-white"
+            >
               <FaInstagram />
               <span className="sr-only">Instagram page</span>
             </a>
-            <a href="#" className="text-gray-500 hover:text-white">
+            <a
+              href="https://www.linkedin.com/company/websters-shivaji-college/mycompany/"
+              rel="noreferrer"
+              target="_blank"
+              className="text-gray-500 hover:text-white"
+            >
               <FaLinkedin />
               <span className="sr-only">Twitter page</span>
             </a>

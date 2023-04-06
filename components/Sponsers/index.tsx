@@ -4,7 +4,11 @@ import styles from "./Sponsers.module.scss";
 
 interface IProps {
   reverse?: boolean;
-  sponsers?: { url: string }[];
+  sponsers?: {
+    img: {
+      url: string;
+    };
+  }[];
 }
 
 const Sponsers = ({ reverse, sponsers }: IProps) => {
@@ -24,7 +28,7 @@ const Sponsers = ({ reverse, sponsers }: IProps) => {
       >
         {sponsers?.map((sponser) => (
           <div className={styles.slide} key={v4()}>
-            <img src={sponser.url} className="w-full" alt="" />
+            <img src={sponser.img.url} className="w-full" alt="" />
           </div>
         ))}
       </div>

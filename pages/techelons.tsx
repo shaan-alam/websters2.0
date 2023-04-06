@@ -50,6 +50,12 @@ interface ISpeaker {
   };
 }
 
+interface IPartner {
+  img: {
+    url: string;
+  };
+}
+
 export const graphcms = new GraphQLClient(
   "https://api-ap-south-1.hygraph.com/v2/clfqvrwvy0im601ui0g4xdhl6/master"
 );
@@ -57,10 +63,15 @@ export const graphcms = new GraphQLClient(
 const Techelons = ({
   events,
   speaker,
+  communityPartners,
+  mediaPartners,
 }: {
   events: IEvent[];
   speaker: ISpeaker;
+  communityPartners: IPartner[];
+  mediaPartners: IPartner[];
 }) => {
+  console.log("media partners", mediaPartners);
   return (
     <Layout title="Techelons - The Annual Tech Fest of Shivaji College">
       <Navbar />
@@ -80,7 +91,10 @@ const Techelons = ({
         <section className="h-auto flex flex-col justify-center about-techelons">
           <div className="w-[80%] mx-auto">
             <div className="block md:grid grid-cols-2 gap-12 my-24">
-              <div className="left-col my-4 md:my-0">
+              <div className="left-col">
+                <img src="/techelons.png" alt="Techelons" />
+              </div>
+              <div className="right-col my-4 md:my-0">
                 <AnimatedText
                   text="ABOUT TECHELONS"
                   className="text-white text-2xl lg:text-[3rem]"
@@ -115,94 +129,9 @@ const Techelons = ({
                   </p>
                 </div>
               </div>
-              <div className="right-col">
-                <img src="/techelons.png" alt="Techelons" />
-              </div>
             </div>
           </div>
         </section>
-
-        <section className="events h-auto w-full" id="events">
-          <div className="container w-[80%] mx-auto">
-            <AnimatedLine
-              text="Our Events"
-              className="text-white text-2xl lg:text-[3rem]"
-            />
-            <div className="mt-12">
-              <ol className="relative border-l border-gray-200 dark:border-gray-700">
-                {events.map((event) => (
-                  <TimelineEvent event={event} key={event.id} />
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-        {/* 
-        <section className="sponsers-section my-24">
-          <div className="w-[80%] mx-auto">
-            <AnimatedLine
-              text="Title Sponsers"
-              className="text-white my-4 text-2xl md:text-4xl"
-            />
-            <div className="md:grid grid-cols-2 gap-8 my-6">
-              <div className="col-left">
-                <AnimatedImage
-                  src="https://pngimg.com/uploads/microsoft/microsoft_PNG10.png"
-                  alt=""
-                  className="my-8"
-                />
-              </div>
-              <div className="col-right">
-                <AnimatedLine
-                  text="Microsoft"
-                  className="text-white my-4 text-3xl"
-                />
-                <p className="text-white leading-7 font-primary">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Sequi autem deserunt iure cupiditate consequuntur, tenetur
-                  rerum a corrupti assumenda perspiciatis reiciendis deleniti
-                  aspernatur totam ipsa! Nihil mollitia commodi voluptatem
-                  optio.
-                </p>
-              </div>
-            </div>
-            <div className="md:flex-row flex flex-col-reverse my-24">
-              <div className="col-right w-full md:w-1/2">
-                <AnimatedLine
-                  text="Microsoft"
-                  className="text-white my-4 text-3xl"
-                />
-                <p className="text-white leading-7 font-primary">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Sequi autem deserunt iure cupiditate consequuntur, tenetur
-                  rerum a corrupti assumenda perspiciatis reiciendis deleniti
-                  aspernatur totam ipsa! Nihil mollitia commodi voluptatem
-                  optio. Sequi autem deserunt iure cupiditate consequuntur,
-                  tenetur rerum a corrupti assumenda perspiciatis reiciendis
-                  deleniti aspernatur totam ipsa! Nihil mollitia commodi
-                  voluptatem optio.
-                </p>
-              </div>
-              <div className="col-left w-full md:w-1/2 md:mr-8">
-                <AnimatedImage
-                  src="https://pngimg.com/uploads/microsoft/microsoft_PNG10.png"
-                  alt=""
-                  className="my-24"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-full general Sponsers">
-            <div className="w-[80%] mx-auto">
-              <AnimatedLine
-                text="General Sponsers"
-                className="text-white text-xl md:text-4xl my-4"
-              />
-            </div>
-            <Sponsers />
-            <Sponsers reverse={true} />
-          </div>
-        </section> */}
 
         <section className="speakers-section my-24">
           <div className="w-[80%] mx-auto">
@@ -228,6 +157,43 @@ const Techelons = ({
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="events h-auto w-full" id="events">
+          <div className="container w-[80%] mx-auto">
+            <AnimatedLine
+              text="Our Events"
+              className="text-white text-2xl lg:text-[3rem]"
+            />
+            <div className="mt-12">
+              <ol className="relative border-l border-gray-200 dark:border-gray-700">
+                {events.map((event) => (
+                  <TimelineEvent event={event} key={event.id} />
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="sponsers-section my-24">
+          <div className="w-full general Sponsers">
+            <div className="w-[80%] mx-auto">
+              <AnimatedLine
+                text="Community Partners"
+                className="text-white text-xl md:text-4xl my-4"
+              />
+            </div>
+            <Sponsers sponsers={communityPartners} />
+          </div>
+          <div className="w-full general Sponsers">
+            <div className="w-[80%] mx-auto">
+              <AnimatedLine
+                text="Media Partners"
+                className="text-white text-xl md:text-4xl my-4"
+              />
+            </div>
+            <Sponsers sponsers={mediaPartners} reverse />
           </div>
         </section>
       </div>
@@ -287,10 +253,38 @@ export const getStaticProps: GetStaticProps = async () => {
   
   `);
 
+  const { communityPartners }: { communityPartners: IPartner[] } =
+    await graphcms.request(
+      `
+    query MyQuery {
+      communityPartners {
+        img{
+          url
+        }
+      }
+    }
+    `
+    );
+
+  const { mediaPartners }: { mediaPartners: IPartner[] } =
+    await graphcms.request(
+      `
+    query MyQuery {
+      mediaPartners {
+        img{
+          url
+        }
+      }
+    }
+    `
+    );
+
   return {
     props: {
       events: event,
       speaker: speakers[0],
+      communityPartners,
+      mediaPartners,
     },
   };
 };

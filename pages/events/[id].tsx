@@ -291,13 +291,13 @@ const Event = ({ event }: { event: IEvent }) => {
           />
         )}
       </div>
-      <div className="w-[90%] mx-auto">
+      {/* <div className="w-[90%] mx-auto">
         <AnimatedLine
           text="Sponsers"
           className="md:text-6xl text-2xl mt-28 mb-6 text-white"
         />
       </div>
-      {/* <Sponsers sponsers={event.eventSponsers} /> */}
+      <Sponsers sponsers={event.eventSponsers} /> */}
       <Footer />
     </Layout>
   );
