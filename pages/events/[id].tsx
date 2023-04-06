@@ -298,7 +298,9 @@ const Event = ({ event }: { event: IEvent }) => {
         />
       </div>
       <Sponsers sponsers={event.eventSponsers} /> */}
-      <Footer />
+      <div className="mt-12">
+        <Footer />
+      </div>
     </Layout>
   );
 };
