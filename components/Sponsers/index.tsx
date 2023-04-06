@@ -19,18 +19,24 @@ const Sponsers = ({ reverse, sponsers }: IProps) => {
   console.log(sponsers);
 
   return (
-    <div className={styles.slider}>
-      <div
-        className={classNames(
-          styles["slide-track"],
-          reverse ? styles.reverse : ""
-        )}
-      >
-        {sponsers?.map((sponser) => (
-          <div className={styles.slide} key={v4()}>
-            <img src={sponser.img.url} className="w-full" alt="" />
-          </div>
-        ))}
+    <div className={styles.slider_wrapper}>
+      <div className={styles.slider}>
+        <div
+          className={classNames(
+            styles["slide-track"],
+            reverse ? styles.reverse : ""
+          )}
+        >
+          {sponsers?.map((sponser) => (
+            <div className={styles.slide} key={v4()}>
+              <img
+                src={sponser.img.url}
+                className=""
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

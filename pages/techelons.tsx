@@ -184,23 +184,25 @@ const Techelons = ({
             <div className="w-[80%] mx-auto">
               <AnimatedLine
                 text="Community Partners"
-                className="text-white text-xl md:text-4xl my-4"
+                className="text-white text-xl md:text-4xl"
               />
             </div>
-            <Sponsers sponsers={communityPartners} />
+            <Sponsers sponsers={[...communityPartners, ...communityPartners]} />
           </div>
           <div className="w-full general Sponsers">
             <div className="w-[80%] mx-auto">
               <AnimatedLine
                 text="Media Partners"
-                className="text-white text-xl md:text-4xl my-4"
+                className="text-white text-xl md:text-4xl"
               />
             </div>
-            <Sponsers sponsers={mediaPartners} reverse />
+            <Sponsers sponsers={[...mediaPartners, ...mediaPartners]} reverse />
           </div>
         </section>
       </div>
-      <Footer />
+      <div className="mt-8">
+        <Footer />
+      </div>
     </Layout>
   );
 };
