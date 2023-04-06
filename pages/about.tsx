@@ -30,6 +30,8 @@ const About = ({
     secretary: ITeam;
     socialMediaHead: ITeam;
     vicePresident: ITeam;
+    jointSecretary: ITeam;
+    seniorVicePresident: ITeam;
   };
 }) => {
   return (
@@ -100,13 +102,15 @@ const About = ({
         />
         <div className="md:grid grid-cols-3 gap-8 my-8">
           <TeamCard member={team.president} />
+          <TeamCard member={team.seniorVicePresident} />
           <TeamCard member={team.vicePresident} />
+          <TeamCard member={team.secretary} />
+          <TeamCard member={team.jointSecretary} />
+          <TeamCard member={team.treasurer} />
           {team.technicalHeads.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
           <TeamCard member={team.creativeHead} />
-          <TeamCard member={team.treasurer} />
-          <TeamCard member={team.secretary} />
           {team.studentCoordinators.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
@@ -149,6 +153,9 @@ export const getStaticProps: GetStaticProps = async () => {
     (member) => member.post.trim().toLowerCase() === "president"
   );
 
+  const seniorVicePresident = teams.find(
+    (member) => member.post.trim().toLowerCase() === "senior vice president"
+  );
   const vicePresident = teams.find(
     (member) => member.post.trim().toLowerCase() === "vice president"
   );
@@ -180,6 +187,10 @@ export const getStaticProps: GetStaticProps = async () => {
     (member) => member.post.trim().toLowerCase() === "social media head"
   );
 
+  const jointSecretary = teams.find(
+    (member) => member.post.trim().toLowerCase() === "joint secretary"
+  );
+
   return {
     props: {
       team: {
@@ -193,6 +204,8 @@ export const getStaticProps: GetStaticProps = async () => {
         secretary,
         socialMediaHead,
         vicePresident,
+        jointSecretary,
+        seniorVicePresident
       },
     },
   };

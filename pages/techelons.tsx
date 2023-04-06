@@ -71,7 +71,7 @@ const Techelons = ({
   communityPartners: IPartner[];
   mediaPartners: IPartner[];
 }) => {
-  console.log("media partners", mediaPartners);
+  console.log(events);
   return (
     <Layout title="Techelons - The Annual Tech Fest of Shivaji College">
       <Navbar />
@@ -168,9 +168,12 @@ const Techelons = ({
             />
             <div className="mt-12">
               <ol className="relative border-l border-gray-200 dark:border-gray-700">
-                {events.map((event) => (
-                  <TimelineEvent event={event} key={event.id} />
-                ))}
+                <TimelineEvent event={events[0]} />
+                <TimelineEvent event={events[5]} />
+                <TimelineEvent event={events[2]} />
+                <TimelineEvent event={events[4]} />
+                <TimelineEvent event={events[1]} />
+                <TimelineEvent event={events[3]} />
               </ol>
             </div>
           </div>

@@ -89,24 +89,28 @@ const TeamCard = ({ member }: { member: ITeam }) => {
             ref={socialRef}
             initial={{ opacity: 0 }}
             animate={socialsControls}
-            className="socials flex items-center justify-between w-1/3 mt-4"
+            className="socials flex items-center justify-start w-1/3 mt-4"
           >
-            <a
-              href={member.instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[#a1a1a1] hover:text-primary transition-colors"
-            >
-              <IoLogoInstagram size={25} />
-            </a>
-            <a
-              href={member.linkedInUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[#a1a1a1] hover:text-primary transition-colors"
-            >
-              <IoLogoLinkedin size={25} />
-            </a>
+            {member.instagramUrl && (
+              <a
+                href={member.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#a1a1a1] hover:text-primary transition-colors mr-4"
+              >
+                <IoLogoInstagram size={25} />
+              </a>
+            )}
+            {member.linkedInUrl && (
+              <a
+                href={member.linkedInUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#a1a1a1] hover:text-primary transition-colors"
+              >
+                <IoLogoLinkedin size={25} />
+              </a>
+            )}
           </motion.div>
         </div>
       </div>
