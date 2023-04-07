@@ -1,5 +1,5 @@
 import { LegacyRef, useRef, useState } from "react";
-import { AnimatedLine, Button, FormInput, Navbar } from "@/components";
+import { AnimatedLine, Button, Footer, FormInput, Navbar } from "@/components";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styles from "@/styles/Contact.module.scss";
 import { Formik } from "formik";
@@ -115,6 +115,7 @@ const Contact = () => {
         </div>
         <ToastContainer position="bottom-right" theme="dark" />
       </div>
+      <Footer />
     </>
   );
 };

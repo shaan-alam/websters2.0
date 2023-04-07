@@ -92,7 +92,7 @@ const Techelons = ({
           <div className="w-[80%] mx-auto">
             <div className="block md:grid grid-cols-2 gap-12 my-24">
               <div className="left-col">
-                <img src="/techelons.png" alt="Techelons" />
+                <img src="/techelons-poster.png" alt="Techelons" />
               </div>
               <div className="right-col my-4 md:my-0">
                 <AnimatedText

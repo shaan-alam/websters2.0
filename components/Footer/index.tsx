@@ -6,7 +6,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="p-4 bg-[#121212] rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
-      <div className="container mx-auto">
+      <div className="w-[80%] mx-auto">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a href="#" className="flex items-center mb-4 sm:mb-0">
             <img src="/logo.svg" className="h-7 mr-3" alt="Logo" />
@@ -43,7 +43,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-700 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2023
+            © 2023 
             <a href="#" className="hover:underline">
               Websters
             </a>

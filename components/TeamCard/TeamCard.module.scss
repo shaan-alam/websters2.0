@@ -25,7 +25,11 @@
       @apply p-4;
 
       .event_name {
-        @apply text-primary font-bold uppercase text-3xl mb-4 tracking-wide relative overflow-hidden;
+        @apply text-primary font-bold uppercase  mb-4 tracking-wide relative overflow-hidden;
+
+        div {
+          @apply text-xl sm:text-3xl;
+        }
       }
 
       h1 {
