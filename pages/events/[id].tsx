@@ -158,7 +158,22 @@ const Event = ({ event }: { event: IEvent }) => {
                     </div>
                   )}
                   <div className={styles.event_description}>
-                    <ReactMarkdown>{event.description.markdown}</ReactMarkdown>
+                    <ReactMarkdown
+                      components={{
+                        a: ({ node, ...props }) => (
+                          <a
+                            href={props.href}
+                            className="text-blue-400"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {props.children}
+                          </a>
+                        ),
+                      }}
+                    >
+                      {event.description.markdown}
+                    </ReactMarkdown>
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>

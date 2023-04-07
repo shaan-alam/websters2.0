@@ -316,7 +316,7 @@ const RegistrationForm = ({
                     className="text-red-600 font-secondary font-bold mt-2"
                     isHeading={false}
                   />
-                  <div className="h-[300px] w-[300px]  p-2 rounded-md bg-[#333] my-4 relative">
+                  <div className="h-[300px] sm:w-[300px]  p-2 rounded-md bg-[#333] my-4 relative">
                     {fileURL && (
                       <a
                         href="#!"
