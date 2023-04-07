@@ -339,7 +339,7 @@ const RegistrationForm = ({
                         id="upload-file"
                         className="hidden"
                         onChange={uploadFile}
-                        accept="image/jpg"
+                        accept="image/png, image/gif, image/jpeg, image/jpg"
                       />
                     )}
                     <label htmlFor="upload-file">
