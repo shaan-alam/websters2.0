@@ -130,7 +130,5 @@ export const fetchRegistrations = async (eventName: string) => {
 
   const parser = new Parser();
   const csv = parser.parse(registrations);
-  console.log(csv);
   exportCSVDocument(csv, `${eventName} Registrations`)
-
 }

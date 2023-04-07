@@ -31,9 +31,7 @@ const OverlappingAvatars = ({
       str += impUsers[0]?.name + ", ";
       str += impUsers[1]?.name + ", ";
 
-      str += `${totalRegisteredUsers - 3} other${
-        totalRegisteredUsers - 3 === 1 ? "" : "s"
-      }`;
+      str += `& others`;
 
       setStr(str);
     }

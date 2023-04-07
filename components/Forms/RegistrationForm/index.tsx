@@ -12,9 +12,16 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebase";
 import FormInput from "@/components/FormInput";
-import { FaTrash, FaUser } from "react-icons/fa";
+import { FaTimes, FaTrash, FaUser } from "react-icons/fa";
 import Button from "@/components/Button";
 import TeamModal from "@/components/Modal/Team";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import classNames from "classnames";
 
 interface IProps {
   event: IEvent;
@@ -51,6 +58,36 @@ const RegistrationForm = ({
   registerForEvent,
 }: IProps) => {
   const { user } = useContext(Context) as ContextType;
+  const [file, setFile] = useState(null);
+  const [fileUploadProgress, setFileUploadProgress] = useState(0);
+  const [fileUploadError, setFileUploadError] = useState("");
+  const [fileURL, setFileURL] = useState("");
+
+  const uploadFile = (e: any) => {
+    setFile(e.target.files[0]);
+
+    const storage = getStorage();
+    const storageRef = ref(storage, "images/rivers.jpg");
+
+    const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setFileUploadProgress(progress);
+      },
+      (error) => {
+        setFileUploadError(error.message);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setFileURL(downloadURL);
+        });
+      }
+    );
+  };
 
   return (
     <div className="mt-8">
@@ -102,12 +139,16 @@ const RegistrationForm = ({
                 remainingMembers > 1 ? "s" : ""
               }!`
             );
-          } else {
-            const dbRef = collection(db, event.eventHeading);
-            const registration = { ...values, avatar: user?.avatar };
-            registerForEvent(dbRef, registration);
-            resetForm();
           }
+
+          if (event.id === "clfqzvuxi33q40apg4oivz4tm" && !fileURL) {
+            return setFileUploadError("Please upload your payment screenshot!");
+          }
+
+          const dbRef = collection(db, event.eventHeading);
+          const registration = { ...values, avatar: user?.avatar };
+          registerForEvent(dbRef, registration);
+          resetForm();
         }}
       >
         {(formik) => (
@@ -260,6 +301,68 @@ const RegistrationForm = ({
                     </div>
                   </div>
                 </>
+              )}
+              {event.id === "clfqzvuxi33q40apg4oivz4tm" && (
+                <div className="mt-12">
+                  <h1 className="text-white text-xl">Payment Details</h1>
+                  <p className="mt-4 text-gray-400">
+                    Pay on shaanalam369@okaxis
+                  </p>
+                  <AnimatedLine
+                    text={fileUploadError}
+                    className="text-red-600 font-secondary font-bold mt-2"
+                    isHeading={false}
+                  />
+                  <div className="h-[300px] w-[300px]  p-2 rounded-md bg-[#333] my-4 relative">
+                    {fileURL && (
+                      <a
+                        href="#!"
+                        className="absolute -top-3 -right-3"
+                        onClick={() => {
+                          setFileUploadProgress(0);
+                          setFileURL("");
+                          setFile(null);
+                        }}
+                      >
+                        <FaTimes
+                          size={30}
+                          className="p-2 bg-gray-600 text-white rounded-full"
+                        />
+                      </a>
+                    )}
+                    <input
+                      type="file"
+                      id="upload-file"
+                      className="hidden"
+                      onChange={uploadFile}
+                    />
+                    <label htmlFor="upload-file">
+                      <div className="cursor-pointer h-full w-full border-dashed border-gray-400 border-2 rounded-md flex flex-col justify-center items-center text-center text-sm text-gray-400 hover:border-white hover:text-white p-12">
+                        <p className={classNames(file ? "hidden" : "block")}>
+                          Select Image or drop here...
+                        </p>
+                        {file && fileUploadProgress < 100 && (
+                          <>
+                            <p className="block mb-2">
+                              Uploading {Math.floor(fileUploadProgress)}%
+                            </p>
+                            <div className="w-full bg-gray-700 h-[2px]">
+                              <div
+                                className="bg-white h-full"
+                                style={{ width: `${fileUploadError}%` }}
+                              ></div>
+                            </div>
+                          </>
+                        )}
+                        {fileUploadProgress === 100 && (
+                          <div className="relative">
+                            <img src={fileURL} className="w-full" />
+                          </div>
+                        )}
+                      </div>
+                    </label>
+                  </div>
+                </div>
               )}
               <Button className="my-8">Register</Button>
             </div>
