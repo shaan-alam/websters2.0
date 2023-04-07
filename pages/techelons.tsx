@@ -104,7 +104,7 @@ const Techelons = ({
                     It gives us immense pleasure to inform you that the
                     Department of Computer Science, Shivaji College; University
                     of Delhi is organizing its Annual technical festival
-                    Techelons’2022 on 20th and 21st April 2022.
+                    Techelons’2023 on 12th and 13st April 2023.
                   </p>
                   <p className="my-4 leading-8 relative z-20">
                     The festival attracts students from colleges all over India
