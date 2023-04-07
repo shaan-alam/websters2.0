@@ -307,6 +307,9 @@ const RegistrationForm = ({
                   <h1 className="text-white text-xl">Payment Details</h1>
                   <p className="mt-4 text-gray-400">
                     Pay on shaanalam369@okaxis
+                    <span className="text-red-600 font-bold ml-2 text-xl mt-4">
+                      *
+                    </span>
                   </p>
                   <AnimatedLine
                     text={fileUploadError}
@@ -330,16 +333,19 @@ const RegistrationForm = ({
                         />
                       </a>
                     )}
-                    <input
-                      type="file"
-                      id="upload-file"
-                      className="hidden"
-                      onChange={uploadFile}
-                    />
+                    {!file && (
+                      <input
+                        type="file"
+                        id="upload-file"
+                        className="hidden"
+                        onChange={uploadFile}
+                        accept="image/jpg"
+                      />
+                    )}
                     <label htmlFor="upload-file">
                       <div className="cursor-pointer h-full w-full border-dashed border-gray-400 border-2 rounded-md flex flex-col justify-center items-center text-center text-sm text-gray-400 hover:border-white hover:text-white p-12">
                         <p className={classNames(file ? "hidden" : "block")}>
-                          Select Image or drop here...
+                          Upload your payment screenshot here...
                         </p>
                         {file && fileUploadProgress < 100 && (
                           <>
@@ -349,7 +355,7 @@ const RegistrationForm = ({
                             <div className="w-full bg-gray-700 h-[2px]">
                               <div
                                 className="bg-white h-full"
-                                style={{ width: `${fileUploadError}%` }}
+                                style={{ width: `${fileUploadProgress}px` }}
                               ></div>
                             </div>
                           </>
