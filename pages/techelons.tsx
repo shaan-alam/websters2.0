@@ -77,7 +77,7 @@ const Techelons = ({
       <Navbar />
       <div className="wrapper">
         <section className={styles.wrapper}>
-          <span className="absolute left-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
+          <span className="absolute right-0 h-[300px] w-[200px] bg-blue-800 rounded-full md:w-[900px] blur-[150px] md:blur-[400px]"></span>
           <span className="absolute top-[50rem] h-[100px] w-[200px] rounded-full md:h-[400px]  md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute top-[100rem] right-10 sm:h-[500px] w-[200px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
           <span className="absolute h-[100px] top-[150rem] w-[300px] rounded-full md:h-[400px] md:w-[400px] bg-blue-700 blur-[150px] md:blur-[400px]"></span>
@@ -120,8 +120,8 @@ const Techelons = ({
                     and discuss the latest happenings in the field of computers
                     and help the growth of computer science. The festival offers
                     a mix of technical and non-technical events. Technical
-                    events include IT Quiz, Data Divination, and Techno Heads
-                    up. we have nontechnical events also which is Googler. The
+                    events include Dark Coding, Googler, Web-Hive, Whatzapper, AI Artistry, and E-Lafda
+                    up. We have nontechnical events also which is Cards & Cups, and Braniac Buster. The
                     success of the event depends on the generous support of our
                     sponsors to help fulfill and be associated with the event in
                     a variety of ways including monetary funds, sponsor prizes,
