@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import AnimatedLine from "@/components/AnimatedLine";
 import { Formik, useFormik } from "formik";
 import { Context, ContextType } from "@/context/GlobalContext";
@@ -22,6 +22,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import classNames from "classnames";
+import emailjs from "@emailjs/browser";
 
 interface IProps {
   event: IEvent;
@@ -62,6 +63,8 @@ const RegistrationForm = ({
   const [fileUploadProgress, setFileUploadProgress] = useState(0);
   const [fileUploadError, setFileUploadError] = useState("");
   const [fileURL, setFileURL] = useState("");
+
+  const formRef = useRef(null);
 
   const uploadFile = (e: any) => {
     setFile(e.target.files[0]);
@@ -148,11 +151,10 @@ const RegistrationForm = ({
           const dbRef = collection(db, event.eventHeading);
           const registration = { ...values, avatar: user?.avatar };
           registerForEvent(dbRef, registration);
-          resetForm();
         }}
       >
         {(formik) => (
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} ref={formRef}>
             <div className="relative w-full">
               <div className="md:grid grid-cols-3 gap-6">
                 <FormInput

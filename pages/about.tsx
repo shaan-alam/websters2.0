@@ -32,6 +32,7 @@ const About = ({
     vicePresident: ITeam;
     jointSecretary: ITeam;
     seniorVicePresident: ITeam;
+    outreachHead: ITeam;
   };
 }) => {
   return (
@@ -114,6 +115,7 @@ const About = ({
           {team.studentCoordinators.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
+          <TeamCard member={team.outreachHead} />
           {team.coreMembers.map((member) => (
             <TeamCard member={member} key={member.id} />
           ))}
@@ -190,6 +192,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const jointSecretary = teams.find(
     (member) => member.post.trim().toLowerCase() === "joint secretary"
   );
+  const outreachHead = teams.find(
+    (member) => member.post.trim().toLowerCase() === "outreach head"
+  );
 
   return {
     props: {
@@ -205,7 +210,8 @@ export const getStaticProps: GetStaticProps = async () => {
         socialMediaHead,
         vicePresident,
         jointSecretary,
-        seniorVicePresident
+        seniorVicePresident,
+        outreachHead
       },
     },
   };

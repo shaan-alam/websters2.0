@@ -70,6 +70,7 @@ const Event = ({ event }: { event: IEvent }) => {
     setSuccessModal(true);
   };
 
+  
   useEffect(() => {
     if (isLoggedIn) {
       setIsLoading(true);
