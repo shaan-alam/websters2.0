@@ -307,7 +307,7 @@ const RegistrationForm = ({
               {event.id === "clfqzvuxi33q40apg4oivz4tm" && (
                 <div className="mt-12">
                   <h1 className="text-white text-xl">Payment Details</h1>
-                  <p className="mt-4 text-gray-400">
+                  <p className="mt-4 text-yellow-300">
                     Pay on shaanalam369@okaxis
                     <span className="text-red-600 font-bold ml-2 text-xl mt-4">
                       *
