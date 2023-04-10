@@ -70,7 +70,7 @@ const RegistrationForm = ({
     setFile(e.target.files[0]);
 
     const storage = getStorage();
-    const storageRef = ref(storage, "images/rivers.jpg");
+    const storageRef = ref(storage, `images/${v4()}.jpg`);
 
     const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
 
