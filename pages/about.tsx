@@ -151,50 +151,55 @@ export const getStaticProps: GetStaticProps = async () => {
   `
   );
 
-  const president = teams.find(
-    (member) => member.post.trim().toLowerCase() === "president"
-  );
+  const president =
+    teams.find((member) => member.post.trim().toLowerCase() === "president") ||
+    [];
 
-  const seniorVicePresident = teams.find(
-    (member) => member.post.trim().toLowerCase() === "senior vice president"
-  );
-  const vicePresident = teams.find(
-    (member) => member.post.trim().toLowerCase() === "vice president"
-  );
+  const seniorVicePresident =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "senior vice president"
+    ) || [];
+  const vicePresident =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "vice president"
+    ) || [];
 
-  const technicalHeads = teams.filter(
-    (member) => member.post === "Technical Head"
-  );
-  const creativeHead = teams.find(
-    (member) => member.post.trim().toLowerCase() === "creative head"
-  );
-  const studentCoordinators = teams.filter(
-    (member) => member.post === "Student Coordinator"
-  );
-  const members = teams.filter(
-    (member) => member.post.trim().toLowerCase() === "member"
-  );
-  const coreMembers = teams.filter(
-    (member) => member.post.trim().toLowerCase() === "core member"
-  );
-  const secretary = teams.find(
-    (member) => member.post.trim().toLowerCase() === "secretary"
-  );
+  const technicalHeads =
+    teams.filter((member) => member.post === "Technical Head") || [];
+  const creativeHead =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "creative head"
+    ) || [];
+  const studentCoordinators =
+    teams.filter((member) => member.post === "Student Coordinator") || [];
+  const members =
+    teams.filter((member) => member.post.trim().toLowerCase() === "member") ||
+    [];
+  const coreMembers =
+    teams.filter(
+      (member) => member.post.trim().toLowerCase() === "core member"
+    ) || [];
+  const secretary =
+    teams.find((member) => member.post.trim().toLowerCase() === "secretary") ||
+    [];
 
-  const treasurer = teams.find(
-    (member) => member.post.trim().toLowerCase() === "treasurer"
-  );
+  const treasurer =
+    teams.find((member) => member.post.trim().toLowerCase() === "treasurer") ||
+    [];
 
-  const socialMediaHead = teams.find(
-    (member) => member.post.trim().toLowerCase() === "social media head"
-  );
+  const socialMediaHead =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "social media head"
+    ) || [];
 
-  const jointSecretary = teams.find(
-    (member) => member.post.trim().toLowerCase() === "joint secretary"
-  );
-  const outreachHead = teams.find(
-    (member) => member.post.trim().toLowerCase() === "outreach head"
-  );
+  const jointSecretary =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "joint secretary"
+    ) || [];
+  const outreachHead =
+    teams.find(
+      (member) => member.post.trim().toLowerCase() === "outreach head"
+    ) || [];
 
   return {
     props: {
@@ -211,7 +216,7 @@ export const getStaticProps: GetStaticProps = async () => {
         vicePresident,
         jointSecretary,
         seniorVicePresident,
-        outreachHead
+        outreachHead,
       },
     },
   };
